@@ -8,6 +8,9 @@
 
 
 /* ========== INICIO: BASE (reset y estilos globales) ========== */
+body {
+  margin: 0;
+}
 
 
 /* ========== FIN: BASE ========== */
@@ -39,14 +42,22 @@
 
 
 /* ========== INICIO: HERO / INICIO ========== */
+.hero,
+.hero * {
+  box-sizing: border-box;
+}
+
 .hero {
+  font-family: var(--font, "Inter", Arial, sans-serif);
+  color: #10291c;
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: calc(var(--nav-h) + 24px) var(--space) 40px;
+  padding: calc(var(--nav-h, 72px) + 24px) var(--space, 24px) 40px;
 }
 
 .hero__bg {
@@ -65,6 +76,8 @@
 }
 
 .hero__content {
+  width: 100%;
+  max-width: 1100px;
   position: relative;
   z-index: 1;
   display: flex;
@@ -75,7 +88,9 @@
 }
 
 .hero__content h1 {
-  color: var(--white);
+  margin: 0;
+  color: var(--white, #fff);
+  font-weight: 700;
   font-size: clamp(28px, 3.4vw, 48px);
   max-width: 820px;
   line-height: 1.15;
@@ -90,7 +105,8 @@
 }
 
 .stats {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
   width: 100%;
   max-width: 860px;
@@ -99,7 +115,7 @@
   backdrop-filter: blur(8px);
   border-radius: 16px;
   padding: 17px 18px;
-  margin-top: 100px;
+  margin: clamp(36px, 8vh, 80px) 0 0;
 }
 
 .stats li {
@@ -111,6 +127,46 @@
 .stats strong {
   display: block;
   font-size: 22px;
+}
+.hero .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 14px 28px;
+  border-radius: 10px;
+  background: var(--gold, #e9c46a);
+  color: #10291c;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.hero .btn:hover {
+  background: #f2d48c;
+}
+
+.hero .btn:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: calc(var(--nav-h, 56px) + 24px) 20px 32px;
+  }
+
+  .hero__content {
+    gap: 20px;
+  }
+
+  .hero .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 16px;
+    padding: 20px 16px;
+    margin-top: 32px;
+  }
 }
 /* ========== FIN: HERO / INICIO ========== */
 
