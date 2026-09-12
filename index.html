@@ -83,11 +83,40 @@
       <!-- ========== FIN: EQUIPO ========== -->
 
       <!-- ========== INICIO: CONTACTO / FORMULARIO ========== -->
+
+    <section class="contact" id="contacto">
+        <img class="contact__bg" src="assets/contact-bg.png" alt="" />
+        <div class="contact__inner">
+          <div>
+            <h2>Solicita tu Propuesta Técnica</h2>
+            <p>Recibe el desglose de costos y el modelo de custodia en tu correo.</p>
+          </div>
+          <form class="form" id="contact-form" novalidate>
+            <div class="form__steps" aria-hidden="true"></div>
+            <h3>Solicitar Información</h3>
+            <p class="form__lead">Te enviaremos el desglose de costos y el modelo de custodia.</p>
+            <label for="nombres">
+              Nombres
+              <input id="nombres" name="nombres" type="text" placeholder="Ingrese su Nombre" required />
+            </label>
+            <label for="apellidos">
+              Apellidos
+              <input id="apellidos" name="apellidos" type="text" placeholder="Ingrese sus Apellidos" required />
+            </label>
+            <label for="correo">
+              Correo
+              <input id="correo" name="correo" type="email" placeholder="Ingrese su Correo" required />
+            </label>
+            <label for="telefono">
+              Teléfono
+              <input id="telefono" name="telefono" type="tel" placeholder="Ingrese su teléfono" required />
+            </label>
+            <button class="btn btn--green" type="submit">Recibir Información</button>
+            <p class="form__status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
       
-
-
-
-
       <!-- ========== FIN: CONTACTO / FORMULARIO ========== -->
 
 
