@@ -102,6 +102,112 @@
 
 /* ========== INICIO: CONTACTO / FORMULARIO ========== */
 
+.contact {
+  position: relative;
+  min-height: 640px;
+  overflow: hidden;
+}
+
+.contact__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contact__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 420px);
+  gap: 32px;
+  min-height: 640px;
+  padding: 72px var(--space) 56px;
+}
+
+.contact__inner h2 {
+  font-size: clamp(26px, 2.8vw, 36px);
+}
+
+.contact__inner > div > p {
+  font-size: 16px;
+  color: var(--gray);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 18px 24px;
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+.form__steps {
+  width: 10px;
+  height: 10px;
+  margin: 8px auto 0;
+  border-radius: 50%;
+  background: var(--mint);
+  box-shadow: 28px 0 0 var(--mint), 56px 0 0 var(--mint);
+  transform: translateX(-28px);
+}
+
+.form h3 {
+  margin: 0;
+  font-size: 22px;
+  text-align: center;
+}
+
+.form__lead {
+  margin: 0;
+  font-size: 13px;
+  color: var(--gray);
+  text-align: center;
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  border: 1px solid #e2e4e5;
+  border-radius: var(--radius);
+  font-size: 13px;
+}
+
+.form label:focus-within {
+  border-color: var(--mint);
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.18);
+}
+
+.form input {
+  border: 0;
+  outline: none;
+  font: 400 14px var(--font);
+  background: transparent;
+}
+
+.form label.is-invalid {
+  border-color: var(--error);
+}
+
+.form__status {
+  min-height: 1.2em;
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+.form__status--ok {
+  color: var(--green);
+}
+
+.form__status--error {
+  color: var(--error);
+}
 
 /* ========== FIN: CONTACTO / FORMULARIO ========== */
 
