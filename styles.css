@@ -648,11 +648,148 @@ ol {
   border-radius: 6px;
 }
 /* ========== FIN: HITOS / CÓMO FUNCIONA ========== *//* ========== INICIO: TESTIMONIOS ========== */
+.reviews {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  justify-content: center;
+}
 
+.review {
+  position: relative;
+  width: 340px;
+  height: 340px;
+  overflow: hidden;
+  background: var(--green);
+  color: var(--white);
+}
 
+.review__photo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 178px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.review__body {
+  position: relative;
+  z-index: 1;
+  width: 168px;
+  padding: 20px 12px 0 16px;
+}
+
+.review__kicker {
+  margin: 0;
+  color: var(--mint);
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.review__body p:nth-of-type(2) {
+  margin: 16px 0 12px;
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.stars {
+  margin: 0;
+  color: var(--gold);
+  letter-spacing: 2px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.review h3 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 14px;
+  z-index: 2;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  text-align: center;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+}
 /* ========== FIN: TESTIMONIOS ========== *//* ========== INICIO: PLANES ========== */
+.plans {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
 
+.plan {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  min-height: 460px;
+  padding: 22px 24px;
+  background: var(--cream);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+}
 
+.plan--featured {
+  background: var(--green);
+  color: var(--white);
+}
+
+.plan h3 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.plan__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.plan__badge {
+  background: var(--green-mid);
+  color: var(--mint);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.plan ul {
+  list-style: none;
+  margin: 20px 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.plan li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 15px;
+}
+
+.plan__price {
+  margin: 18px 0;
+  font-size: 15px;
+  opacity: 0.8;
+}
+
+.plan__price strong {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.plan .btn {
+  width: 100%;
+}
 /* ========== FIN: PLANES ========== *//* ========== INICIO: EQUIPO ========== */
 
 
