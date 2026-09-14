@@ -28,8 +28,20 @@ function initNavbar() {
     setMenuOpen(nav, menu, toggle, !menu.classList.contains("is-open"));
   });
 
-  menu.querySelectorAll("a").forEach((link) => {
+  nav.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => setMenuOpen(nav, menu, toggle, false));
+  });
+
+  nav.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+      setMenuOpen(nav, menu, toggle, false);
+      toggle.focus();
+    }
+  });
+
+  // Keep the menu state consistent when crossing the CSS desktop breakpoint.
+  window.matchMedia("(min-width: 961px)").addEventListener("change", () => {
+    setMenuOpen(nav, menu, toggle, false);
   });
 }
 
