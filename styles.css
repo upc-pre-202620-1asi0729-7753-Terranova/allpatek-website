@@ -39,6 +39,22 @@ body {
   background: var(--white);
 }
 
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -48px;
+  z-index: 100;
+  padding: 10px 14px;
+  background: var(--green);
+  color: var(--white);
+  border-radius: 8px;
+  font: 600 14px var(--font);
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
 img {
   max-width: 100%;
   display: block;
@@ -275,6 +291,37 @@ ol {
   display: inline-flex;
   flex-shrink: 0;
   white-space: nowrap;
+}
+
+.lang {
+  display: inline-flex;
+  gap: 4px;
+  flex-shrink: 0;
+  padding: 3px;
+  border: 1px solid rgba(25, 23, 23, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.lang__btn {
+  min-width: 40px;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font: 700 12px/1 var(--font);
+  cursor: pointer;
+}
+
+.lang__btn.is-active {
+  background: var(--green);
+  color: var(--white);
+}
+
+.lang__btn:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 2px;
 }
 
 .nav__toggle:hover,
@@ -1081,6 +1128,10 @@ ol {
 
   .nav__links.is-open {
     display: flex;
+  }
+
+  .lang {
+    margin-left: 8px;
   }
 
   /* servicios */
