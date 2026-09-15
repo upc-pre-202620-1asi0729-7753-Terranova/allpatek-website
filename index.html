@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ALLPATEK — Producción agrícola garantizada</title>
+    <meta name="description" content="ALLPATEK — Guaranteed agricultural production from land to business." />
+    <title>{meta.title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,146 +12,159 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <script src="script.js" defer></script>
   </head>
   <body>
+    <a class="skip-link" href="#inicio">{a11y.skip}</a>
+
     <!-- ========== INICIO: HEADER / NAVBAR ========== -->
     <header class="site-header">
-      <nav class="nav" aria-label="Principal">
-        <a class="logo" href="#inicio">
+      <nav class="nav" aria-label="{nav.aria}">
+        <a class="logo" href="#inicio" aria-label="{nav.home}">
           <img class="logo__img" src="assets/logo.png" width="72" height="40" alt="" />
-          <span class="logo__text"><span>ALLPA</span><span>TEK</span></span>
+          <span class="logo__text" aria-hidden="true"><span>ALLPA</span><span>TEK</span></span>
         </a>
 
-        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
-          Menú
+        <button
+          class="nav__toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+          aria-label="{nav.menuAria}"
+        >
+          {nav.menu}
         </button>
 
-        <ul class="nav__links" id="nav-menu">
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#hitos">¿Cómo funciona?</a></li>
-          <li><a href="#testimonios">Testimonios</a></li>
-          <li><a href="#planes">Planes</a></li>
-          <li><a href="#contacto">Contacto</a></li>
+        <ul class="nav__links" id="nav-menu" role="list">
+          <li><a href="#servicios">{nav.services}</a></li>
+          <li><a href="#hitos">{nav.how}</a></li>
+          <li><a href="#testimonios">{nav.reviews}</a></li>
+          <li><a href="#planes">{nav.plans}</a></li>
+          <li><a href="#contacto">{nav.contact}</a></li>
         </ul>
 
-        <a class="btn btn--gold btn--sm nav__cta" href="plataforma.html">Empieza Ahora</a>
+        <div class="lang" role="group" aria-label="{lang.aria}">
+          <button type="button" class="lang__btn is-active" data-lang="en_US" aria-pressed="true">
+            EN
+          </button>
+          <button type="button" class="lang__btn" data-lang="es_419" aria-pressed="false">
+            ES
+          </button>
+        </div>
+
+        <a class="btn btn--gold btn--sm nav__cta" href="plataforma.html">{nav.cta}</a>
       </nav>
     </header>
-    <!-- ========== FIN: HEADER / NAVBAR ========== --><!-- ========== INICIO: HERO / INICIO ========== -->
-      <section class="hero" id="inicio">
-        <img class="hero__bg" src="assets/hero.png" alt="" />
+    <!-- ========== FIN: HEADER / NAVBAR ========== -->
+
+    <main id="main" role="main">
+      <!-- ========== INICIO: HERO / INICIO ========== -->
+      <section class="hero" id="inicio" aria-labelledby="hero-title">
+        <img class="hero__bg" src="assets/hero.png" alt="" role="presentation" />
         <div class="hero__content">
-          <h1>Producción agrícola garantizada, de la tierra a tu negocio</h1>
-          <p>
-            Conectamos compradores B2B con agricultores mediante parcelas gestionadas, pagos
-            protegidos por hitos y trazabilidad en tiempo real.
-          </p>
-          <a class="btn btn--gold btn--lg" href="#servicios">Cotizar Parcela</a>
-          <ul class="stats">
-            <li><strong>100%</strong> Pagos protegidos en custodia</li>
-            <li><strong>0%</strong> Riesgo de estafa o fraude financiero</li>
-            <li><strong>15+</strong> Hectáreas bajo gestión trazable</li>
-            <li><strong>25%</strong> Ahorro promedio en costo unitario</li>
+          <h1 id="hero-title">{hero.title}</h1>
+          <p>{hero.lead}</p>
+          <a class="btn btn--gold btn--lg" href="#servicios">{hero.cta}</a>
+          <ul class="stats" role="list" aria-label="{hero.statsAria}">
+            <li>
+              <strong>100%</strong>
+              <span>{hero.stat1}</span>
+            </li>
+            <li>
+              <strong>0%</strong>
+              <span>{hero.stat2}</span>
+            </li>
+            <li>
+              <strong>15+</strong>
+              <span>{hero.stat3}</span>
+            </li>
+            <li>
+              <strong>25%</strong>
+              <span>{hero.stat4}</span>
+            </li>
           </ul>
         </div>
       </section>
-      <!-- ========== FIN: HERO / INICIO ========== --><!-- ========== INICIO: SERVICIOS ========== -->
-      <section class="section" id="servicios">
+      <!-- ========== FIN: HERO / INICIO ========== -->
+
+      <!-- ========== INICIO: SERVICIOS ========== -->
+      <section class="section" id="servicios" aria-labelledby="services-title">
         <div class="intro">
-          <h2>Producción agrícola garantizada, de la tierra a tu negocio</h2>
-          <p>
-            Conectamos compradores B2B con agricultores mediante parcelas gestionadas, pagos
-            protegidos por hitos y trazabilidad en tiempo real.
-          </p>
+          <h2 id="services-title">{services.title}</h2>
+          <p>{services.lead}</p>
         </div>
-        <div class="features">
-          <article class="card">
-            <img class="icon icon--lg" src="assets/icon-parcelas.svg" width="50" height="50" alt="" />
-            <h3>Selección de Parcelas y Terrenos</h3>
-            <p>
-              Explora parcelas verificadas, filtra por tipo de suelo, zona geográfica y capacidad de
-              cultivo para personalizar tu plan de producción.
-            </p>
+        <div class="features" role="list">
+          <article class="card" role="listitem">
+            <img class="icon icon--lg" src="assets/icon-parcelas.svg" width="50" height="50" alt="" aria-hidden="true" />
+            <h3>{services.card1.title}</h3>
+            <p>{services.card1.text}</p>
           </article>
           <figure class="photo photo--tall">
-            <img src="assets/feature-fields.png" alt="Parcelas agrícolas en producción" />
+            <img src="assets/feature-fields.png" alt="{services.img1}" />
           </figure>
-          <article class="card card--dark">
-            <img class="icon icon--lg" src="assets/icon-trazabilidad.svg" width="50" height="50" alt="" />
-            <h3>Trazabilidad e Inspección en Tiempo Real</h3>
-            <p>
-              Accede a reportes fotográficos, notas de insumos y avances de campo validados por
-              ambas partes.
-            </p>
+          <article class="card card--dark" role="listitem">
+            <img class="icon icon--lg" src="assets/icon-trazabilidad.svg" width="50" height="50" alt="" aria-hidden="true" />
+            <h3>{services.card2.title}</h3>
+            <p>{services.card2.text}</p>
           </article>
           <figure class="photo">
-            <img src="assets/feature-sunset.png" alt="Campos al atardecer" />
+            <img src="assets/feature-sunset.png" alt="{services.img2}" />
           </figure>
-          <article class="card card--dark">
-            <img class="icon icon--lg" src="assets/icon-fondos.svg" width="50" height="50" alt="" />
-            <h3>Fondos Protegidos en Custodia</h3>
-            <p>
-              Tu capital se mantiene seguro en una bóveda financiera y solo se libera
-              progresivamente según los hitos cumplidos.
-            </p>
+          <article class="card card--dark" role="listitem">
+            <img class="icon icon--lg" src="assets/icon-fondos.svg" width="50" height="50" alt="" aria-hidden="true" />
+            <h3>{services.card3.title}</h3>
+            <p>{services.card3.text}</p>
           </article>
-          <article class="card card--wide">
-            <img class="icon icon--lg" src="assets/icon-trazabilidad.svg" width="50" height="50" alt="" />
-            <h3>Asistencia Inteligente y Monitoreo Climático</h3>
-            <p>
-              Recibe alertas tempranas de heladas, sequías y plagas respaldadas por datos
-              meteorológicos en tiempo real e inteligencia agrícola para proteger la inversión y
-              asegurar el abastecimiento.
-            </p>
+          <article class="card card--wide" role="listitem">
+            <img class="icon icon--lg" src="assets/icon-trazabilidad.svg" width="50" height="50" alt="" aria-hidden="true" />
+            <h3>{services.card4.title}</h3>
+            <p>{services.card4.text}</p>
           </article>
         </div>
       </section>
-      <!-- ========== FIN: SERVICIOS ========== --><!-- ========== INICIO: HITOS / CÓMO FUNCIONA ========== -->
-      <section class="section" id="hitos">
+      <!-- ========== FIN: SERVICIOS ========== -->
+
+      <!-- ========== INICIO: HITOS / CÓMO FUNCIONA ========== -->
+      <section class="section" id="hitos" aria-labelledby="milestones-title">
         <div class="intro">
-          <h2>Garantía de Pagos por Hitos</h2>
-          <p>
-            Liberación gradual de fondos en custodia (escrow) respaldada por la verificación
-            directa en campo.
-          </p>
+          <h2 id="milestones-title">{milestones.title}</h2>
+          <p>{milestones.lead}</p>
         </div>
         <div class="milestones">
           <ol class="milestones__list">
             <li class="milestone milestone--on">
               <p class="milestone__label">
-                <img class="icon" src="assets/icon-tree.svg" width="30" height="30" alt="" />
-                Hito 1
+                <img class="icon" src="assets/icon-tree.svg" width="30" height="30" alt="" aria-hidden="true" />
+                <span>{milestones.m1.label}</span>
               </p>
-              <p>Firma de contrato y bloqueo del capital inicial en custodia seguro.</p>
+              <p>{milestones.m1.text}</p>
             </li>
             <li class="milestone">
               <p class="milestone__label">
-                <img class="icon" src="assets/icon-tree.svg" width="30" height="30" alt="" />
-                Hito 2
+                <img class="icon" src="assets/icon-tree.svg" width="30" height="30" alt="" aria-hidden="true" />
+                <span>{milestones.m2.label}</span>
               </p>
-              <p>Verificación de siembra y liberación de fondos para insumos.</p>
+              <p>{milestones.m2.text}</p>
             </li>
             <li class="milestone milestone--on">
               <p class="milestone__label">
-                <img class="icon" src="assets/icon-tree.svg" width="30" height="30" alt="" />
-                Hito 3
+                <img class="icon" src="assets/icon-tree.svg" width="30" height="30" alt="" aria-hidden="true" />
+                <span>{milestones.m3.label}</span>
               </p>
-              <p>Inspección de desarrollo y monitoreo climático en tiempo real.</p>
+              <p>{milestones.m3.text}</p>
             </li>
             <li class="milestone">
               <p class="milestone__label">
-                <img class="icon" src="assets/icon-tree.svg" width="30" height="30" alt="" />
-                Hito 4
+                <img class="icon" src="assets/icon-tree.svg" width="30" height="30" alt="" aria-hidden="true" />
+                <span>{milestones.m4.label}</span>
               </p>
-              <p>Validación de cosecha y aprobación de calidad de producción.</p>
+              <p>{milestones.m4.text}</p>
             </li>
             <li class="milestone milestone--on">
               <p class="milestone__label">
-                <img class="icon" src="assets/icon-tree.svg" width="30" height="30" alt="" />
-                Hito 5
+                <img class="icon" src="assets/icon-tree.svg" width="30" height="30" alt="" aria-hidden="true" />
+                <span>{milestones.m5.label}</span>
               </p>
-              <p>Entrega final del lote y liberación del saldo restante.</p>
+              <p>{milestones.m5.text}</p>
             </li>
           </ol>
           <div class="mosaic" aria-hidden="true">
@@ -161,231 +175,288 @@
           </div>
         </div>
       </section>
-      <!-- ========== FIN: HITOS / CÓMO FUNCIONA ========== --><!-- ========== INICIO: TESTIMONIOS ========== -->
-      <section class="section" id="testimonios">
+      <!-- ========== FIN: HITOS / CÓMO FUNCIONA ========== -->
+
+      <!-- ========== INICIO: TESTIMONIOS ========== -->
+      <section class="section" id="testimonios" aria-labelledby="reviews-title">
         <div class="intro">
-          <h2>Confianza Respaldada por Resultados</h2>
-          <p>
-            Conoce las experiencias de compradores B2B y productores que ya aseguran sus cosechas,
-            optimizan sus costos y garantizan sus pagos con nuestra plataforma de trazabilidad.
-          </p>
+          <h2 id="reviews-title">{reviews.title}</h2>
+          <p>{reviews.lead}</p>
         </div>
-        <div class="reviews">
-          <article class="review">
-            <img class="review__photo" src="assets/review-1.png" alt="" />
+        <div class="reviews" role="list">
+          <article class="review" role="listitem">
+            <img class="review__photo" src="assets/review-1.png" alt="" aria-hidden="true" />
             <div class="review__body">
-              <p class="review__kicker">Qué se dice de nosotros?</p>
-              <p>
-                Redujimos en 20% los tiempos de adquisición y aseguramos el suministro sin
-                intermediarios, optimizando los costos operativos y manteniendo un control total
-                sobre cada etapa de producción.
-              </p>
-              <p class="stars" aria-label="4.5 de 5 estrellas">★★★★☆</p>
+              <p class="review__kicker">{reviews.kicker}</p>
+              <p>{reviews.r1.text}</p>
+              <p class="stars" aria-label="{reviews.stars}">★★★★☆</p>
             </div>
             <h3>Carlos Mendoza Ríos</h3>
           </article>
-          <article class="review">
-            <img class="review__photo" src="assets/review-2.png" alt="" />
+          <article class="review" role="listitem">
+            <img class="review__photo" src="assets/review-2.png" alt="" aria-hidden="true" />
             <div class="review__body">
-              <p class="review__kicker">Qué se dice de nosotros?</p>
-              <p>
-                Redujimos en 20% los tiempos de adquisición y aseguramos el suministro sin
-                intermediarios, garantizando un flujo de caja estable y la tranquilidad de cobrar
-                puntual al cumplir cada hito.
-              </p>
-              <p class="stars" aria-label="4.5 de 5 estrellas">★★★★☆</p>
+              <p class="review__kicker">{reviews.kicker}</p>
+              <p>{reviews.r2.text}</p>
+              <p class="stars" aria-label="{reviews.stars}">★★★★☆</p>
             </div>
             <h3>Miguel Huamán</h3>
           </article>
-          <article class="review">
-            <img class="review__photo" src="assets/review-3.png" alt="" />
+          <article class="review" role="listitem">
+            <img class="review__photo" src="assets/review-3.png" alt="" aria-hidden="true" />
             <div class="review__body">
-              <p class="review__kicker">Qué se dice de nosotros?</p>
-              <p>
-                Redujimos en 20% los tiempos de adquisición y aseguramos el suministro sin
-                intermediarios, aprovechando las alertas climáticas en vivo para prevenir pérdidas
-                y asegurar entregas siempre a tiempo.
-              </p>
-              <p class="stars" aria-label="4.5 de 5 estrellas">★★★★☆</p>
+              <p class="review__kicker">{reviews.kicker}</p>
+              <p>{reviews.r3.text}</p>
+              <p class="stars" aria-label="{reviews.stars}">★★★★☆</p>
             </div>
             <h3>Valeria Benavides</h3>
           </article>
         </div>
       </section>
-      <!-- ========== FIN: TESTIMONIOS ========== --><!-- ========== INICIO: PLANES ========== -->
-      <section class="section" id="planes">
+      <!-- ========== FIN: TESTIMONIOS ========== -->
+
+      <!-- ========== INICIO: PLANES ========== -->
+      <section class="section" id="planes" aria-labelledby="plans-title">
         <div class="intro">
-          <h2>Planes de Producción</h2>
-          <p>
-            Escoja la escala de cultivo y las herramientas de trazabilidad ideales para su
-            abastecimiento.
-          </p>
+          <h2 id="plans-title">{plans.title}</h2>
+          <p>{plans.lead}</p>
         </div>
-        <div class="plans">
-          <article class="plan">
-            <h3>Básico</h3>
+        <div class="plans" role="list">
+          <article class="plan" role="listitem" aria-labelledby="plan-basic">
+            <h3 id="plan-basic">{plans.basic.name}</h3>
             <ul>
-              <li><img class="icon" src="assets/price-1.svg" width="22" height="22" alt="" /> 1 Parcela activa (hasta 2 Ha)</li>
-              <li><img class="icon" src="assets/price-2.svg" width="22" height="22" alt="" /> Custodia Escrow (4 hitos)</li>
-              <li><img class="icon" src="assets/price-3.svg" width="22" height="22" alt="" /> Soporte por correo</li>
-              <li><img class="icon" src="assets/price-4.svg" width="22" height="22" alt="" /> Fotos georreferenciadas con GPS</li>
+              <li>
+                <img class="icon" src="assets/price-1.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.basic.f1}</span>
+              </li>
+              <li>
+                <img class="icon" src="assets/price-2.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.basic.f2}</span>
+              </li>
+              <li>
+                <img class="icon" src="assets/price-3.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.basic.f3}</span>
+              </li>
+              <li>
+                <img class="icon" src="assets/price-4.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.basic.f4}</span>
+              </li>
             </ul>
-            <p class="plan__price"><strong>$50</strong> /month</p>
-            <a class="btn btn--gold" href="#contacto">Empezar Ahora</a>
+            <p class="plan__price">
+              <strong>$50</strong> <span>{plans.perMonth}</span>
+            </p>
+            <a class="btn btn--gold" href="#contacto">{plans.basic.cta}</a>
           </article>
-          <article class="plan plan--featured">
+          <article class="plan plan--featured" role="listitem" aria-labelledby="plan-pro">
             <div class="plan__head">
-              <h3>Pro</h3>
-              <span class="plan__badge">Save $40</span>
+              <h3 id="plan-pro">{plans.pro.name}</h3>
+              <span class="plan__badge">{plans.pro.badge}</span>
             </div>
             <ul>
-              <li><img class="icon" src="assets/price-pro-1.svg" width="22" height="22" alt="" /> Hasta 10 Parcelas activas</li>
-              <li><img class="icon" src="assets/price-pro-2.svg" width="22" height="22" alt="" /> Evidencias GPS + Validación Java</li>
-              <li><img class="icon" src="assets/price-pro-3.svg" width="22" height="22" alt="" /> Contratos legales PDF</li>
-              <li><img class="icon" src="assets/price-pro-4.svg" width="22" height="22" alt="" /> Alertas climáticas en vivo (n8n)</li>
+              <li>
+                <img class="icon" src="assets/price-pro-1.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.pro.f1}</span>
+              </li>
+              <li>
+                <img class="icon" src="assets/price-pro-2.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.pro.f2}</span>
+              </li>
+              <li>
+                <img class="icon" src="assets/price-pro-3.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.pro.f3}</span>
+              </li>
+              <li>
+                <img class="icon" src="assets/price-pro-4.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.pro.f4}</span>
+              </li>
             </ul>
-            <p class="plan__price"><strong>$123</strong> /month</p>
-            <a class="btn btn--gold" href="#contacto">Solicitar Demo</a>
+            <p class="plan__price">
+              <strong>$123</strong> <span>{plans.perMonth}</span>
+            </p>
+            <a class="btn btn--gold" href="#contacto">{plans.pro.cta}</a>
           </article>
-          <article class="plan">
-            <h3>Empresarial</h3>
+          <article class="plan" role="listitem" aria-labelledby="plan-enterprise">
+            <h3 id="plan-enterprise">{plans.enterprise.name}</h3>
             <ul>
-              <li><img class="icon" src="assets/price-1.svg" width="22" height="22" alt="" /> Parcelas ilimitadas</li>
-              <li><img class="icon" src="assets/price-2.svg" width="22" height="22" alt="" /> Integración API</li>
-              <li><img class="icon" src="assets/price-3.svg" width="22" height="22" alt="" /> Gestor de cuenta</li>
-              <li><img class="icon" src="assets/price-4.svg" width="22" height="22" alt="" /> Reportes personalizados de cosechas</li>
+              <li>
+                <img class="icon" src="assets/price-1.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.enterprise.f1}</span>
+              </li>
+              <li>
+                <img class="icon" src="assets/price-2.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.enterprise.f2}</span>
+              </li>
+              <li>
+                <img class="icon" src="assets/price-3.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.enterprise.f3}</span>
+              </li>
+              <li>
+                <img class="icon" src="assets/price-4.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.enterprise.f4}</span>
+              </li>
             </ul>
-            <p class="plan__price"><strong>$250</strong> /month</p>
-            <a class="btn btn--gold" href="#contacto">Contactar Ventas</a>
+            <p class="plan__price">
+              <strong>$250</strong> <span>{plans.perMonth}</span>
+            </p>
+            <a class="btn btn--gold" href="#contacto">{plans.enterprise.cta}</a>
           </article>
         </div>
       </section>
-      <!-- ========== FIN: PLANES ========== --><!-- ========== INICIO: EQUIPO ========== -->
+      <!-- ========== FIN: PLANES ========== -->
 
-   <section class="section" id="equipo">
+      <!-- ========== INICIO: EQUIPO ========== -->
+      <section class="section" id="equipo" aria-labelledby="team-title">
         <div class="intro">
-          <h2>El Equipo Detrás de la Plataforma</h2>
-          <p>
-            Ingenieros y especialistas que hacen posible una arquitectura agrícola segura, trazable
-            y escalable.
-          </p>
+          <h2 id="team-title">{team.title}</h2>
+          <p>{team.lead}</p>
         </div>
-        <ul class="team">
+        <ul class="team" role="list">
           <li class="member">
             <div class="member__media">
               <img class="member__person" src="assets/foto-abigail.png" alt="Abigail Nadhim" />
             </div>
             <h3>Abigail Nadhim</h3>
-            <p>Ingeniería de Software</p>
+            <p>{team.role}</p>
           </li>
           <li class="member">
             <div class="member__media">
               <img class="member__person" src="assets/foto-alexander.jpg" alt="Alexander Sebastián" />
             </div>
             <h3>Alexander Sebastián</h3>
-            <p>Ingeniería de Software</p>
+            <p>{team.role}</p>
           </li>
           <li class="member">
             <div class="member__media">
               <img class="member__person" src="assets/foto-andree.jpg" alt="Mel Andree" />
             </div>
             <h3>Mel Andree</h3>
-            <p>Ingeniería de Software</p>
+            <p>{team.role}</p>
           </li>
           <li class="member">
             <div class="member__media">
               <img class="member__person" src="assets/foto_nayely.jpg" alt="Nayely Macarena" />
             </div>
             <h3>Nayely Macarena</h3>
-            <p>Ingeniería de Software</p>
+            <p>{team.role}</p>
           </li>
           <li class="member">
             <div class="member__media">
               <img class="member__person" src="assets/foto-miguel.jpg" alt="Miguel Angel" />
             </div>
             <h3>Miguel Angel</h3>
-            <p>Ingeniería de Software</p>
+            <p>{team.role}</p>
           </li>
         </ul>
       </section>
+      <!-- ========== FIN: EQUIPO ========== -->
 
-      <!-- ========== FIN: EQUIPO ========== --><!-- ========== INICIO: CONTACTO / FORMULARIO ========== -->
-
-    <section class="contact" id="contacto">
-        <img class="contact__bg" src="assets/contact-bg.png" alt="" />
+      <!-- ========== INICIO: CONTACTO / FORMULARIO ========== -->
+      <section class="contact" id="contacto" aria-labelledby="contact-title">
+        <img class="contact__bg" src="assets/contact-bg.png" alt="" role="presentation" />
         <div class="contact__inner">
           <div>
-            <h2>Solicita tu Propuesta Técnica</h2>
-            <p>Recibe el desglose de costos y el modelo de custodia en tu correo.</p>
+            <h2 id="contact-title">{contact.title}</h2>
+            <p>{contact.lead}</p>
           </div>
-          <form class="form" id="contact-form" novalidate>
+          <form class="form" id="contact-form" novalidate aria-labelledby="form-title">
             <div class="form__steps" aria-hidden="true"></div>
-            <h3>Solicitar Información</h3>
-            <p class="form__lead">Te enviaremos el desglose de costos y el modelo de custodia.</p>
+            <h3 id="form-title">{contact.formTitle}</h3>
+            <p class="form__lead">{contact.formLead}</p>
             <label for="nombres">
-              Nombres
-              <input id="nombres" name="nombres" type="text" placeholder="Ingrese su Nombre" required />
+              <span>{contact.firstName}</span>
+              <input
+                id="nombres"
+                name="nombres"
+                type="text"
+                autocomplete="given-name"
+                required
+                aria-required="true"
+                placeholder="{contact.firstNamePh}"
+              />
             </label>
             <label for="apellidos">
-              Apellidos
-              <input id="apellidos" name="apellidos" type="text" placeholder="Ingrese sus Apellidos" required />
+              <span>{contact.lastName}</span>
+              <input
+                id="apellidos"
+                name="apellidos"
+                type="text"
+                autocomplete="family-name"
+                required
+                aria-required="true"
+                placeholder="{contact.lastNamePh}"
+              />
             </label>
             <label for="correo">
-              Correo
-              <input id="correo" name="correo" type="email" placeholder="Ingrese su Correo" required />
+              <span>{contact.email}</span>
+              <input
+                id="correo"
+                name="correo"
+                type="email"
+                autocomplete="email"
+                required
+                aria-required="true"
+                placeholder="{contact.emailPh}"
+              />
             </label>
             <label for="telefono">
-              Teléfono
-              <input id="telefono" name="telefono" type="tel" placeholder="Ingrese su teléfono" required />
+              <span>{contact.phone}</span>
+              <input
+                id="telefono"
+                name="telefono"
+                type="tel"
+                autocomplete="tel"
+                required
+                aria-required="true"
+                placeholder="{contact.phonePh}"
+              />
             </label>
-            <button class="btn btn--green" type="submit">Recibir Información</button>
+            <button class="btn btn--green" type="submit">{contact.submit}</button>
             <p class="form__status" role="status" aria-live="polite"></p>
           </form>
         </div>
       </section>
-      
-      <!-- ========== FIN: CONTACTO / FORMULARIO ========== --><!-- ========== INICIO: FOOTER ========== -->
-    
-    <footer class="footer">
+      <!-- ========== FIN: CONTACTO / FORMULARIO ========== -->
+    </main>
+
+    <!-- ========== INICIO: FOOTER ========== -->
+    <footer class="footer" role="contentinfo">
       <div class="footer__grid">
-        <a class="logo" href="#inicio">
+        <a class="logo" href="#inicio" aria-label="{nav.home}">
           <img class="logo__img" src="assets/logo.png" width="72" height="40" alt="" />
-          <span class="logo__text"><span>ALLPA</span><span>TEK</span></span>
+          <span class="logo__text" aria-hidden="true"><span>ALLPA</span><span>TEK</span></span>
         </a>
-        <nav aria-label="Pie de página">
-          <h3>Navegación</h3>
+        <nav aria-label="{footer.navAria}">
+          <h3>{footer.nav}</h3>
           <ul>
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#servicios">Soluciones</a></li>
-            <li><a href="#hitos">¿Cómo funciona?</a></li>
-            <li><a href="#planes">Planes</a></li>
-            <li><a href="#testimonios">Testimonios</a></li>
+            <li><a href="#inicio">{footer.home}</a></li>
+            <li><a href="#servicios">{footer.solutions}</a></li>
+            <li><a href="#hitos">{nav.how}</a></li>
+            <li><a href="#planes">{nav.plans}</a></li>
+            <li><a href="#testimonios">{nav.reviews}</a></li>
           </ul>
         </nav>
         <div>
-          <h3>Servicios</h3>
+          <h3>{footer.services}</h3>
           <ul>
-            <li><a href="#servicios">Selección de Parcelas</a></li>
-            <li><a href="#servicios">Fondos Protegidos</a></li>
-            <li><a href="#hitos">Trazabilidad en Tiempo Real</a></li>
-            <li><a href="#servicios">Monitoreo Climático</a></li>
+            <li><a href="#servicios">{footer.s1}</a></li>
+            <li><a href="#servicios">{footer.s2}</a></li>
+            <li><a href="#hitos">{footer.s3}</a></li>
+            <li><a href="#servicios">{footer.s4}</a></li>
           </ul>
         </div>
         <address>
-          <h3>Contacto & Horarios</h3>
+          <h3>{footer.contact}</h3>
           <ul>
-            <li>Av. Principal 123, Lima</li>
+            <li>{footer.address}</li>
             <li>(01) 555-0199</li>
             <li><a href="mailto:contacto@allpatek.com">contacto@allpatek.com</a></li>
-            <li>Lunes a Viernes, 8:00 - 18:00</li>
+            <li>{footer.hours}</li>
           </ul>
         </address>
       </div>
-      <p class="footer__copy">
-        © 2026 ALLPATEK. Todos los derechos reservados. | Términos y Condiciones | Política de
-        Privacidad | Libro de Reclamaciones
-      </p>
+      <p class="footer__copy">{footer.copy}</p>
     </footer>
     <!-- ========== FIN: FOOTER ========== -->
+    <script src="script.js"></script>
   </body>
 </html>
