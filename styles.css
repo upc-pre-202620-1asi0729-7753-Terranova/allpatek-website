@@ -1,4 +1,4 @@
-/* ========== INICIO: TOKENS (colores, fuentes, medidas compartidas) ========== */
+/* Tokens */
 :root {
   --green: #0f2a1d;
   --green-mid: #1c4530;
@@ -20,7 +20,7 @@
   --font-display: "Fjalla One", sans-serif;
 }
 
-/* ========== FIN: TOKENS ========== *//* ========== INICIO: BASE (reset y estilos globales) ========== */
+/* Base */
 *,
 *::before,
 *::after {
@@ -94,7 +94,7 @@ ol {
   height: 30px;
 }
 
-/* ========== FIN: BASE ========== *//* ========== INICIO: LOGO Y BOTONES (compartido header, planes, contacto) ========== */
+/* Logo and buttons */
 .logo {
   display: flex;
   align-items: center;
@@ -175,7 +175,7 @@ ol {
   font-size: 15px;
 }
 
-/* ========== FIN: LOGO Y BOTONES ========== *//* ========== INICIO: HEADER / NAVBAR ========== */
+/* Header */
 .site-header,
 .site-header * {
   box-sizing: border-box;
@@ -380,7 +380,7 @@ ol {
     display: inline-flex;
   }
 }
-/* ========== FIN: HEADER / NAVBAR ========== *//* ========== INICIO: HERO / INICIO ========== */
+/* Hero */
 .hero,
 .hero * {
   box-sizing: border-box;
@@ -507,7 +507,7 @@ ol {
     margin-top: 32px;
   }
 }
-/* ========== FIN: HERO / INICIO ========== *//* ========== INICIO: SECCIONES COMPARTIDAS (.section, .intro, hover de cards) ========== */
+/* Shared sections */
 .section {
   padding: 56px var(--space);
 }
@@ -542,7 +542,7 @@ ol {
   box-shadow: 0 18px 36px -12px rgba(12, 12, 13, 0.32);
 }
 
-/* ========== FIN: SECCIONES COMPARTIDAS ========== *//* ========== INICIO: SERVICIOS ========== */
+/* Services */
 .features {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -619,7 +619,7 @@ ol {
   object-fit: cover;
   display: block;
 }
-/* ========== FIN: SERVICIOS ========== *//* ========== INICIO: HITOS / CÓMO FUNCIONA ========== */
+/* How it works */
 .milestones {
   display: grid;
   grid-template-columns: minmax(240px, 380px) 1fr;
@@ -694,7 +694,7 @@ ol {
   object-fit: cover;
   border-radius: 6px;
 }
-/* ========== FIN: HITOS / CÓMO FUNCIONA ========== *//* ========== INICIO: TESTIMONIOS ========== */
+/* Testimonials */
 .reviews {
   display: flex;
   flex-wrap: wrap;
@@ -763,7 +763,7 @@ ol {
   text-align: center;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
 }
-/* ========== FIN: TESTIMONIOS ========== *//* ========== INICIO: PLANES ========== */
+/* Plans */
 .plans {
   display: flex;
   flex-wrap: wrap;
@@ -837,7 +837,7 @@ ol {
 .plan .btn {
   width: 100%;
 }
-/* ========== FIN: PLANES ========== *//* ========== INICIO: EQUIPO ========== */
+/* Team */
 
 .team {
   display: flex;
@@ -903,7 +903,7 @@ ol {
   font-size: 13px;
 }
 
-/* ========== FIN: EQUIPO ========== *//* ========== INICIO: CONTACTO / FORMULARIO ========== */
+/* Contact form */
 
 .contact {
   position: relative;
@@ -1012,9 +1012,7 @@ ol {
   color: var(--error);
 }
 
-/* ========== FIN: CONTACTO / FORMULARIO ========== */
-
-/* ========== INICIO: PÁGINA PLATAFORMA (próximamente) ========== */
+/* Coming-soon page */
 .coming-page {
   min-height: 100vh;
   background:
@@ -1055,9 +1053,7 @@ ol {
   line-height: 1.15;
   font-weight: 400;
 }
-/* ========== FIN: PÁGINA PLATAFORMA ========== */
-
-/* ========== INICIO: FOOTER ========== */
+/* Footer */
 
 .footer {
   padding: 48px var(--space) 36px;
@@ -1098,16 +1094,16 @@ ol {
   color: var(--gray);
 }
 
-/* ========== FIN: FOOTER ========== *//* ========== INICIO: RESPONSIVE (ajustes de todas las secciones) ========== */
+/* Responsive */
 @media (max-width: 1100px) {
-  /* padding compartido: hero, secciones, contacto */
+  /* Shared padding */
   .hero,
   .section,
   .contact__inner {
     padding-inline: 20px;
   }
 
-  /* header / navbar */
+  /* Header */
   .nav {
     flex-wrap: wrap;
   }
@@ -1134,7 +1130,7 @@ ol {
     margin-left: 8px;
   }
 
-  /* servicios */
+  /* Services */
   .features {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: none;
@@ -1146,14 +1142,14 @@ ol {
     grid-row: auto;
   }
 
-  /* hitos, contacto, footer */
+  /* Milestones, contact, footer */
   .milestones,
   .contact__inner,
   .footer__grid {
     grid-template-columns: 1fr;
   }
 
-  /* hero: stats */
+  /* Hero stats */
   .stats {
     flex-wrap: wrap;
   }
@@ -1164,21 +1160,21 @@ ol {
 }
 
 @media (max-width: 700px) {
-  /* hero */
+  /* Hero */
   .hero {
     min-height: unset;
   }
 
-  /* servicios */
+  /* Services */
   .features {
     grid-template-columns: 1fr;
   }
 
-  /* testimonios */
+  /* Testimonials */
   .review {
     width: 100%;
     max-width: 340px;
   }
 }
 
-/* ========== FIN: RESPONSIVE ========== */
+

@@ -1,4 +1,4 @@
-/* ========== i18n: en_US (default) + es_419 ========== */
+/* i18n: English is the default; Spanish is applied when the user selects ES */
 const DEFAULT_LANG = "en_US";
 const STORAGE_KEY = "allpatek-lang";
 
@@ -265,7 +265,7 @@ function t(key) {
   return MESSAGES[currentLang][key] || MESSAGES[DEFAULT_LANG][key] || key;
 }
 
-// Replaces {clave} with the text of the active language
+// Replace {key} placeholders with the active language
 function fillKeys(text) {
   return text.replace(KEY_RE, (_, key) => t(key));
 }
@@ -276,7 +276,7 @@ function applyTranslations(lang) {
   localStorage.setItem(STORAGE_KEY, lang);
   document.documentElement.lang = lang === "es_419" ? "es-419" : "en";
 
-  // 1) Text nodes: keep the original {clave} template to allow language switching
+  // Keep the original {key} template so the language can be switched
   document.querySelectorAll("body, body *").forEach((el) => {
     if (el.closest("script, style")) return;
 
@@ -288,7 +288,7 @@ function applyTranslations(lang) {
     });
   });
 
-  // 2) Attributes that can contain {clave}
+  // Translate attributes that may contain {key}
   document.querySelectorAll("body *").forEach((el) => {
     ATTRS.forEach((attr) => {
       const current = el.getAttribute(attr);
@@ -301,7 +301,7 @@ function applyTranslations(lang) {
     });
   });
 
-  // 3) <title> in <head>
+  // Translate the document title
   const titleEl = document.querySelector("title");
   if (titleEl) {
     if (!titleEl._i18nTpl) titleEl._i18nTpl = titleEl.textContent;
@@ -327,7 +327,7 @@ function initI18n() {
   });
 }
 
-/* ========== Navbar ========== */
+/* Navbar */
 const SCROLL_OFFSET = 24;
 
 function setMenuOpen(nav, menu, toggle, isOpen) {
@@ -358,7 +358,7 @@ function initNavbar() {
   });
 }
 
-/* ========== Contact form ========== */
+/* Contact form */
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function isValidField(input) {
