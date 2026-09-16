@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ALLPATEK — Producción agrícola garantizada</title>
+    <meta name="description" content="ALLPATEK — Guaranteed agricultural production from land to business." />
+    <title>{meta.title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,86 +14,440 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- ========== INICIO: HEADER / NAVBAR ========== -->
-    
+    <a class="skip-link" href="#inicio">{a11y.skip}</a>
 
+    <!-- Header -->
+    <header class="site-header">
+      <nav class="nav" aria-label="{nav.aria}">
+        <a class="logo" href="#inicio" aria-label="{nav.home}">
+          <img class="logo__img" src="assets/logo.png" width="72" height="40" alt="" />
+          <span class="logo__text" aria-hidden="true"><span>ALLPA</span><span>TEK</span></span>
+        </a>
 
+        <button
+          class="nav__toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+          aria-label="{nav.menuAria}"
+        >
+          {nav.menu}
+        </button>
 
+        <ul class="nav__links" id="nav-menu" role="list">
+          <li><a href="#servicios">{nav.services}</a></li>
+          <li><a href="#hitos">{nav.how}</a></li>
+          <li><a href="#testimonios">{nav.reviews}</a></li>
+          <li><a href="#planes">{nav.plans}</a></li>
+          <li><a href="#contacto">{nav.contact}</a></li>
+        </ul>
 
+        <div class="lang" role="group" aria-label="{lang.aria}">
+          <button type="button" class="lang__btn is-active" data-lang="en_US" aria-pressed="true">
+            EN
+          </button>
+          <button type="button" class="lang__btn" data-lang="es_419" aria-pressed="false">
+            ES
+          </button>
+        </div>
 
+        <a class="btn btn--gold btn--sm nav__cta" href="plataforma.html">{nav.cta}</a>
+      </nav>
+    </header>
 
+    <main id="main" role="main">
+      <!-- Hero -->
+      <section class="hero" id="inicio" aria-labelledby="hero-title">
+        <img class="hero__bg" src="assets/hero.png" alt="" role="presentation" />
+        <div class="hero__content">
+          <h1 id="hero-title">{hero.title}</h1>
+          <p>{hero.lead}</p>
+          <a class="btn btn--gold btn--lg" href="#servicios">{hero.cta}</a>
+          <ul class="stats" role="list" aria-label="{hero.statsAria}">
+            <li>
+              <strong>100%</strong>
+              <span>{hero.stat1}</span>
+            </li>
+            <li>
+              <strong>0%</strong>
+              <span>{hero.stat2}</span>
+            </li>
+            <li>
+              <strong>15+</strong>
+              <span>{hero.stat3}</span>
+            </li>
+            <li>
+              <strong>25%</strong>
+              <span>{hero.stat4}</span>
+            </li>
+          </ul>
+        </div>
+      </section>
 
-    <!-- ========== FIN: HEADER / NAVBAR ========== -->
+      <!-- Services -->
+      <section class="section" id="servicios" aria-labelledby="services-title">
+        <div class="intro">
+          <h2 id="services-title">{services.title}</h2>
+          <p>{services.lead}</p>
+        </div>
+        <div class="features" role="list">
+          <article class="card" role="listitem">
+            <img class="icon icon--lg" src="assets/icon-parcelas.svg" width="50" height="50" alt="" aria-hidden="true" />
+            <h3>{services.card1.title}</h3>
+            <p>{services.card1.text}</p>
+          </article>
+          <figure class="photo photo--tall">
+            <img src="assets/feature-fields.png" alt="{services.img1}" />
+          </figure>
+          <article class="card card--dark" role="listitem">
+            <img class="icon icon--lg" src="assets/icon-trazabilidad.svg" width="50" height="50" alt="" aria-hidden="true" />
+            <h3>{services.card2.title}</h3>
+            <p>{services.card2.text}</p>
+          </article>
+          <figure class="photo">
+            <img src="assets/feature-sunset.png" alt="{services.img2}" />
+          </figure>
+          <article class="card card--dark" role="listitem">
+            <img class="icon icon--lg" src="assets/icon-fondos.svg" width="50" height="50" alt="" aria-hidden="true" />
+            <h3>{services.card3.title}</h3>
+            <p>{services.card3.text}</p>
+          </article>
+          <article class="card card--wide" role="listitem">
+            <img class="icon icon--lg" src="assets/icon-trazabilidad.svg" width="50" height="50" alt="" aria-hidden="true" />
+            <h3>{services.card4.title}</h3>
+            <p>{services.card4.text}</p>
+          </article>
+        </div>
+      </section>
 
+      <!-- How it works -->
+      <section class="section" id="hitos" aria-labelledby="milestones-title">
+        <div class="intro">
+          <h2 id="milestones-title">{milestones.title}</h2>
+          <p>{milestones.lead}</p>
+        </div>
+        <div class="milestones">
+          <ol class="milestones__list">
+            <li class="milestone milestone--on">
+              <p class="milestone__label">
+                <img class="icon" src="assets/icon-tree.svg" width="30" height="30" alt="" aria-hidden="true" />
+                <span>{milestones.m1.label}</span>
+              </p>
+              <p>{milestones.m1.text}</p>
+            </li>
+            <li class="milestone">
+              <p class="milestone__label">
+                <img class="icon" src="assets/icon-tree.svg" width="30" height="30" alt="" aria-hidden="true" />
+                <span>{milestones.m2.label}</span>
+              </p>
+              <p>{milestones.m2.text}</p>
+            </li>
+            <li class="milestone milestone--on">
+              <p class="milestone__label">
+                <img class="icon" src="assets/icon-tree.svg" width="30" height="30" alt="" aria-hidden="true" />
+                <span>{milestones.m3.label}</span>
+              </p>
+              <p>{milestones.m3.text}</p>
+            </li>
+            <li class="milestone">
+              <p class="milestone__label">
+                <img class="icon" src="assets/icon-tree.svg" width="30" height="30" alt="" aria-hidden="true" />
+                <span>{milestones.m4.label}</span>
+              </p>
+              <p>{milestones.m4.text}</p>
+            </li>
+            <li class="milestone milestone--on">
+              <p class="milestone__label">
+                <img class="icon" src="assets/icon-tree.svg" width="30" height="30" alt="" aria-hidden="true" />
+                <span>{milestones.m5.label}</span>
+              </p>
+              <p>{milestones.m5.text}</p>
+            </li>
+          </ol>
+          <div class="mosaic" aria-hidden="true">
+            <img src="assets/hito-1.png" alt="" />
+            <img src="assets/hito-2.png" alt="" />
+            <img src="assets/hito-3.png" alt="" />
+            <img src="assets/hito-4.png" alt="" />
+          </div>
+        </div>
+      </section>
 
-      <!-- ========== INICIO: HERO / INICIO ========== -->
-     
+      <!-- Testimonials -->
+      <section class="section" id="testimonios" aria-labelledby="reviews-title">
+        <div class="intro">
+          <h2 id="reviews-title">{reviews.title}</h2>
+          <p>{reviews.lead}</p>
+        </div>
+        <div class="reviews" role="list">
+          <article class="review" role="listitem">
+            <img class="review__photo" src="assets/review-1.png" alt="" aria-hidden="true" />
+            <div class="review__body">
+              <p class="review__kicker">{reviews.kicker}</p>
+              <p>{reviews.r1.text}</p>
+              <p class="stars" aria-label="{reviews.stars}">★★★★☆</p>
+            </div>
+            <h3>Carlos Mendoza Ríos</h3>
+          </article>
+          <article class="review" role="listitem">
+            <img class="review__photo" src="assets/review-2.png" alt="" aria-hidden="true" />
+            <div class="review__body">
+              <p class="review__kicker">{reviews.kicker}</p>
+              <p>{reviews.r2.text}</p>
+              <p class="stars" aria-label="{reviews.stars}">★★★★☆</p>
+            </div>
+            <h3>Miguel Huamán</h3>
+          </article>
+          <article class="review" role="listitem">
+            <img class="review__photo" src="assets/review-3.png" alt="" aria-hidden="true" />
+            <div class="review__body">
+              <p class="review__kicker">{reviews.kicker}</p>
+              <p>{reviews.r3.text}</p>
+              <p class="stars" aria-label="{reviews.stars}">★★★★☆</p>
+            </div>
+            <h3>Valeria Benavides</h3>
+          </article>
+        </div>
+      </section>
 
+      <!-- Plans -->
+      <section class="section" id="planes" aria-labelledby="plans-title">
+        <div class="intro">
+          <h2 id="plans-title">{plans.title}</h2>
+          <p>{plans.lead}</p>
+        </div>
+        <div class="plans" role="list">
+          <article class="plan" role="listitem" aria-labelledby="plan-basic">
+            <h3 id="plan-basic">{plans.basic.name}</h3>
+            <ul>
+              <li>
+                <img class="icon" src="assets/price-1.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.basic.f1}</span>
+              </li>
+              <li>
+                <img class="icon" src="assets/price-2.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.basic.f2}</span>
+              </li>
+              <li>
+                <img class="icon" src="assets/price-3.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.basic.f3}</span>
+              </li>
+              <li>
+                <img class="icon" src="assets/price-4.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.basic.f4}</span>
+              </li>
+            </ul>
+            <p class="plan__price">
+              <strong>$50</strong> <span>{plans.perMonth}</span>
+            </p>
+            <a class="btn btn--gold" href="#contacto">{plans.basic.cta}</a>
+          </article>
+          <article class="plan plan--featured" role="listitem" aria-labelledby="plan-pro">
+            <div class="plan__head">
+              <h3 id="plan-pro">{plans.pro.name}</h3>
+              <span class="plan__badge">{plans.pro.badge}</span>
+            </div>
+            <ul>
+              <li>
+                <img class="icon" src="assets/price-pro-1.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.pro.f1}</span>
+              </li>
+              <li>
+                <img class="icon" src="assets/price-pro-2.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.pro.f2}</span>
+              </li>
+              <li>
+                <img class="icon" src="assets/price-pro-3.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.pro.f3}</span>
+              </li>
+              <li>
+                <img class="icon" src="assets/price-pro-4.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.pro.f4}</span>
+              </li>
+            </ul>
+            <p class="plan__price">
+              <strong>$123</strong> <span>{plans.perMonth}</span>
+            </p>
+            <a class="btn btn--gold" href="#contacto">{plans.pro.cta}</a>
+          </article>
+          <article class="plan" role="listitem" aria-labelledby="plan-enterprise">
+            <h3 id="plan-enterprise">{plans.enterprise.name}</h3>
+            <ul>
+              <li>
+                <img class="icon" src="assets/price-1.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.enterprise.f1}</span>
+              </li>
+              <li>
+                <img class="icon" src="assets/price-2.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.enterprise.f2}</span>
+              </li>
+              <li>
+                <img class="icon" src="assets/price-3.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.enterprise.f3}</span>
+              </li>
+              <li>
+                <img class="icon" src="assets/price-4.svg" width="22" height="22" alt="" aria-hidden="true" />
+                <span>{plans.enterprise.f4}</span>
+              </li>
+            </ul>
+            <p class="plan__price">
+              <strong>$250</strong> <span>{plans.perMonth}</span>
+            </p>
+            <a class="btn btn--gold" href="#contacto">{plans.enterprise.cta}</a>
+          </article>
+        </div>
+      </section>
 
+      <!-- Team -->
+      <section class="section" id="equipo" aria-labelledby="team-title">
+        <div class="intro">
+          <h2 id="team-title">{team.title}</h2>
+          <p>{team.lead}</p>
+        </div>
+        <ul class="team" role="list">
+          <li class="member">
+            <div class="member__media">
+              <img class="member__person" src="assets/foto-abigail.png" alt="Abigail Nadhim" />
+            </div>
+            <h3>Abigail Nadhim</h3>
+            <p>{team.role}</p>
+          </li>
+          <li class="member">
+            <div class="member__media">
+              <img class="member__person" src="assets/foto-alexander.jpg" alt="Alexander Sebastián" />
+            </div>
+            <h3>Alexander Sebastián</h3>
+            <p>{team.role}</p>
+          </li>
+          <li class="member">
+            <div class="member__media">
+              <img class="member__person" src="assets/foto-andree.jpg" alt="Mel Andree" />
+            </div>
+            <h3>Mel Andree</h3>
+            <p>{team.role}</p>
+          </li>
+          <li class="member">
+            <div class="member__media">
+              <img class="member__person" src="assets/foto_nayely.jpg" alt="Nayely Macarena" />
+            </div>
+            <h3>Nayely Macarena</h3>
+            <p>{team.role}</p>
+          </li>
+          <li class="member">
+            <div class="member__media">
+              <img class="member__person" src="assets/foto-miguel.jpg" alt="Miguel Angel" />
+            </div>
+            <h3>Miguel Angel</h3>
+            <p>{team.role}</p>
+          </li>
+        </ul>
+      </section>
 
+      <!-- Contact form -->
+      <section class="contact" id="contacto" aria-labelledby="contact-title">
+        <img class="contact__bg" src="assets/contact-bg.png" alt="" role="presentation" />
+        <div class="contact__inner">
+          <div>
+            <h2 id="contact-title">{contact.title}</h2>
+            <p>{contact.lead}</p>
+          </div>
+          <form class="form" id="contact-form" novalidate aria-labelledby="form-title">
+            <div class="form__steps" aria-hidden="true"></div>
+            <h3 id="form-title">{contact.formTitle}</h3>
+            <p class="form__lead">{contact.formLead}</p>
+            <label for="nombres">
+              <span>{contact.firstName}</span>
+              <input
+                id="nombres"
+                name="nombres"
+                type="text"
+                autocomplete="given-name"
+                required
+                aria-required="true"
+                placeholder="{contact.firstNamePh}"
+              />
+            </label>
+            <label for="apellidos">
+              <span>{contact.lastName}</span>
+              <input
+                id="apellidos"
+                name="apellidos"
+                type="text"
+                autocomplete="family-name"
+                required
+                aria-required="true"
+                placeholder="{contact.lastNamePh}"
+              />
+            </label>
+            <label for="correo">
+              <span>{contact.email}</span>
+              <input
+                id="correo"
+                name="correo"
+                type="email"
+                autocomplete="email"
+                required
+                aria-required="true"
+                placeholder="{contact.emailPh}"
+              />
+            </label>
+            <label for="telefono">
+              <span>{contact.phone}</span>
+              <input
+                id="telefono"
+                name="telefono"
+                type="tel"
+                autocomplete="tel"
+                required
+                aria-required="true"
+                placeholder="{contact.phonePh}"
+              />
+            </label>
+            <button class="btn btn--green" type="submit">{contact.submit}</button>
+            <p class="form__status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
 
-      <!-- ========== FIN: HERO / INICIO ========== -->
-
-
-
-
-      <!-- ========== INICIO: SERVICIOS ========== -->
-      
-
-
-
-
-
-      <!-- ========== FIN: SERVICIOS ========== -->
-
-
-
-
-
-      <!-- ========== INICIO: HITOS / CÓMO FUNCIONA ========== -->
-      
-
-
-      <!-- ========== FIN: HITOS / CÓMO FUNCIONA ========== -->
-
-
-
-
-      <!-- ========== INICIO: TESTIMONIOS ========== -->
-      
-
-
-
-
-      <!-- ========== FIN: TESTIMONIOS ========== -->
-
-
-
-      <!-- ========== INICIO: PLANES ========== -->
-      
-
-
-      <!-- ========== FIN: PLANES ========== -->
-
-
-
-      <!-- ========== INICIO: EQUIPO ========== -->
-    
-
-
-      <!-- ========== FIN: EQUIPO ========== -->
-
-      <!-- ========== INICIO: CONTACTO / FORMULARIO ========== -->
-      
-
-
-
-
-      <!-- ========== FIN: CONTACTO / FORMULARIO ========== -->
-
-
-
-
-      
-    <!-- ========== INICIO: FOOTER ========== -->
-   
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer__grid">
+        <a class="logo" href="#inicio" aria-label="{nav.home}">
+          <img class="logo__img" src="assets/logo.png" width="72" height="40" alt="" />
+          <span class="logo__text" aria-hidden="true"><span>ALLPA</span><span>TEK</span></span>
+        </a>
+        <nav aria-label="{footer.navAria}">
+          <h3>{footer.nav}</h3>
+          <ul>
+            <li><a href="#inicio">{footer.home}</a></li>
+            <li><a href="#servicios">{footer.solutions}</a></li>
+            <li><a href="#hitos">{nav.how}</a></li>
+            <li><a href="#planes">{nav.plans}</a></li>
+            <li><a href="#testimonios">{nav.reviews}</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h3>{footer.services}</h3>
+          <ul>
+            <li><a href="#servicios">{footer.s1}</a></li>
+            <li><a href="#servicios">{footer.s2}</a></li>
+            <li><a href="#hitos">{footer.s3}</a></li>
+            <li><a href="#servicios">{footer.s4}</a></li>
+          </ul>
+        </div>
+        <address>
+          <h3>{footer.contact}</h3>
+          <ul>
+            <li>{footer.address}</li>
+            <li>(01) 555-0199</li>
+            <li><a href="mailto:contacto@allpatek.com">contacto@allpatek.com</a></li>
+            <li>{footer.hours}</li>
+          </ul>
+        </address>
+      </div>
+      <p class="footer__copy">{footer.copy}</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
