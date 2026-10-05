@@ -363,7 +363,7 @@ function initNavbar() {
 }
 
 /* Contact form — same request riupa already uses with n8n */
-const N8N_WEBHOOK_URL = "https://foyer-phonics-pyromania.ngrok-free.dev/webhook-test/733acc37-f55b-4749-b3b5-e9cd7ad7c334";
+const N8N_WEBHOOK_URL = "https://foyer-phonics-pyromania.ngrok-free.dev/webhook/733acc37-f55b-4749-b3b5-e9cd7ad7c334";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function isValidField(input) {
