@@ -109,8 +109,10 @@ const MESSAGES = {
     "contact.phone": "Phone",
     "contact.phonePh": "Enter your phone number",
     "contact.submit": "Receive Information",
+    "contact.sending": "Sending...",
     "contact.error": "Please fill in all fields with valid data.",
-    "contact.ok": "Request sent. We will contact you with the technical proposal.",
+    "contact.ok": "Information requested successfully.",
+    "contact.networkError": "There was a problem sending your information.",
     "footer.navAria": "Footer",
     "footer.nav": "Navigation",
     "footer.home": "Home",
@@ -234,8 +236,10 @@ const MESSAGES = {
     "contact.phone": "Teléfono",
     "contact.phonePh": "Ingrese su teléfono",
     "contact.submit": "Recibir Información",
+    "contact.sending": "Enviando...",
     "contact.error": "Completa todos los campos con datos válidos.",
-    "contact.ok": "Solicitud enviada. Te contactaremos con la propuesta técnica.",
+    "contact.ok": "¡Información solicitada con éxito!",
+    "contact.networkError": "Hubo un problema al enviar la información.",
     "footer.navAria": "Pie de página",
     "footer.nav": "Navegación",
     "footer.home": "Inicio",
@@ -358,7 +362,8 @@ function initNavbar() {
   });
 }
 
-/* Contact form */
+/* Contact form — same request riupa already uses with n8n */
+const N8N_WEBHOOK_URL = "https://foyer-phonics-pyromania.ngrok-free.dev/webhook-test/733acc37-f55b-4749-b3b5-e9cd7ad7c334";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function isValidField(input) {
@@ -376,18 +381,19 @@ function showFormStatus(statusEl, message, type) {
 function initContactForm() {
   const form = $("#contact-form");
   const statusEl = $(".form__status");
-  if (!form || !statusEl) return;
+  const button = form?.querySelector('[type="submit"]');
+  if (!form || !statusEl || !button) return;
 
-  form.addEventListener("submit", (event) => {
+  const label = [...button.childNodes].find((node) => node.nodeType === Node.TEXT_NODE);
+
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const fields = [...form.querySelectorAll("input")];
-    let isValid = true;
-
-    fields.forEach((input) => {
+    const isValid = fields.every((input) => {
       const ok = isValidField(input);
       input.closest("label")?.classList.toggle("is-invalid", !ok);
-      if (!ok) isValid = false;
+      return ok;
     });
 
     if (!isValid) {
@@ -395,8 +401,36 @@ function initContactForm() {
       return;
     }
 
-    showFormStatus(statusEl, t("contact.ok"), "ok");
-    form.reset();
+    button.disabled = true;
+    if (label) label.nodeValue = t("contact.sending");
+    statusEl.textContent = "";
+
+    const payload = {
+      nombres: form.nombres.value.trim(),
+      apellidos: form.apellidos.value.trim(),
+      correo: form.correo.value.trim(),
+      telefono: form.telefono.value.trim(),
+      fechaEnvio: new Date().toISOString(),
+    };
+
+    try {
+      const response = await fetch(N8N_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) throw new Error("Error en la respuesta del servidor");
+
+      showFormStatus(statusEl, t("contact.ok"), "ok");
+      form.reset();
+    } catch (error) {
+      showFormStatus(statusEl, t("contact.networkError"), "error");
+      console.error("Error:", error);
+    } finally {
+      button.disabled = false;
+      if (label) label.nodeValue = t("contact.submit");
+    }
   });
 }
 
