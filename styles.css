@@ -165,6 +165,13 @@ ol {
   color: var(--mint);
 }
 
+.btn:disabled,
+.btn:disabled:hover {
+  cursor: wait;
+  opacity: 0.72;
+  transform: none;
+}
+
 .btn--sm {
   padding: 9px 18px;
   font-size: 13px;
