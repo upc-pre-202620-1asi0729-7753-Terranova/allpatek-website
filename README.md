@@ -1,6 +1,6 @@
 # ALLPATEK
 
-Landing page for ALLPATEK, a B2B platform that connects buyers with farmers through managed plots, milestone-protected payments, and real-time traceability.
+Landing page for ALLPATEK, a  platform that connects buyers with farmers through managed plots, milestone-protected payments, and real-time traceability.
 
 This project is a static website (HTML, CSS, and JavaScript). It was not generated with Angular CLI.
 
