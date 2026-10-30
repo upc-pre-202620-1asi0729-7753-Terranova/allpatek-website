@@ -23,7 +23,7 @@ const MESSAGES = {
 
     "hero.title": "Guaranteed agricultural production, from land to your business",
     "hero.lead":
-      "We connect B2B buyers with farmers through managed plots, milestone-protected payments, and real-time traceability.",
+      "We connect buyers with farmers through managed plots, milestone-protected payments, and real-time traceability.",
     "hero.cta": "Quote a Plot",
     "hero.statsAria": "Key metrics",
     "hero.stat1": "Payments protected in escrow",
@@ -32,7 +32,7 @@ const MESSAGES = {
     "hero.stat4": "Average unit cost savings",
     "services.title": "Guaranteed agricultural production, from land to your business",
     "services.lead":
-      "We connect B2B buyers with farmers through managed plots, milestone-protected payments, and real-time traceability.",
+      "We connect buyers with farmers through managed plots, milestone-protected payments, and real-time traceability.",
     "services.card1.title": "Plot and Land Selection",
     "services.card1.text":
       "Explore verified plots, filter by soil type, geographic zone, and crop capacity to customize your production plan.",
@@ -61,7 +61,7 @@ const MESSAGES = {
     "milestones.m5.text": "Final lot delivery and release of the remaining balance.",
     "reviews.title": "Trust Backed by Results",
     "reviews.lead":
-      "Hear from B2B buyers and producers who already secure their harvests, optimize costs, and guarantee payments with our traceability platform.",
+      "Hear from buyers and producers who already secure their harvests, optimize costs, and guarantee payments with our traceability platform.",
     "reviews.kicker": "What people say about us",
     "reviews.stars": "4.5 out of 5 stars",
     "reviews.r1.text":
@@ -92,10 +92,18 @@ const MESSAGES = {
     "plans.enterprise.f3": "Account manager",
     "plans.enterprise.f4": "Custom harvest reports",
     "plans.enterprise.cta": "Contact Sales",
+    "productVideo.title": "About the Product",
+    "productVideo.lead":
+      "Watch how ALLPATEK connects buyers with farmers through managed plots, milestone-protected payments, and real-time harvest traceability.",
+    "productVideo.iframeTitle": "ALLPATEK — About the Product",
     "team.title": "The Team Behind the Platform",
     "team.lead":
       "Engineers and specialists who make a secure, traceable, and scalable agricultural architecture possible.",
     "team.role": "Software Engineering",
+    "teamVideo.title": "About the Team",
+    "teamVideo.lead":
+      "Meet the engineers and specialists who design ALLPATEK to connect buyers with farmers through a secure, traceable, and scalable platform.",
+    "teamVideo.iframeTitle": "ALLPATEK — About the Team",
     "contact.title": "Request Your Technical Proposal",
     "contact.lead": "Get the cost breakdown and escrow model in your inbox.",
     "contact.formTitle": "Request Information",
@@ -148,7 +156,7 @@ const MESSAGES = {
 
     "hero.title": "Producción agrícola garantizada, de la tierra a tu negocio",
     "hero.lead":
-      "Conectamos compradores B2B con agricultores mediante parcelas gestionadas, pagos protegidos por hitos y trazabilidad en tiempo real.",
+      "Conectamos compradores con agricultores mediante parcelas gestionadas, pagos protegidos por hitos y trazabilidad en tiempo real.",
     "hero.cta": "Cotizar Parcela",
     "hero.statsAria": "Métricas clave",
     "hero.stat1": "Pagos protegidos en custodia",
@@ -157,7 +165,7 @@ const MESSAGES = {
     "hero.stat4": "Ahorro promedio en costo unitario",
     "services.title": "Producción agrícola garantizada, de la tierra a tu negocio",
     "services.lead":
-      "Conectamos compradores B2B con agricultores mediante parcelas gestionadas, pagos protegidos por hitos y trazabilidad en tiempo real.",
+      "Conectamos compradores con agricultores mediante parcelas gestionadas, pagos protegidos por hitos y trazabilidad en tiempo real.",
     "services.card1.title": "Selección de Parcelas y Terrenos",
     "services.card1.text":
       "Explora parcelas verificadas, filtra por tipo de suelo, zona geográfica y capacidad de cultivo para personalizar tu plan de producción.",
@@ -187,7 +195,7 @@ const MESSAGES = {
     "milestones.m5.text": "Entrega final del lote y liberación del saldo restante.",
     "reviews.title": "Confianza Respaldada por Resultados",
     "reviews.lead":
-      "Conoce las experiencias de compradores B2B y productores que ya aseguran sus cosechas, optimizan sus costos y garantizan sus pagos con nuestra plataforma de trazabilidad.",
+      "Conoce las experiencias de compradores y productores que ya aseguran sus cosechas, optimizan sus costos y garantizan sus pagos con nuestra plataforma de trazabilidad.",
     "reviews.kicker": "Qué se dice de nosotros",
     "reviews.stars": "4.5 de 5 estrellas",
     "reviews.r1.text":
@@ -219,10 +227,18 @@ const MESSAGES = {
     "plans.enterprise.f3": "Gestor de cuenta",
     "plans.enterprise.f4": "Reportes personalizados de cosechas",
     "plans.enterprise.cta": "Contactar Ventas",
+    "productVideo.title": "Sobre el Producto",
+    "productVideo.lead":
+      "Conoce cómo ALLPATEK conecta compradores con agricultores mediante parcelas gestionadas, pagos protegidos por hitos y trazabilidad de cosecha en tiempo real.",
+    "productVideo.iframeTitle": "ALLPATEK — Sobre el Producto",
     "team.title": "El Equipo Detrás de la Plataforma",
     "team.lead":
       "Ingenieros y especialistas que hacen posible una arquitectura agrícola segura, trazable y escalable.",
     "team.role": "Ingeniería de Software",
+    "teamVideo.title": "Sobre el Equipo",
+    "teamVideo.lead":
+      "Conoce a los ingenieros y especialistas que diseñan ALLPATEK para conectar compradores con agricultores a través de una plataforma segura, trazable y escalable.",
+    "teamVideo.iframeTitle": "ALLPATEK — Sobre el Equipo",
     "contact.title": "Solicita tu Propuesta Técnica",
     "contact.lead": "Recibe el desglose de costos y el modelo de custodia en tu correo.",
     "contact.formTitle": "Solicitar Información",
