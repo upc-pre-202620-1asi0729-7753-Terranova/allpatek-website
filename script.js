@@ -138,8 +138,6 @@ const MESSAGES = {
     "footer.social.instagram": "ALLPATEK on Instagram",
     "footer.social.linkedin": "ALLPATEK on LinkedIn",
     "footer.social.youtube": "ALLPATEK on YouTube",
-    "footer.copy":
-      "© 2026 ALLPATEK. All rights reserved. | Terms and Conditions | Privacy Policy | Complaints Book",
     "footer.rights": "© 2026 ALLPATEK. All rights reserved.",
     "footer.terms": "Terms and Conditions",
     "footer.privacy": "Privacy Policy",
@@ -282,8 +280,6 @@ const MESSAGES = {
     "footer.social.instagram": "ALLPATEK en Instagram",
     "footer.social.linkedin": "ALLPATEK en LinkedIn",
     "footer.social.youtube": "ALLPATEK en YouTube",
-    "footer.copy":
-      "© 2026 ALLPATEK. Todos los derechos reservados. | Términos y Condiciones | Política de Privacidad | Libro de Reclamaciones",
     "footer.rights": "© 2026 ALLPATEK. Todos los derechos reservados.",
     "footer.terms": "Términos y Condiciones",
     "footer.privacy": "Política de Privacidad",
