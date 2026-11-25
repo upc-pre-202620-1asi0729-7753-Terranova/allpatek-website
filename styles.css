@@ -1122,6 +1122,26 @@ ol {
   font-style: normal;
 }
 
+.footer__social {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer__social h3 {
+  margin: 0;
+}
+
+.footer .social {
+  flex-direction: row;
+  justify-content: center;
+  gap: 14px;
+  padding: 0;
+  margin: 0;
+}
+
 .footer__copy {
   margin: 48px 0 0;
   padding-top: 30px;
