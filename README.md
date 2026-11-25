@@ -1,6 +1,6 @@
 # ALLPATEK
 
-Landing page for ALLPATEK, a  platform that connects buyers with farmers through managed plots, milestone-protected payments, and real-time traceability.
+Landing page for ALLPATEK, a platform that connects buyers with farmers through managed plots, milestone-protected payments, and real-time traceability.
 
 This project is a static website (HTML, CSS, and JavaScript). It was not generated with Angular CLI.
 
@@ -18,16 +18,18 @@ You can also open `index.html` directly in the browser.
 
 ## Pages
 
-- `index.html` — marketing landing (hero, services, milestones, testimonials, plans, team, contact form, footer)
+- `index.html` — marketing landing (hero, services, milestones, testimonials, plans, team carousel, contact form, footer)
 - `plataforma.html` — coming-soon page for the web platform
 
-The navbar **Get Started** button goes to `plataforma.html`.
+The navbar **Get Started** button opens the production web app at `https://terranova-allpatek.netlify.app/`.
 
 ## Features
 
 - Responsive layout for desktop and mobile
 - Mobile navigation menu
-- Contact form validation
+- Scroll-aware active section in the navbar
+- Team carousel with autoplay, swipe, and keyboard controls
+- Contact form validation (name, email, and phone) sent to an n8n webhook
 - English (`en_US`) and Spanish (`es_419`) translations, with EN/ES switcher
 - Selected language is stored in `localStorage`
 - Footer social links (Facebook, Instagram, LinkedIn, YouTube) that open in a new tab
@@ -41,7 +43,7 @@ assets/social/   footer social media icons
 assets/legal/    Terms and Conditions and Privacy Policy PDFs (EN and ES)
 index.html       landing page
 plataforma.html  coming-soon page
-script.js        navbar, form validation, and i18n
+script.js        navbar, form validation, carousel, and i18n
 styles.css       global styles and section layouts
 ```
 

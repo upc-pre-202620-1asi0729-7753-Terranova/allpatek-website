@@ -3,8 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="ALLPATEK — Guaranteed agricultural production from land to business." />
+    <meta name="description" content="{meta.description}" />
+    <meta name="theme-color" content="#0f2a1d" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{meta.title}" />
+    <meta property="og:description" content="{meta.description}" />
+    <meta property="og:image" content="assets/hero.png" />
+    <meta name="twitter:card" content="summary_large_image" />
     <title>{meta.title}</title>
+    <link rel="icon" href="assets/logo.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,7 +21,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#inicio">{a11y.skip}</a>
+    <a class="skip-link" href="#main">{a11y.skip}</a>
 
     <!-- Header -->
     <header class="site-header">
@@ -39,6 +46,7 @@
           <li><a href="#hitos">{nav.how}</a></li>
           <li><a href="#testimonios">{nav.reviews}</a></li>
           <li><a href="#planes">{nav.plans}</a></li>
+          <li><a href="#equipo">{nav.team}</a></li>
           <li><a href="#contacto">{nav.contact}</a></li>
         </ul>
 
@@ -51,14 +59,14 @@
           </button>
         </div>
 
-         <a class="btn btn--gold btn--sm nav__cta" href="https://terranova-allpatek.netlify.app/">{nav.cta}</a></nav>
+        <a class="btn btn--gold btn--sm nav__cta" href="https://terranova-allpatek.netlify.app/" target="_blank" rel="noopener noreferrer">{nav.cta}</a>
       </nav>
     </header>
 
     <main id="main" role="main">
       <!-- Hero -->
       <section class="hero" id="inicio" aria-labelledby="hero-title">
-        <img class="hero__bg" src="assets/hero.png" alt="" role="presentation" />
+        <img class="hero__bg" src="assets/hero.png" alt="" role="presentation" fetchpriority="high" decoding="async" />
         <div class="hero__content">
           <h1 id="hero-title">{hero.title}</h1>
           <p>{hero.lead}</p>
@@ -97,7 +105,7 @@
             <p>{services.card1.text}</p>
           </article>
           <figure class="photo photo--tall">
-            <img src="assets/feature-fields.png" alt="{services.img1}" />
+            <img src="assets/feature-fields.png" alt="{services.img1}" loading="lazy" decoding="async" />
           </figure>
           <article class="card card--dark" role="listitem">
             <img class="icon icon--lg" src="assets/icon-trazabilidad.svg" width="50" height="50" alt="" aria-hidden="true" />
@@ -105,7 +113,7 @@
             <p>{services.card2.text}</p>
           </article>
           <figure class="photo">
-            <img src="assets/feature-sunset.png" alt="{services.img2}" />
+            <img src="assets/feature-sunset.png" alt="{services.img2}" loading="lazy" decoding="async" />
           </figure>
           <article class="card card--dark" role="listitem">
             <img class="icon icon--lg" src="assets/icon-fondos.svg" width="50" height="50" alt="" aria-hidden="true" />
@@ -121,7 +129,7 @@
       </section>
 
       <!-- How it works -->
-      <section class="section" id="hitos" aria-labelledby="milestones-title">
+      <section class="section section--alt" id="hitos" aria-labelledby="milestones-title">
         <div class="intro">
           <h2 id="milestones-title">{milestones.title}</h2>
           <p>{milestones.lead}</p>
@@ -165,10 +173,10 @@
             </li>
           </ol>
           <div class="mosaic" aria-hidden="true">
-            <img src="assets/hito-1.png" alt="" />
-            <img src="assets/hito-2.png" alt="" />
-            <img src="assets/hito-3.png" alt="" />
-            <img src="assets/hito-4.png" alt="" />
+            <img src="assets/hito-1.png" alt="" loading="lazy" decoding="async" />
+            <img src="assets/hito-2.png" alt="" loading="lazy" decoding="async" />
+            <img src="assets/hito-3.png" alt="" loading="lazy" decoding="async" />
+            <img src="assets/hito-4.png" alt="" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
@@ -181,7 +189,7 @@
         </div>
         <div class="reviews" role="list">
           <article class="review" role="listitem">
-            <img class="review__photo" src="assets/review-1.png" alt="" aria-hidden="true" />
+            <img class="review__photo" src="assets/review-1.png" alt="" aria-hidden="true" loading="lazy" decoding="async" />
             <div class="review__body">
               <p class="review__kicker">{reviews.kicker}</p>
               <p>{reviews.r1.text}</p>
@@ -190,7 +198,7 @@
             <h3>Carlos Mendoza Ríos</h3>
           </article>
           <article class="review" role="listitem">
-            <img class="review__photo" src="assets/review-2.png" alt="" aria-hidden="true" />
+            <img class="review__photo" src="assets/review-2.png" alt="" aria-hidden="true" loading="lazy" decoding="async" />
             <div class="review__body">
               <p class="review__kicker">{reviews.kicker}</p>
               <p>{reviews.r2.text}</p>
@@ -199,7 +207,7 @@
             <h3>Miguel Huamán</h3>
           </article>
           <article class="review" role="listitem">
-            <img class="review__photo" src="assets/review-3.png" alt="" aria-hidden="true" />
+            <img class="review__photo" src="assets/review-3.png" alt="" aria-hidden="true" loading="lazy" decoding="async" />
             <div class="review__body">
               <p class="review__kicker">{reviews.kicker}</p>
               <p>{reviews.r3.text}</p>
@@ -211,7 +219,7 @@
       </section>
 
       <!-- Plans -->
-      <section class="section" id="planes" aria-labelledby="plans-title">
+      <section class="section section--alt" id="planes" aria-labelledby="plans-title">
         <div class="intro">
           <h2 id="plans-title">{plans.title}</h2>
           <p>{plans.lead}</p>
@@ -305,6 +313,8 @@
             <iframe
               src="https://www.youtube.com/embed/HzLCMS18Pqg"
               title="{productVideo.iframeTitle}"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
             ></iframe>
@@ -318,43 +328,48 @@
           <h2 id="team-title">{team.title}</h2>
           <p>{team.lead}</p>
         </div>
-        <ul class="team" role="list">
-          <li class="member">
-            <div class="member__media">
-              <img class="member__person" src="assets/foto-abigail.png" alt="Abigail Nadhim" />
-            </div>
-            <h3>Abigail Nadhim</h3>
-            <p>{team.role}</p>
-          </li>
-          <li class="member">
-            <div class="member__media">
-              <img class="member__person" src="assets/foto-alexander.jpg" alt="Alexander Sebastián" />
-            </div>
-            <h3>Alexander Sebastián</h3>
-            <p>{team.role}</p>
-          </li>
-          <li class="member">
-            <div class="member__media">
-              <img class="member__person" src="assets/foto-andree.jpg" alt="Mel Andree" />
-            </div>
-            <h3>Mel Andree</h3>
-            <p>{team.role}</p>
-          </li>
-          <li class="member">
-            <div class="member__media">
-              <img class="member__person" src="assets/foto_nayely.jpg" alt="Nayely Macarena" />
-            </div>
-            <h3>Nayely Macarena</h3>
-            <p>{team.role}</p>
-          </li>
-          <li class="member">
-            <div class="member__media">
-              <img class="member__person" src="assets/foto-miguel.jpg" alt="Miguel Angel" />
-            </div>
-            <h3>Miguel Angel</h3>
-            <p>{team.role}</p>
-          </li>
-        </ul>
+        <div class="team-carousel" role="region" aria-label="{team.title}">
+          <div class="team-viewport">
+            <ul class="team-track" role="list">
+              <li class="member" role="listitem">
+                <div class="member__media">
+                  <img class="member__person" src="assets/foto-abigail.png" alt="Abigail Nadhim" loading="lazy" decoding="async" />
+                </div>
+                <h3>Abigail Nadhim</h3>
+                <p>{team.role}</p>
+              </li>
+              <li class="member" role="listitem">
+                <div class="member__media">
+                  <img class="member__person" src="assets/foto-alexander.jpg" alt="Alexander Sebastián" loading="lazy" decoding="async" />
+                </div>
+                <h3>Alexander Sebastián</h3>
+                <p>{team.role}</p>
+              </li>
+              <li class="member" role="listitem">
+                <div class="member__media">
+                  <img class="member__person" src="assets/foto-andree.jpg" alt="Mel Andree" loading="lazy" decoding="async" />
+                </div>
+                <h3>Mel Andree</h3>
+                <p>{team.role}</p>
+              </li>
+              <li class="member" role="listitem">
+                <div class="member__media">
+                  <img class="member__person" src="assets/foto_nayely.jpg" alt="Nayely Macarena" loading="lazy" decoding="async" />
+                </div>
+                <h3>Nayely Macarena</h3>
+                <p>{team.role}</p>
+              </li>
+              <li class="member" role="listitem">
+                <div class="member__media">
+                  <img class="member__person" src="assets/foto-miguel.jpg" alt="Miguel Angel" loading="lazy" decoding="async" />
+                </div>
+                <h3>Miguel Angel</h3>
+                <p>{team.role}</p>
+              </li>
+            </ul>
+          </div>
+          <div class="team-dots" role="group" aria-label="{team.carouselNav}"></div>
+        </div>
         <div class="product-video">
           <div class="intro">
             <h3 id="team-video-title">{teamVideo.title}</h3>
@@ -364,6 +379,8 @@
             <iframe
               src="https://www.youtube.com/embed/Fv-fpNivSHE?start=26"
               title="{teamVideo.iframeTitle}"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
             ></iframe>
@@ -373,7 +390,7 @@
 
       <!-- Contact form -->
       <section class="contact" id="contacto" aria-labelledby="contact-title">
-        <img class="contact__bg" src="assets/contact-bg.png" alt="" role="presentation" />
+        <img class="contact__bg" src="assets/contact-bg.png" alt="" role="presentation" loading="lazy" decoding="async" />
         <div class="contact__inner">
           <div>
             <h2 id="contact-title">{contact.title}</h2>
@@ -425,6 +442,7 @@
                 id="telefono"
                 name="telefono"
                 type="tel"
+                inputmode="tel"
                 autocomplete="tel"
                 required
                 aria-required="true"
@@ -441,10 +459,13 @@
     <!-- Footer -->
     <footer class="footer" role="contentinfo">
       <div class="footer__grid">
-        <a class="logo" href="#inicio" aria-label="{nav.home}">
-          <img class="logo__img" src="assets/logo.png" width="72" height="40" alt="" />
-          <span class="logo__text" aria-hidden="true"><span>ALLPA</span><span>TEK</span></span>
-        </a>
+        <div class="footer__brand">
+          <a class="logo" href="#inicio" aria-label="{nav.home}">
+            <img class="logo__img" src="assets/logo.png" width="72" height="40" alt="" />
+            <span class="logo__text" aria-hidden="true"><span>ALLPA</span><span>TEK</span></span>
+          </a>
+          <p>{hero.lead}</p>
+        </div>
         <nav aria-label="{footer.navAria}">
           <h3>{footer.nav}</h3>
           <ul>
@@ -452,6 +473,7 @@
             <li><a href="#servicios">{footer.solutions}</a></li>
             <li><a href="#hitos">{nav.how}</a></li>
             <li><a href="#planes">{nav.plans}</a></li>
+            <li><a href="#equipo">{nav.team}</a></li>
             <li><a href="#testimonios">{nav.reviews}</a></li>
           </ul>
         </nav>
@@ -468,7 +490,7 @@
           <h3>{footer.contact}</h3>
           <ul>
             <li>{footer.address}</li>
-            <li>(01) 555-0199</li>
+            <li><a href="tel:+5115550199">(01) 555-0199</a></li>
             <li><a href="mailto:contacto@allpatek.com">contacto@allpatek.com</a></li>
             <li>{footer.hours}</li>
           </ul>

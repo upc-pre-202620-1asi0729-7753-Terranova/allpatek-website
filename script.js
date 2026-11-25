@@ -5,20 +5,25 @@ const STORAGE_KEY = "allpatek-lang";
 const MESSAGES = {
   en_US: {
     "meta.title": "ALLPATEK — Guaranteed agricultural production",
+    "meta.description": "ALLPATEK — Guaranteed agricultural production from land to business.",
     "a11y.skip": "Skip to main content",
     "nav.aria": "Primary",
     "nav.home": "ALLPATEK home",
     "nav.menu": "Menu",
     "nav.menuAria": "Open menu",
+    "nav.menuClose": "Close menu",
     "nav.services": "Services",
     "nav.how": "How it works",
     "nav.reviews": "Testimonials",
     "nav.plans": "Plans",
+    "nav.team": "Team",
     "nav.contact": "Contact",
     "nav.cta": "Get Started",
     "lang.aria": "Language",
     "coming.meta": "ALLPATEK — Coming soon",
+    "coming.kicker": "Platform",
     "coming.title": "The web platform will be here very soon",
+    "coming.lead": "Managed plots, milestone-protected payments, and live harvest traceability — launching shortly.",
     "coming.back": "Back to landing",
 
     "hero.title": "Guaranteed agricultural production, from land to your business",
@@ -100,6 +105,8 @@ const MESSAGES = {
     "team.lead":
       "Engineers and specialists who make a secure, traceable, and scalable agricultural architecture possible.",
     "team.role": "Software Engineering",
+    "team.carouselNav": "Team carousel navigation",
+    "team.slide": "Slide {current} of {total}",
     "teamVideo.title": "About the Team",
     "teamVideo.lead":
       "Meet the engineers and specialists who design ALLPATEK to connect buyers with farmers through a secure, traceable, and scalable platform.",
@@ -145,20 +152,25 @@ const MESSAGES = {
   },
   es_419: {
     "meta.title": "ALLPATEK — Producción agrícola garantizada",
+    "meta.description": "ALLPATEK — Producción agrícola garantizada, de la tierra al negocio.",
     "a11y.skip": "Saltar al contenido principal",
     "nav.aria": "Principal",
     "nav.home": "Inicio ALLPATEK",
     "nav.menu": "Menú",
     "nav.menuAria": "Abrir menú",
+    "nav.menuClose": "Cerrar menú",
     "nav.services": "Servicios",
     "nav.how": "¿Cómo funciona?",
     "nav.reviews": "Testimonios",
     "nav.plans": "Planes",
+    "nav.team": "Equipo",
     "nav.contact": "Contacto",
     "nav.cta": "Empieza Ahora",
     "lang.aria": "Idioma",
     "coming.meta": "ALLPATEK — Muy pronto",
+    "coming.kicker": "Plataforma",
     "coming.title": "Aquí estará la plataforma web muy pronto",
+    "coming.lead": "Parcelas gestionadas, pagos protegidos por hitos y trazabilidad de cosecha en vivo — muy pronto.",
     "coming.back": "Volver al landing",
 
     "hero.title": "Producción agrícola garantizada, de la tierra a tu negocio",
@@ -242,6 +254,8 @@ const MESSAGES = {
     "team.lead":
       "Ingenieros y especialistas que hacen posible una arquitectura agrícola segura, trazable y escalable.",
     "team.role": "Ingeniería de Software",
+    "team.carouselNav": "Navegación del carrusel del equipo",
+    "team.slide": "Diapositiva {current} de {total}",
     "teamVideo.title": "Sobre el Equipo",
     "teamVideo.lead":
       "Conoce a los ingenieros y especialistas que diseñan ALLPATEK para conectar compradores con agricultores a través de una plataforma segura, trazable y escalable.",
@@ -301,7 +315,7 @@ const LEGAL_FILES = {
 
 let currentLang = DEFAULT_LANG;
 const KEY_RE = /\{([a-z0-9.]+)\}/gi;
-const ATTRS = ["placeholder", "aria-label", "alt", "title"];
+const ATTRS = ["placeholder", "aria-label", "alt", "title", "content"];
 
 function $(selector, root = document) {
   return root.querySelector(selector);
@@ -335,7 +349,7 @@ function applyTranslations(lang) {
   });
 
   // Translate attributes that may contain {key}
-  document.querySelectorAll("body *").forEach((el) => {
+  document.querySelectorAll("body *, head meta").forEach((el) => {
     ATTRS.forEach((attr) => {
       const current = el.getAttribute(attr);
       if (!current) return;
@@ -365,6 +379,11 @@ function applyTranslations(lang) {
     btn.classList.toggle("is-active", active);
     btn.setAttribute("aria-pressed", String(active));
   });
+
+  const statusEl = $(".form__status");
+  if (statusEl?.dataset.statusKey) {
+    statusEl.textContent = t(statusEl.dataset.statusKey);
+  }
 }
 
 function initI18n() {
@@ -386,6 +405,8 @@ function setMenuOpen(nav, menu, toggle, isOpen) {
   menu.classList.toggle("is-open", isOpen);
   nav.classList.toggle("is-open", isOpen);
   toggle.setAttribute("aria-expanded", String(isOpen));
+  toggle["_i18n_aria-label"] = isOpen ? "{nav.menuClose}" : "{nav.menuAria}";
+  toggle.setAttribute("aria-label", t(isOpen ? "nav.menuClose" : "nav.menuAria"));
 }
 
 function initNavbar() {
@@ -408,21 +429,37 @@ function initNavbar() {
   menu.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => setMenuOpen(nav, menu, toggle, false));
   });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || !menu.classList.contains("is-open")) return;
+    setMenuOpen(nav, menu, toggle, false);
+    toggle.focus();
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!menu.classList.contains("is-open")) return;
+    if (nav.contains(event.target)) return;
+    setMenuOpen(nav, menu, toggle, false);
+  });
 }
 
 /* Contact form — same request riupa already uses with n8n */
 const N8N_WEBHOOK_URL = "https://foyer-phonics-pyromania.ngrok-free.dev/webhook/733acc37-f55b-4749-b3b5-e9cd7ad7c334";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_PATTERN = /^\+?[\d\s().-]{7,20}$/;
 
 function isValidField(input) {
   const value = input.value.trim();
   if (!value) return false;
   if (input.type === "email") return EMAIL_PATTERN.test(value);
+  if (input.type === "tel") return PHONE_PATTERN.test(value);
+  if (input.type === "text") return value.length >= 2;
   return true;
 }
 
-function showFormStatus(statusEl, message, type) {
-  statusEl.textContent = message;
+function showFormStatus(statusEl, key, type) {
+  statusEl.dataset.statusKey = key;
+  statusEl.textContent = t(key);
   statusEl.className = `form__status form__status--${type}`;
 }
 
@@ -433,6 +470,12 @@ function initContactForm() {
   if (!form || !statusEl || !button) return;
 
   const label = [...button.childNodes].find((node) => node.nodeType === Node.TEXT_NODE);
+
+  form.querySelectorAll("input").forEach((input) => {
+    input.addEventListener("input", () => {
+      if (isValidField(input)) input.closest("label")?.classList.remove("is-invalid");
+    });
+  });
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -445,13 +488,14 @@ function initContactForm() {
     });
 
     if (!isValid) {
-      showFormStatus(statusEl, t("contact.error"), "error");
+      showFormStatus(statusEl, "contact.error", "error");
       return;
     }
 
     button.disabled = true;
     if (label) label.nodeValue = t("contact.sending");
     statusEl.textContent = "";
+    delete statusEl.dataset.statusKey;
 
     const payload = {
       nombres: form.nombres.value.trim(),
@@ -470,10 +514,10 @@ function initContactForm() {
 
       if (!response.ok) throw new Error("Error en la respuesta del servidor");
 
-      showFormStatus(statusEl, t("contact.ok"), "ok");
+      showFormStatus(statusEl, "contact.ok", "ok");
       form.reset();
     } catch (error) {
-      showFormStatus(statusEl, t("contact.networkError"), "error");
+      showFormStatus(statusEl, "contact.networkError", "error");
       console.error("Error:", error);
     } finally {
       button.disabled = false;
@@ -482,8 +526,171 @@ function initContactForm() {
   });
 }
 
+/* ── Team step-carousel ─────────────────────────────────────── */
+function initTeamCarousel() {
+  const carousel = document.querySelector(".team-carousel");
+  if (!carousel) return;
+
+  const viewport = carousel.querySelector(".team-viewport");
+  const track    = carousel.querySelector(".team-track");
+  const dotsWrap = carousel.querySelector(".team-dots");
+  const members  = [...track.querySelectorAll(".member")];
+  const total    = members.length;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  let current   = 0;
+  let autoTimer = null;
+  let isPaused  = false;
+  let dots      = [];
+
+  carousel.setAttribute("tabindex", "0");
+
+  /* ── helpers ── */
+  function getStep() {
+    const gap = parseInt(getComputedStyle(track).gap) || 24;
+    return members[0].offsetWidth + gap;
+  }
+
+  function getMaxIndex() {
+    const viewW = viewport.clientWidth;
+    const step  = getStep();
+    return Math.max(0, Math.ceil((total * step - (parseInt(getComputedStyle(track).gap) || 24) - viewW) / step));
+  }
+
+  function slideLabel(index, count) {
+    return t("team.slide")
+      .replace("{current}", String(index + 1))
+      .replace("{total}", String(count));
+  }
+
+  /* ── dots ── */
+  function buildDots() {
+    if (!dotsWrap) return;
+    dotsWrap.innerHTML = "";
+    dots = [];
+    const count = getMaxIndex() + 1;
+    for (let i = 0; i < count; i++) {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "team-dot" + (i === current ? " is-active" : "");
+      btn.setAttribute("aria-label", slideLabel(i, count));
+      btn.addEventListener("click", () => { stopAuto(); goTo(i); startAuto(); });
+      dotsWrap.appendChild(btn);
+      dots.push(btn);
+    }
+  }
+
+  function updateDots(idx) {
+    const count = dots.length;
+    dots.forEach((d, i) => {
+      d.classList.toggle("is-active", i === idx);
+      d.setAttribute("aria-label", slideLabel(i, count));
+    });
+  }
+
+  /* ── navigation ── */
+  function goTo(index) {
+    const max = getMaxIndex();
+    current = Math.max(0, Math.min(index, max));
+    track.style.transform = `translateX(-${current * getStep()}px)`;
+    updateDots(current);
+  }
+
+  function next() {
+    goTo(current >= getMaxIndex() ? 0 : current + 1);
+  }
+
+  /* ── auto-play ── */
+  function startAuto() {
+    if (reduceMotion || isPaused || autoTimer) return;
+    autoTimer = setInterval(next, 3200);
+  }
+
+  function stopAuto() {
+    clearInterval(autoTimer);
+    autoTimer = null;
+  }
+
+  function pause() {
+    isPaused = true;
+    stopAuto();
+  }
+
+  function resume() {
+    isPaused = false;
+    startAuto();
+  }
+
+  /* ── events ── */
+  carousel.addEventListener("mouseenter", pause);
+  carousel.addEventListener("mouseleave", resume);
+  carousel.addEventListener("focusin", pause);
+  carousel.addEventListener("focusout", resume);
+  carousel.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      stopAuto();
+      next();
+    } else if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      stopAuto();
+      goTo(current - 1);
+    }
+  });
+
+  let touchStartX = 0;
+  viewport.addEventListener("touchstart", (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  viewport.addEventListener("touchend",   (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) { stopAuto(); goTo(diff > 0 ? current + 1 : current - 1); startAuto(); }
+  }, { passive: true });
+
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { buildDots(); goTo(Math.min(current, getMaxIndex())); }, 160);
+  });
+
+  document.querySelectorAll(".lang__btn").forEach((btn) => {
+    btn.addEventListener("click", () => buildDots());
+  });
+
+  buildDots();
+  startAuto();
+}
+
+/* ── Active nav link (IntersectionObserver) ─────────────────── */
+function initActiveNav() {
+  const sections = [...document.querySelectorAll("section[id]")];
+  const navLinks = [...document.querySelectorAll(".nav__links a[href^='#']")];
+  if (!sections.length || !navLinks.length) return;
+
+  function setActive(id) {
+    navLinks.forEach((link) => {
+      const active = link.getAttribute("href") === `#${id}`;
+      link.classList.toggle("is-active", active);
+      if (active) link.setAttribute("aria-current", "page");
+      else        link.removeAttribute("aria-current");
+    });
+  }
+
+  // Use IntersectionObserver: mark a section active when it crosses the top 40% of the viewport
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActive(entry.target.id);
+      });
+    },
+    { rootMargin: "-96px 0px -50% 0px", threshold: 0 }
+  );
+
+  sections.forEach((s) => observer.observe(s));
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initI18n();
   initNavbar();
   initContactForm();
+  initTeamCarousel();
+  initActiveNav();
 });
