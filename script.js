@@ -101,6 +101,8 @@ const MESSAGES = {
     "team.lead":
       "Engineers and specialists who make a secure, traceable, and scalable agricultural architecture possible.",
     "team.role": "Software Engineering",
+    "team.carouselNav": "Team carousel navigation",
+    "team.slide": "Slide {current} of {total}",
     "teamVideo.title": "About the Team",
     "teamVideo.lead":
       "Meet the engineers and specialists who design ALLPATEK to connect buyers with farmers through a secure, traceable, and scalable platform.",
@@ -237,6 +239,8 @@ const MESSAGES = {
     "team.lead":
       "Ingenieros y especialistas que hacen posible una arquitectura agrícola segura, trazable y escalable.",
     "team.role": "Ingeniería de Software",
+    "team.carouselNav": "Navegación del carrusel del equipo",
+    "team.slide": "Diapositiva {current} de {total}",
     "teamVideo.title": "Sobre el Equipo",
     "teamVideo.lead":
       "Conoce a los ingenieros y especialistas que diseñan ALLPATEK para conectar compradores con agricultores a través de una plataforma segura, trazable y escalable.",
@@ -462,11 +466,14 @@ function initTeamCarousel() {
   const dotsWrap = carousel.querySelector(".team-dots");
   const members  = [...track.querySelectorAll(".member")];
   const total    = members.length;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   let current   = 0;
   let autoTimer = null;
-  let isHovered = false;
+  let isPaused  = false;
   let dots      = [];
+
+  carousel.setAttribute("tabindex", "0");
 
   /* ── helpers ── */
   function getStep() {
@@ -475,10 +482,15 @@ function initTeamCarousel() {
   }
 
   function getMaxIndex() {
-    // How many steps until the last card is fully visible
     const viewW = viewport.clientWidth;
     const step  = getStep();
     return Math.max(0, Math.ceil((total * step - (parseInt(getComputedStyle(track).gap) || 24) - viewW) / step));
+  }
+
+  function slideLabel(index, count) {
+    return t("team.slide")
+      .replace("{current}", String(index + 1))
+      .replace("{total}", String(count));
   }
 
   /* ── dots ── */
@@ -489,8 +501,9 @@ function initTeamCarousel() {
     const count = getMaxIndex() + 1;
     for (let i = 0; i < count; i++) {
       const btn = document.createElement("button");
-      btn.className = "team-dot" + (i === 0 ? " is-active" : "");
-      btn.setAttribute("aria-label", `Slide ${i + 1} of ${count}`);
+      btn.type = "button";
+      btn.className = "team-dot" + (i === current ? " is-active" : "");
+      btn.setAttribute("aria-label", slideLabel(i, count));
       btn.addEventListener("click", () => { stopAuto(); goTo(i); startAuto(); });
       dotsWrap.appendChild(btn);
       dots.push(btn);
@@ -498,7 +511,11 @@ function initTeamCarousel() {
   }
 
   function updateDots(idx) {
-    dots.forEach((d, i) => d.classList.toggle("is-active", i === idx));
+    const count = dots.length;
+    dots.forEach((d, i) => {
+      d.classList.toggle("is-active", i === idx);
+      d.setAttribute("aria-label", slideLabel(i, count));
+    });
   }
 
   /* ── navigation ── */
@@ -515,9 +532,8 @@ function initTeamCarousel() {
 
   /* ── auto-play ── */
   function startAuto() {
-    if (!isHovered && !autoTimer) {
-      autoTimer = setInterval(next, 3200);
-    }
+    if (reduceMotion || isPaused || autoTimer) return;
+    autoTimer = setInterval(next, 3200);
   }
 
   function stopAuto() {
@@ -525,11 +541,33 @@ function initTeamCarousel() {
     autoTimer = null;
   }
 
-  /* ── events ── */
-  carousel.addEventListener("mouseenter", () => { isHovered = true;  stopAuto(); });
-  carousel.addEventListener("mouseleave", () => { isHovered = false; startAuto(); });
+  function pause() {
+    isPaused = true;
+    stopAuto();
+  }
 
-  // Touch swipe support
+  function resume() {
+    isPaused = false;
+    startAuto();
+  }
+
+  /* ── events ── */
+  carousel.addEventListener("mouseenter", pause);
+  carousel.addEventListener("mouseleave", resume);
+  carousel.addEventListener("focusin", pause);
+  carousel.addEventListener("focusout", resume);
+  carousel.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      stopAuto();
+      next();
+    } else if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      stopAuto();
+      goTo(current - 1);
+    }
+  });
+
   let touchStartX = 0;
   viewport.addEventListener("touchstart", (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
   viewport.addEventListener("touchend",   (e) => {
@@ -537,11 +575,14 @@ function initTeamCarousel() {
     if (Math.abs(diff) > 40) { stopAuto(); goTo(diff > 0 ? current + 1 : current - 1); startAuto(); }
   }, { passive: true });
 
-  // Rebuild on resize (card widths may change)
   let resizeTimer;
   window.addEventListener("resize", () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => { buildDots(); goTo(Math.min(current, getMaxIndex())); }, 160);
+  });
+
+  document.querySelectorAll(".lang__btn").forEach((btn) => {
+    btn.addEventListener("click", () => buildDots());
   });
 
   buildDots();

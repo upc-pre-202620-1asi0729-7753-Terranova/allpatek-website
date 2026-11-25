@@ -1489,4 +1489,32 @@ ol {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .team-track,
+  .card,
+  .plan,
+  .member,
+  .review,
+  .milestone,
+  .btn,
+  .nav {
+    transition: none;
+  }
+}
+
+.team-carousel:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 6px;
+  border-radius: 16px;
+}
+
+.team-dot:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 3px;
+}
+
 
