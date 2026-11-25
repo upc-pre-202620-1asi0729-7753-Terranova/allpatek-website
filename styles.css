@@ -1191,6 +1191,18 @@ ol {
   mask-image: url("assets/social/youtube.svg");
 }
 
+.social__link:hover,
+.social__link:focus-visible {
+  color: var(--white);
+  background: var(--green-mid);
+  transform: translateY(-2px);
+}
+
+.social__link:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 3px;
+}
+
 .footer__copy {
   margin: 48px 0 0;
   padding-top: 30px;
