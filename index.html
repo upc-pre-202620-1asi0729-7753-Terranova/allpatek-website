@@ -490,13 +490,18 @@
           <h3>{footer.contact}</h3>
           <ul>
             <li>{footer.address}</li>
-            <li>(01) 555-0199</li>
+            <li><a href="tel:+5115550199">(01) 555-0199</a></li>
             <li><a href="mailto:contacto@allpatek.com">contacto@allpatek.com</a></li>
             <li>{footer.hours}</li>
           </ul>
         </address>
       </div>
       <p class="footer__copy">{footer.copy}</p>
+      <nav class="footer__legal" aria-label="{footer.legalAria}">
+        <a href="mailto:contacto@allpatek.com?subject=Terms%20and%20Conditions">{footer.terms}</a>
+        <a href="mailto:contacto@allpatek.com?subject=Privacy%20Policy">{footer.privacy}</a>
+        <a href="mailto:contacto@allpatek.com?subject=Complaints%20Book">{footer.complaints}</a>
+      </nav>
     </footer>
     <script src="script.js"></script>
   </body>

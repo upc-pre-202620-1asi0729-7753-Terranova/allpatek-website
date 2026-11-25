@@ -140,8 +140,11 @@ const MESSAGES = {
     "footer.contact": "Contact & Hours",
     "footer.address": "Av. Principal 123, Lima",
     "footer.hours": "Monday to Friday, 8:00 AM - 6:00 PM",
-    "footer.copy":
-      "© 2026 ALLPATEK. All rights reserved. | Terms and Conditions | Privacy Policy | Complaints Book",
+    "footer.copy": "© 2026 ALLPATEK. All rights reserved.",
+    "footer.legalAria": "Legal",
+    "footer.terms": "Terms and Conditions",
+    "footer.privacy": "Privacy Policy",
+    "footer.complaints": "Complaints Book",
   },
   es_419: {
     "meta.title": "ALLPATEK — Producción agrícola garantizada",
@@ -282,8 +285,11 @@ const MESSAGES = {
     "footer.contact": "Contacto y Horarios",
     "footer.address": "Av. Principal 123, Lima",
     "footer.hours": "Lunes a Viernes, 8:00 - 18:00",
-    "footer.copy":
-      "© 2026 ALLPATEK. Todos los derechos reservados. | Términos y Condiciones | Política de Privacidad | Libro de Reclamaciones",
+    "footer.copy": "© 2026 ALLPATEK. Todos los derechos reservados.",
+    "footer.legalAria": "Legal",
+    "footer.terms": "Términos y Condiciones",
+    "footer.privacy": "Política de Privacidad",
+    "footer.complaints": "Libro de Reclamaciones",
   },
 };
 
