@@ -133,8 +133,15 @@ const MESSAGES = {
     "footer.contact": "Contact & Hours",
     "footer.address": "Av. Principal 123, Lima",
     "footer.hours": "Monday to Friday, 8:00 AM - 6:00 PM",
-    "footer.copy":
-      "© 2026 ALLPATEK. All rights reserved. | Terms and Conditions | Privacy Policy | Complaints Book",
+    "footer.follow": "Follow us",
+    "footer.social.facebook": "ALLPATEK on Facebook",
+    "footer.social.instagram": "ALLPATEK on Instagram",
+    "footer.social.linkedin": "ALLPATEK on LinkedIn",
+    "footer.social.youtube": "ALLPATEK on YouTube",
+    "footer.rights": "© 2026 ALLPATEK. All rights reserved.",
+    "footer.terms": "Terms and Conditions",
+    "footer.privacy": "Privacy Policy",
+    "footer.complaints": "Complaints Book",
   },
   es_419: {
     "meta.title": "ALLPATEK — Producción agrícola garantizada",
@@ -268,8 +275,27 @@ const MESSAGES = {
     "footer.contact": "Contacto y Horarios",
     "footer.address": "Av. Principal 123, Lima",
     "footer.hours": "Lunes a Viernes, 8:00 - 18:00",
-    "footer.copy":
-      "© 2026 ALLPATEK. Todos los derechos reservados. | Términos y Condiciones | Política de Privacidad | Libro de Reclamaciones",
+    "footer.follow": "Síguenos",
+    "footer.social.facebook": "ALLPATEK en Facebook",
+    "footer.social.instagram": "ALLPATEK en Instagram",
+    "footer.social.linkedin": "ALLPATEK en LinkedIn",
+    "footer.social.youtube": "ALLPATEK en YouTube",
+    "footer.rights": "© 2026 ALLPATEK. Todos los derechos reservados.",
+    "footer.terms": "Términos y Condiciones",
+    "footer.privacy": "Política de Privacidad",
+    "footer.complaints": "Libro de Reclamaciones",
+  },
+};
+
+// Legal PDFs available in each language
+const LEGAL_FILES = {
+  en_US: {
+    terms: "assets/legal/allpatek-terms-and-conditions-en.pdf",
+    privacy: "assets/legal/allpatek-privacy-policy-en.pdf",
+  },
+  es_419: {
+    terms: "assets/legal/allpatek-terminos-y-condiciones-es.pdf",
+    privacy: "assets/legal/allpatek-politica-de-privacidad-es.pdf",
   },
 };
 
@@ -327,6 +353,12 @@ function applyTranslations(lang) {
     if (!titleEl._i18nTpl) titleEl._i18nTpl = titleEl.textContent;
     document.title = fillKeys(titleEl._i18nTpl);
   }
+
+  // Point the legal links to the PDF in the active language
+  document.querySelectorAll("[data-legal]").forEach((link) => {
+    const file = LEGAL_FILES[lang][link.getAttribute("data-legal")];
+    if (file) link.setAttribute("href", file);
+  });
 
   document.querySelectorAll(".lang__btn").forEach((btn) => {
     const active = btn.getAttribute("data-lang") === lang;
