@@ -140,6 +140,10 @@ const MESSAGES = {
     "footer.social.youtube": "ALLPATEK on YouTube",
     "footer.copy":
       "© 2026 ALLPATEK. All rights reserved. | Terms and Conditions | Privacy Policy | Complaints Book",
+    "footer.rights": "© 2026 ALLPATEK. All rights reserved.",
+    "footer.terms": "Terms and Conditions",
+    "footer.privacy": "Privacy Policy",
+    "footer.complaints": "Complaints Book",
   },
   es_419: {
     "meta.title": "ALLPATEK — Producción agrícola garantizada",
