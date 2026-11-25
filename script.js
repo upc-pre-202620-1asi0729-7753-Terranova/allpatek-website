@@ -343,6 +343,11 @@ function applyTranslations(lang) {
     btn.classList.toggle("is-active", active);
     btn.setAttribute("aria-pressed", String(active));
   });
+
+  const statusEl = $(".form__status");
+  if (statusEl?.dataset.statusKey) {
+    statusEl.textContent = t(statusEl.dataset.statusKey);
+  }
 }
 
 function initI18n() {
@@ -391,16 +396,20 @@ function initNavbar() {
 /* Contact form — same request riupa already uses with n8n */
 const N8N_WEBHOOK_URL = "https://foyer-phonics-pyromania.ngrok-free.dev/webhook/733acc37-f55b-4749-b3b5-e9cd7ad7c334";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_PATTERN = /^\+?[\d\s().-]{7,20}$/;
 
 function isValidField(input) {
   const value = input.value.trim();
   if (!value) return false;
   if (input.type === "email") return EMAIL_PATTERN.test(value);
+  if (input.type === "tel") return PHONE_PATTERN.test(value);
+  if (input.type === "text") return value.length >= 2;
   return true;
 }
 
-function showFormStatus(statusEl, message, type) {
-  statusEl.textContent = message;
+function showFormStatus(statusEl, key, type) {
+  statusEl.dataset.statusKey = key;
+  statusEl.textContent = t(key);
   statusEl.className = `form__status form__status--${type}`;
 }
 
@@ -411,6 +420,12 @@ function initContactForm() {
   if (!form || !statusEl || !button) return;
 
   const label = [...button.childNodes].find((node) => node.nodeType === Node.TEXT_NODE);
+
+  form.querySelectorAll("input").forEach((input) => {
+    input.addEventListener("input", () => {
+      if (isValidField(input)) input.closest("label")?.classList.remove("is-invalid");
+    });
+  });
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -423,13 +438,14 @@ function initContactForm() {
     });
 
     if (!isValid) {
-      showFormStatus(statusEl, t("contact.error"), "error");
+      showFormStatus(statusEl, "contact.error", "error");
       return;
     }
 
     button.disabled = true;
     if (label) label.nodeValue = t("contact.sending");
     statusEl.textContent = "";
+    delete statusEl.dataset.statusKey;
 
     const payload = {
       nombres: form.nombres.value.trim(),
@@ -448,10 +464,10 @@ function initContactForm() {
 
       if (!response.ok) throw new Error("Error en la respuesta del servidor");
 
-      showFormStatus(statusEl, t("contact.ok"), "ok");
+      showFormStatus(statusEl, "contact.ok", "ok");
       form.reset();
     } catch (error) {
-      showFormStatus(statusEl, t("contact.networkError"), "error");
+      showFormStatus(statusEl, "contact.networkError", "error");
       console.error("Error:", error);
     } finally {
       button.disabled = false;
