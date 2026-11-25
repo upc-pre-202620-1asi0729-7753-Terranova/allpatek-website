@@ -450,8 +450,37 @@ function initContactForm() {
   });
 }
 
+/* ── Active nav link (IntersectionObserver) ─────────────────── */
+function initActiveNav() {
+  const sections = [...document.querySelectorAll("section[id]")];
+  const navLinks = [...document.querySelectorAll(".nav__links a[href^='#']")];
+  if (!sections.length || !navLinks.length) return;
+
+  function setActive(id) {
+    navLinks.forEach((link) => {
+      const active = link.getAttribute("href") === `#${id}`;
+      link.classList.toggle("is-active", active);
+      if (active) link.setAttribute("aria-current", "page");
+      else        link.removeAttribute("aria-current");
+    });
+  }
+
+  // Use IntersectionObserver: mark a section active when it crosses the top 40% of the viewport
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActive(entry.target.id);
+      });
+    },
+    { rootMargin: "-96px 0px -50% 0px", threshold: 0 }
+  );
+
+  sections.forEach((s) => observer.observe(s));
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initI18n();
   initNavbar();
   initContactForm();
+  initActiveNav();
 });
