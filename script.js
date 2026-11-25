@@ -133,6 +133,11 @@ const MESSAGES = {
     "footer.contact": "Contact & Hours",
     "footer.address": "Av. Principal 123, Lima",
     "footer.hours": "Monday to Friday, 8:00 AM - 6:00 PM",
+    "footer.follow": "Follow us",
+    "footer.social.facebook": "ALLPATEK on Facebook",
+    "footer.social.instagram": "ALLPATEK on Instagram",
+    "footer.social.linkedin": "ALLPATEK on LinkedIn",
+    "footer.social.youtube": "ALLPATEK on YouTube",
     "footer.copy":
       "© 2026 ALLPATEK. All rights reserved. | Terms and Conditions | Privacy Policy | Complaints Book",
   },
