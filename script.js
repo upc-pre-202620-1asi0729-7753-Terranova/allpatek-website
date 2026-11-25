@@ -323,7 +323,7 @@ function applyTranslations(lang) {
   });
 
   // Translate attributes that may contain {key}
-  document.querySelectorAll("body *").forEach((el) => {
+  document.querySelectorAll("body *, head meta").forEach((el) => {
     ATTRS.forEach((attr) => {
       const current = el.getAttribute(attr);
       if (!current) return;
