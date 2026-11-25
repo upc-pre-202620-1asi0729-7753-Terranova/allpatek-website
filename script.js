@@ -19,7 +19,9 @@ const MESSAGES = {
     "nav.cta": "Get Started",
     "lang.aria": "Language",
     "coming.meta": "ALLPATEK — Coming soon",
+    "coming.kicker": "Platform",
     "coming.title": "The web platform will be here very soon",
+    "coming.lead": "Managed plots, milestone-protected payments, and live harvest traceability — launching shortly.",
     "coming.back": "Back to landing",
 
     "hero.title": "Guaranteed agricultural production, from land to your business",
@@ -155,7 +157,9 @@ const MESSAGES = {
     "nav.cta": "Empieza Ahora",
     "lang.aria": "Idioma",
     "coming.meta": "ALLPATEK — Muy pronto",
+    "coming.kicker": "Plataforma",
     "coming.title": "Aquí estará la plataforma web muy pronto",
+    "coming.lead": "Parcelas gestionadas, pagos protegidos por hitos y trazabilidad de cosecha en vivo — muy pronto.",
     "coming.back": "Volver al landing",
 
     "hero.title": "Producción agrícola garantizada, de la tierra a tu negocio",
@@ -281,7 +285,7 @@ const MESSAGES = {
 
 let currentLang = DEFAULT_LANG;
 const KEY_RE = /\{([a-z0-9.]+)\}/gi;
-const ATTRS = ["placeholder", "aria-label", "alt", "title"];
+const ATTRS = ["placeholder", "aria-label", "alt", "title", "content"];
 
 function $(selector, root = document) {
   return root.querySelector(selector);

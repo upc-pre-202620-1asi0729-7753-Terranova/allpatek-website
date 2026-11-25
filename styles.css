@@ -1281,13 +1281,49 @@ ol {
 }
 
 .coming h1 {
-  max-width: 900px;
+  max-width: 16ch;
   margin: 0;
   color: var(--white);
   font-family: var(--font-display);
   font-size: clamp(32px, 6vw, 64px);
-  line-height: 1.15;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
   font-weight: 400;
+}
+
+.coming__kicker {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.coming__lead {
+  margin: 0;
+  max-width: 46ch;
+  font-size: 17px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.coming .btn {
+  margin-top: 8px;
+}
+
+.coming-page .lang {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.coming-page .lang__btn {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.coming-page .lang__btn.is-active {
+  background: var(--gold);
+  color: #2a2618;
 }
 /* Footer */
 
