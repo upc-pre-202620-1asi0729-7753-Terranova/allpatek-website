@@ -284,6 +284,10 @@ const MESSAGES = {
     "footer.social.youtube": "ALLPATEK en YouTube",
     "footer.copy":
       "© 2026 ALLPATEK. Todos los derechos reservados. | Términos y Condiciones | Política de Privacidad | Libro de Reclamaciones",
+    "footer.rights": "© 2026 ALLPATEK. Todos los derechos reservados.",
+    "footer.terms": "Términos y Condiciones",
+    "footer.privacy": "Política de Privacidad",
+    "footer.complaints": "Libro de Reclamaciones",
   },
 };
 
