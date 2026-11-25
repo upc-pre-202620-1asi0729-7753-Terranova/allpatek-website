@@ -30,6 +30,8 @@ The navbar **Get Started** button goes to `plataforma.html`.
 - Contact form validation
 - English (`en_US`) and Spanish (`es_419`) translations, with EN/ES switcher
 - Selected language is stored in `localStorage`
+- Footer social links (Facebook, Instagram, LinkedIn, YouTube) that open in a new tab
+- Terms and Conditions and Privacy Policy downloadable as PDF, in the active language
 
 ## Project structure
 
