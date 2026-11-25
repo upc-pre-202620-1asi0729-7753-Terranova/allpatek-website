@@ -5,11 +5,13 @@ const STORAGE_KEY = "allpatek-lang";
 const MESSAGES = {
   en_US: {
     "meta.title": "ALLPATEK — Guaranteed agricultural production",
+    "meta.description": "ALLPATEK — Guaranteed agricultural production from land to business.",
     "a11y.skip": "Skip to main content",
     "nav.aria": "Primary",
     "nav.home": "ALLPATEK home",
     "nav.menu": "Menu",
     "nav.menuAria": "Open menu",
+    "nav.menuClose": "Close menu",
     "nav.services": "Services",
     "nav.how": "How it works",
     "nav.reviews": "Testimonials",
@@ -143,11 +145,13 @@ const MESSAGES = {
   },
   es_419: {
     "meta.title": "ALLPATEK — Producción agrícola garantizada",
+    "meta.description": "ALLPATEK — Producción agrícola garantizada, de la tierra al negocio.",
     "a11y.skip": "Saltar al contenido principal",
     "nav.aria": "Principal",
     "nav.home": "Inicio ALLPATEK",
     "nav.menu": "Menú",
     "nav.menuAria": "Abrir menú",
+    "nav.menuClose": "Cerrar menú",
     "nav.services": "Servicios",
     "nav.how": "¿Cómo funciona?",
     "nav.reviews": "Testimonios",
@@ -369,6 +373,8 @@ function setMenuOpen(nav, menu, toggle, isOpen) {
   menu.classList.toggle("is-open", isOpen);
   nav.classList.toggle("is-open", isOpen);
   toggle.setAttribute("aria-expanded", String(isOpen));
+  toggle["_i18n_aria-label"] = isOpen ? "{nav.menuClose}" : "{nav.menuAria}";
+  toggle.setAttribute("aria-label", t(isOpen ? "nav.menuClose" : "nav.menuAria"));
 }
 
 function initNavbar() {
@@ -390,6 +396,12 @@ function initNavbar() {
 
   menu.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => setMenuOpen(nav, menu, toggle, false));
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || !menu.classList.contains("is-open")) return;
+    setMenuOpen(nav, menu, toggle, false);
+    toggle.focus();
   });
 }
 
