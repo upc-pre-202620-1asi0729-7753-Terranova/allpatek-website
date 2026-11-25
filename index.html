@@ -4,7 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="ALLPATEK — Guaranteed agricultural production from land to business." />
+    <meta name="theme-color" content="#0f2a1d" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ALLPATEK — Guaranteed agricultural production" />
+    <meta property="og:description" content="ALLPATEK — Guaranteed agricultural production from land to business." />
+    <meta property="og:image" content="assets/hero.png" />
+    <meta name="twitter:card" content="summary_large_image" />
     <title>{meta.title}</title>
+    <link rel="icon" href="assets/logo.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -59,7 +66,7 @@
     <main id="main" role="main">
       <!-- Hero -->
       <section class="hero" id="inicio" aria-labelledby="hero-title">
-        <img class="hero__bg" src="assets/hero.png" alt="" role="presentation" />
+        <img class="hero__bg" src="assets/hero.png" alt="" role="presentation" fetchpriority="high" decoding="async" />
         <div class="hero__content">
           <h1 id="hero-title">{hero.title}</h1>
           <p>{hero.lead}</p>
@@ -98,7 +105,7 @@
             <p>{services.card1.text}</p>
           </article>
           <figure class="photo photo--tall">
-            <img src="assets/feature-fields.png" alt="{services.img1}" />
+            <img src="assets/feature-fields.png" alt="{services.img1}" loading="lazy" decoding="async" />
           </figure>
           <article class="card card--dark" role="listitem">
             <img class="icon icon--lg" src="assets/icon-trazabilidad.svg" width="50" height="50" alt="" aria-hidden="true" />
@@ -106,7 +113,7 @@
             <p>{services.card2.text}</p>
           </article>
           <figure class="photo">
-            <img src="assets/feature-sunset.png" alt="{services.img2}" />
+            <img src="assets/feature-sunset.png" alt="{services.img2}" loading="lazy" decoding="async" />
           </figure>
           <article class="card card--dark" role="listitem">
             <img class="icon icon--lg" src="assets/icon-fondos.svg" width="50" height="50" alt="" aria-hidden="true" />
@@ -166,10 +173,10 @@
             </li>
           </ol>
           <div class="mosaic" aria-hidden="true">
-            <img src="assets/hito-1.png" alt="" />
-            <img src="assets/hito-2.png" alt="" />
-            <img src="assets/hito-3.png" alt="" />
-            <img src="assets/hito-4.png" alt="" />
+            <img src="assets/hito-1.png" alt="" loading="lazy" decoding="async" />
+            <img src="assets/hito-2.png" alt="" loading="lazy" decoding="async" />
+            <img src="assets/hito-3.png" alt="" loading="lazy" decoding="async" />
+            <img src="assets/hito-4.png" alt="" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
