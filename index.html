@@ -121,7 +121,7 @@
       </section>
 
       <!-- How it works -->
-      <section class="section" id="hitos" aria-labelledby="milestones-title">
+      <section class="section section--alt" id="hitos" aria-labelledby="milestones-title">
         <div class="intro">
           <h2 id="milestones-title">{milestones.title}</h2>
           <p>{milestones.lead}</p>
@@ -211,7 +211,7 @@
       </section>
 
       <!-- Plans -->
-      <section class="section" id="planes" aria-labelledby="plans-title">
+      <section class="section section--alt" id="planes" aria-labelledby="plans-title">
         <div class="intro">
           <h2 id="plans-title">{plans.title}</h2>
           <p>{plans.lead}</p>
@@ -446,10 +446,13 @@
     <!-- Footer -->
     <footer class="footer" role="contentinfo">
       <div class="footer__grid">
-        <a class="logo" href="#inicio" aria-label="{nav.home}">
-          <img class="logo__img" src="assets/logo.png" width="72" height="40" alt="" />
-          <span class="logo__text" aria-hidden="true"><span>ALLPA</span><span>TEK</span></span>
-        </a>
+        <div class="footer__brand">
+          <a class="logo" href="#inicio" aria-label="{nav.home}">
+            <img class="logo__img" src="assets/logo.png" width="72" height="40" alt="" />
+            <span class="logo__text" aria-hidden="true"><span>ALLPA</span><span>TEK</span></span>
+          </a>
+          <p>{hero.lead}</p>
+        </div>
         <nav aria-label="{footer.navAria}">
           <h3>{footer.nav}</h3>
           <ul>

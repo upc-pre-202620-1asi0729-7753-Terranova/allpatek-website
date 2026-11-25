@@ -571,6 +571,9 @@ ol {
   padding: 88px var(--space);
 }
 
+.section--alt {
+  background: var(--cream);
+}
 
 .intro {
   max-width: 800px;
@@ -1289,42 +1292,74 @@ ol {
 /* Footer */
 
 .footer {
-  padding: 48px var(--space) 36px;
-  background: #fafafa;
-  border-top: 1px solid #e5e7eb;
+  padding: 56px var(--space) 32px;
+  background: var(--cream);
+  border-top: 1.5px solid rgba(20, 45, 28, 0.1);
 }
 
 .footer__grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1.3fr 1fr 1fr 1fr;
+  gap: 48px;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.footer .logo__text {
+  font-size: 20px;
+}
+
+.footer__brand p {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 28ch;
 }
 
 .footer h3 {
   margin: 0 0 16px;
-  font-size: 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--green);
 }
 
 .footer ul {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 11px;
+  gap: 10px;
   font-size: 13px;
   color: var(--gray);
+}
+
+.footer ul a {
+  transition: color 0.2s;
+}
+
+.footer ul a:hover {
+  color: var(--green);
 }
 
 .footer address {
   font-style: normal;
 }
 
+.footer address li {
+  line-height: 1.5;
+}
+
 .footer__copy {
-  margin: 48px 0 0;
-  padding-top: 30px;
-  border-top: 1px solid #e5e7eb;
+  margin: 48px auto 0;
+  max-width: var(--max);
+  padding-top: 24px;
+  border-top: 1px solid rgba(20, 45, 28, 0.12);
   text-align: center;
-  font-size: 13px;
-  color: var(--gray);
+  font-size: 12px;
+  color: rgba(75, 85, 99, 0.7);
+  line-height: 1.6;
 }
 
 /* Responsive */
@@ -1379,11 +1414,16 @@ ol {
     grid-row: auto;
   }
 
-  /* Milestones, contact, footer */
+  /* Milestones, contact */
   .milestones,
-  .contact__inner,
-  .footer__grid {
+  .contact__inner {
     grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
   }
 
   /* Hero stats */
@@ -1435,6 +1475,12 @@ ol {
   .plan {
     width: 100%;
     max-width: 340px;
+  }
+
+  /* Footer */
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
 
   /* Team marquee — slightly smaller cards on mobile */
