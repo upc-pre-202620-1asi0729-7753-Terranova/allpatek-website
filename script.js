@@ -287,6 +287,18 @@ const MESSAGES = {
   },
 };
 
+// Legal PDFs available in each language
+const LEGAL_FILES = {
+  en_US: {
+    terms: "assets/legal/allpatek-terms-and-conditions-en.pdf",
+    privacy: "assets/legal/allpatek-privacy-policy-en.pdf",
+  },
+  es_419: {
+    terms: "assets/legal/allpatek-terminos-y-condiciones-es.pdf",
+    privacy: "assets/legal/allpatek-politica-de-privacidad-es.pdf",
+  },
+};
+
 let currentLang = DEFAULT_LANG;
 const KEY_RE = /\{([a-z0-9.]+)\}/gi;
 const ATTRS = ["placeholder", "aria-label", "alt", "title"];
@@ -341,6 +353,12 @@ function applyTranslations(lang) {
     if (!titleEl._i18nTpl) titleEl._i18nTpl = titleEl.textContent;
     document.title = fillKeys(titleEl._i18nTpl);
   }
+
+  // Point the legal links to the PDF in the active language
+  document.querySelectorAll("[data-legal]").forEach((link) => {
+    const file = LEGAL_FILES[lang][link.getAttribute("data-legal")];
+    if (file) link.setAttribute("href", file);
+  });
 
   document.querySelectorAll(".lang__btn").forEach((btn) => {
     const active = btn.getAttribute("data-lang") === lang;
