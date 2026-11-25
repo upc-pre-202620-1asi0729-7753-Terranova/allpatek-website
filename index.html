@@ -523,7 +523,27 @@
           </li>
         </ul>
       </div>
-      <p class="footer__copy">{footer.copy}</p>
+      <p class="footer__copy">
+        <span>{footer.rights}</span>
+        <span class="footer__sep" aria-hidden="true">|</span>
+        <a
+          class="footer__legal"
+          data-legal="terms"
+          href="assets/legal/allpatek-terms-and-conditions-en.pdf"
+          download
+          >{footer.terms}</a
+        >
+        <span class="footer__sep" aria-hidden="true">|</span>
+        <a
+          class="footer__legal"
+          data-legal="privacy"
+          href="assets/legal/allpatek-privacy-policy-en.pdf"
+          download
+          >{footer.privacy}</a
+        >
+        <span class="footer__sep" aria-hidden="true">|</span>
+        <span>{footer.complaints}</span>
+      </p>
     </footer>
     <script src="script.js"></script>
   </body>
