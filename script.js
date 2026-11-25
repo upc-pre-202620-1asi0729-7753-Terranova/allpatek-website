@@ -409,6 +409,12 @@ function initNavbar() {
     setMenuOpen(nav, menu, toggle, false);
     toggle.focus();
   });
+
+  document.addEventListener("click", (event) => {
+    if (!menu.classList.contains("is-open")) return;
+    if (nav.contains(event.target)) return;
+    setMenuOpen(nav, menu, toggle, false);
+  });
 }
 
 /* Contact form — same request riupa already uses with n8n */
