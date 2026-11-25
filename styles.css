@@ -991,28 +991,85 @@ ol {
   height: 100%;
   border: 0;
 }
-/* Team */
+/* Team — step-based carousel (JS-driven, no duplicates) */
 
-.team {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  justify-content: center;
-  list-style: none;
+.team-carousel {
+  --member-w: 300px;
+  --member-gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
 }
 
+.team-viewport {
+  overflow: hidden;
+  padding: 10px 2px;
+  /* Soft fade masks on edges */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+}
+
+.team-track {
+  display: flex;
+  gap: var(--member-gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  transition: transform 0.6s ease;
+  will-change: transform;
+}
+
+/* Dot indicators */
+.team-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.team-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(20, 45, 28, 0.2);
+  cursor: pointer;
+  transition: background 0.25s, transform 0.25s var(--ease-spring), width 0.25s;
+}
+
+.team-dot.is-active {
+  background: var(--green);
+  width: 24px;
+  border-radius: 999px;
+}
+
+.team-dot:hover:not(.is-active) {
+  background: rgba(20, 45, 28, 0.4);
+}
+
+/* Member cards */
 .member {
-  width: 220px;
+  width: var(--member-w);
+  flex-shrink: 0;
   overflow: hidden;
   background: var(--green-mid);
-  border-radius: 14px;
-  box-shadow: var(--shadow);
+  border: 1.5px solid rgba(52, 211, 153, 0.18);
+  border-radius: 20px;
+  box-shadow: var(--shadow-std);
   text-align: center;
+  transition: transform 0.25s var(--ease-spring), box-shadow 0.25s, border-color 0.2s;
+}
+
+.member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px -10px rgba(15, 42, 29, 0.32);
+  border-color: rgba(52, 211, 153, 0.4);
 }
 
 .member__media {
   position: relative;
-  height: 254px;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
 }
 
@@ -1020,41 +1077,44 @@ ol {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 18%;
+  object-position: center top;
 }
 
-.member:nth-child(1) .member__person {
-  object-position: 50% 12%;
-}
-
-.member:nth-child(2) .member__person {
-  object-position: 50% 18%;
-}
-
-.member:nth-child(3) .member__person {
-  object-position: 50% 16%;
-}
-
+/* Per-member photo positioning (1–5, no duplicates) */
+.member:nth-child(1) .member__person { object-position: 50% 12%; }
+.member:nth-child(2) .member__person { object-position: 50% 18%; }
+.member:nth-child(3) .member__person { object-position: 50% 16%; }
 .member:nth-child(4) .member__person {
   object-position: 50% 52%;
   transform: scale(2.15);
   transform-origin: 50% 48%;
 }
-
-.member:nth-child(5) .member__person {
-  object-position: 50% 18%;
-}
+.member:nth-child(5) .member__person { object-position: 50% 18%; }
 
 .member h3 {
-  margin: 10px 8px 0;
+  margin: 12px 8px 0;
   color: var(--mint);
-  font-size: 16px;
+  font-size: 15px;
+  letter-spacing: -0.01em;
 }
 
 .member p {
-  margin: 4px 8px 14px;
-  color: var(--white);
-  font-size: 13px;
+  margin: 4px 8px 16px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 12px;
+}
+
+/* Responsive member width */
+@media (max-width: 860px) {
+  .team-carousel {
+    --member-w: 260px;
+  }
+}
+
+@media (max-width: 600px) {
+  .team-carousel {
+    --member-w: calc(100vw - 64px);
+  }
 }
 
 /* Contact form */
@@ -1375,6 +1435,11 @@ ol {
   .plan {
     width: 100%;
     max-width: 340px;
+  }
+
+  /* Team marquee — slightly smaller cards on mobile */
+  .member {
+    width: 160px;
   }
 }
 

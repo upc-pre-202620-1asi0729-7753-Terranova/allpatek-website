@@ -318,43 +318,48 @@
           <h2 id="team-title">{team.title}</h2>
           <p>{team.lead}</p>
         </div>
-        <ul class="team" role="list">
-          <li class="member">
-            <div class="member__media">
-              <img class="member__person" src="assets/foto-abigail.png" alt="Abigail Nadhim" />
-            </div>
-            <h3>Abigail Nadhim</h3>
-            <p>{team.role}</p>
-          </li>
-          <li class="member">
-            <div class="member__media">
-              <img class="member__person" src="assets/foto-alexander.jpg" alt="Alexander Sebastián" />
-            </div>
-            <h3>Alexander Sebastián</h3>
-            <p>{team.role}</p>
-          </li>
-          <li class="member">
-            <div class="member__media">
-              <img class="member__person" src="assets/foto-andree.jpg" alt="Mel Andree" />
-            </div>
-            <h3>Mel Andree</h3>
-            <p>{team.role}</p>
-          </li>
-          <li class="member">
-            <div class="member__media">
-              <img class="member__person" src="assets/foto_nayely.jpg" alt="Nayely Macarena" />
-            </div>
-            <h3>Nayely Macarena</h3>
-            <p>{team.role}</p>
-          </li>
-          <li class="member">
-            <div class="member__media">
-              <img class="member__person" src="assets/foto-miguel.jpg" alt="Miguel Angel" />
-            </div>
-            <h3>Miguel Angel</h3>
-            <p>{team.role}</p>
-          </li>
-        </ul>
+        <div class="team-carousel" role="region" aria-label="{team.title}">
+          <div class="team-viewport">
+            <ul class="team-track" role="list">
+              <li class="member" role="listitem">
+                <div class="member__media">
+                  <img class="member__person" src="assets/foto-abigail.png" alt="Abigail Nadhim" />
+                </div>
+                <h3>Abigail Nadhim</h3>
+                <p>{team.role}</p>
+              </li>
+              <li class="member" role="listitem">
+                <div class="member__media">
+                  <img class="member__person" src="assets/foto-alexander.jpg" alt="Alexander Sebastián" />
+                </div>
+                <h3>Alexander Sebastián</h3>
+                <p>{team.role}</p>
+              </li>
+              <li class="member" role="listitem">
+                <div class="member__media">
+                  <img class="member__person" src="assets/foto-andree.jpg" alt="Mel Andree" />
+                </div>
+                <h3>Mel Andree</h3>
+                <p>{team.role}</p>
+              </li>
+              <li class="member" role="listitem">
+                <div class="member__media">
+                  <img class="member__person" src="assets/foto_nayely.jpg" alt="Nayely Macarena" />
+                </div>
+                <h3>Nayely Macarena</h3>
+                <p>{team.role}</p>
+              </li>
+              <li class="member" role="listitem">
+                <div class="member__media">
+                  <img class="member__person" src="assets/foto-miguel.jpg" alt="Miguel Angel" />
+                </div>
+                <h3>Miguel Angel</h3>
+                <p>{team.role}</p>
+              </li>
+            </ul>
+          </div>
+          <div class="team-dots" role="group" aria-label="Team carousel navigation"></div>
+        </div>
         <div class="product-video">
           <div class="intro">
             <h3 id="team-video-title">{teamVideo.title}</h3>

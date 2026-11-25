@@ -450,6 +450,102 @@ function initContactForm() {
   });
 }
 
+/* ── Team step-carousel ─────────────────────────────────────── */
+function initTeamCarousel() {
+  const carousel = document.querySelector(".team-carousel");
+  if (!carousel) return;
+
+  const viewport = carousel.querySelector(".team-viewport");
+  const track    = carousel.querySelector(".team-track");
+  const dotsWrap = carousel.querySelector(".team-dots");
+  const members  = [...track.querySelectorAll(".member")];
+  const total    = members.length;
+
+  let current   = 0;
+  let autoTimer = null;
+  let isHovered = false;
+  let dots      = [];
+
+  /* ── helpers ── */
+  function getStep() {
+    const gap = parseInt(getComputedStyle(track).gap) || 24;
+    return members[0].offsetWidth + gap;
+  }
+
+  function getMaxIndex() {
+    // How many steps until the last card is fully visible
+    const viewW = viewport.clientWidth;
+    const step  = getStep();
+    return Math.max(0, Math.ceil((total * step - (parseInt(getComputedStyle(track).gap) || 24) - viewW) / step));
+  }
+
+  /* ── dots ── */
+  function buildDots() {
+    if (!dotsWrap) return;
+    dotsWrap.innerHTML = "";
+    dots = [];
+    const count = getMaxIndex() + 1;
+    for (let i = 0; i < count; i++) {
+      const btn = document.createElement("button");
+      btn.className = "team-dot" + (i === 0 ? " is-active" : "");
+      btn.setAttribute("aria-label", `Slide ${i + 1} of ${count}`);
+      btn.addEventListener("click", () => { stopAuto(); goTo(i); startAuto(); });
+      dotsWrap.appendChild(btn);
+      dots.push(btn);
+    }
+  }
+
+  function updateDots(idx) {
+    dots.forEach((d, i) => d.classList.toggle("is-active", i === idx));
+  }
+
+  /* ── navigation ── */
+  function goTo(index) {
+    const max = getMaxIndex();
+    current = Math.max(0, Math.min(index, max));
+    track.style.transform = `translateX(-${current * getStep()}px)`;
+    updateDots(current);
+  }
+
+  function next() {
+    goTo(current >= getMaxIndex() ? 0 : current + 1);
+  }
+
+  /* ── auto-play ── */
+  function startAuto() {
+    if (!isHovered && !autoTimer) {
+      autoTimer = setInterval(next, 3200);
+    }
+  }
+
+  function stopAuto() {
+    clearInterval(autoTimer);
+    autoTimer = null;
+  }
+
+  /* ── events ── */
+  carousel.addEventListener("mouseenter", () => { isHovered = true;  stopAuto(); });
+  carousel.addEventListener("mouseleave", () => { isHovered = false; startAuto(); });
+
+  // Touch swipe support
+  let touchStartX = 0;
+  viewport.addEventListener("touchstart", (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  viewport.addEventListener("touchend",   (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) { stopAuto(); goTo(diff > 0 ? current + 1 : current - 1); startAuto(); }
+  }, { passive: true });
+
+  // Rebuild on resize (card widths may change)
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => { buildDots(); goTo(Math.min(current, getMaxIndex())); }, 160);
+  });
+
+  buildDots();
+  startAuto();
+}
+
 /* ── Active nav link (IntersectionObserver) ─────────────────── */
 function initActiveNav() {
   const sections = [...document.querySelectorAll("section[id]")];
@@ -482,5 +578,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initI18n();
   initNavbar();
   initContactForm();
+  initTeamCarousel();
   initActiveNav();
 });
