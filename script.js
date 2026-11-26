@@ -448,8 +448,6 @@ function initContactForm() {
   const button = form?.querySelector('[type="submit"]');
   if (!form || !statusEl || !button) return;
 
-  const label = [...button.childNodes].find((node) => node.nodeType === Node.TEXT_NODE);
-
   form.querySelectorAll("input").forEach((input) => {
     input.addEventListener("input", () => {
       if (isValidField(input)) {
@@ -485,7 +483,8 @@ function initContactForm() {
     }
 
     button.disabled = true;
-    if (label) label.nodeValue = t("contact.sending");
+    button.setAttribute("data-i18n", "contact.sending");
+    button.textContent = t("contact.sending");
     statusEl.textContent = "";
     delete statusEl.dataset.statusKey;
 
@@ -513,7 +512,8 @@ function initContactForm() {
       console.error("Error:", error);
     } finally {
       button.disabled = false;
-      if (label) label.nodeValue = t("contact.submit");
+      button.setAttribute("data-i18n", "contact.submit");
+      button.textContent = t("contact.submit");
     }
   });
 }
