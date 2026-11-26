@@ -419,7 +419,7 @@ function initNavbar() {
   });
 }
 
-/* Contact form — same request riupa already uses with n8n */
+/* Contact form */
 const N8N_WEBHOOK_URL = "https://foyer-phonics-pyromania.ngrok-free.dev/webhook/733acc37-f55b-4749-b3b5-e9cd7ad7c334";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_PATTERN = /^\+?[\d\s().-]{7,20}$/;
@@ -428,7 +428,10 @@ function isValidField(input) {
   const value = input.value.trim();
   if (!value) return false;
   if (input.type === "email") return EMAIL_PATTERN.test(value);
-  if (input.type === "tel") return PHONE_PATTERN.test(value);
+  if (input.type === "tel") {
+    const digits = value.replace(/\D/g, "");
+    return PHONE_PATTERN.test(value) && digits.length >= 7 && digits.length <= 15;
+  }
   if (input.type === "text") return value.length >= 2;
   return true;
 }
