@@ -532,7 +532,8 @@ function initTeamCarousel() {
 
   let current   = 0;
   let autoTimer = null;
-  let isPaused  = false;
+  let pointerInside = false;
+  let focusInside = false;
   let dots      = [];
 
   carousel.setAttribute("tabindex", "0");
@@ -594,7 +595,7 @@ function initTeamCarousel() {
 
   /* ── auto-play ── */
   function startAuto() {
-    if (reduceMotion || isPaused || autoTimer) return;
+    if (reduceMotion || pointerInside || focusInside || autoTimer) return;
     autoTimer = setInterval(next, 3200);
   }
 
@@ -603,21 +604,22 @@ function initTeamCarousel() {
     autoTimer = null;
   }
 
-  function pause() {
-    isPaused = true;
+  carousel.addEventListener("mouseenter", () => {
+    pointerInside = true;
     stopAuto();
-  }
-
-  function resume() {
-    isPaused = false;
+  });
+  carousel.addEventListener("mouseleave", () => {
+    pointerInside = false;
     startAuto();
-  }
-
-  /* ── events ── */
-  carousel.addEventListener("mouseenter", pause);
-  carousel.addEventListener("mouseleave", resume);
-  carousel.addEventListener("focusin", pause);
-  carousel.addEventListener("focusout", resume);
+  });
+  carousel.addEventListener("focusin", () => {
+    focusInside = true;
+    stopAuto();
+  });
+  carousel.addEventListener("focusout", (event) => {
+    focusInside = carousel.contains(event.relatedTarget);
+    startAuto();
+  });
   carousel.addEventListener("keydown", (event) => {
     if (event.key === "ArrowRight") {
       event.preventDefault();
