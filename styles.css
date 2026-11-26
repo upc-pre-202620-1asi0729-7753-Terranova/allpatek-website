@@ -1031,23 +1031,33 @@ ol {
 }
 
 .team-dot {
-  width: 8px;
-  height: 8px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
   padding: 0;
   border: none;
   border-radius: 50%;
-  background: rgba(20, 45, 28, 0.2);
+  background: transparent;
   cursor: pointer;
-  transition: background 0.25s, transform 0.25s var(--ease-spring), width 0.25s;
 }
 
-.team-dot.is-active {
+.team-dot::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(20, 45, 28, 0.2);
+  transition: background 0.25s, width 0.25s;
+}
+
+.team-dot.is-active::before {
   background: var(--green);
   width: 24px;
   border-radius: 999px;
 }
 
-.team-dot:hover:not(.is-active) {
+.team-dot:hover:not(.is-active)::before {
   background: rgba(20, 45, 28, 0.4);
 }
 
@@ -1518,12 +1528,20 @@ ol {
     display: inline-flex;
   }
 
-  .nav__cta {
+  .nav .nav__cta {
     display: none;
+    order: 4;
+    width: 100%;
+  }
+
+  .nav.is-open .nav__cta {
+    display: inline-flex;
   }
 
   .nav__links {
     display: none;
+    order: 3;
+    flex: 0 0 100%;
     width: 100%;
     flex-direction: column;
   }
@@ -1641,6 +1659,7 @@ ol {
   }
 
   .team-track,
+  .team-dot::before,
   .card,
   .plan,
   .member,
@@ -1650,6 +1669,17 @@ ol {
   .nav {
     transition: none;
   }
+}
+
+.coming__back {
+  color: var(--cream);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.coming__back:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 4px;
 }
 
 .team-carousel:focus-visible {

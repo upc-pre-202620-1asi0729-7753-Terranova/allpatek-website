@@ -20,11 +20,12 @@ const MESSAGES = {
     "nav.contact": "Contact",
     "nav.cta": "Get Started",
     "lang.aria": "Language",
-    "coming.meta": "ALLPATEK — Coming soon",
+    "coming.meta": "ALLPATEK — Web platform",
     "coming.kicker": "Platform",
-    "coming.title": "The web platform will be here very soon",
-    "coming.lead": "Managed plots, milestone-protected payments, and live harvest traceability — launching shortly.",
+    "coming.title": "Access the ALLPATEK web platform",
+    "coming.lead": "Explore plots, contracts, climate alerts, and milestone tracking.",
     "coming.back": "Back to landing",
+    "coming.open": "Open web platform",
 
     "hero.title": "Guaranteed agricultural production, from land to your business",
     "hero.lead":
@@ -167,11 +168,12 @@ const MESSAGES = {
     "nav.contact": "Contacto",
     "nav.cta": "Empieza Ahora",
     "lang.aria": "Idioma",
-    "coming.meta": "ALLPATEK — Muy pronto",
+    "coming.meta": "ALLPATEK — Plataforma web",
     "coming.kicker": "Plataforma",
-    "coming.title": "Aquí estará la plataforma web muy pronto",
-    "coming.lead": "Parcelas gestionadas, pagos protegidos por hitos y trazabilidad de cosecha en vivo — muy pronto.",
+    "coming.title": "Accede a la plataforma web de ALLPATEK",
+    "coming.lead": "Consulta parcelas, contratos, alertas climáticas y el seguimiento de hitos.",
     "coming.back": "Volver al landing",
+    "coming.open": "Acceder a la plataforma",
 
     "hero.title": "Producción agrícola garantizada, de la tierra a tu negocio",
     "hero.lead":
@@ -314,7 +316,6 @@ const LEGAL_FILES = {
 };
 
 let currentLang = DEFAULT_LANG;
-const KEY_RE = /\{([a-z0-9.]+)\}/gi;
 const ATTRS = ["placeholder", "aria-label", "alt", "title", "content"];
 
 function $(selector, root = document) {
@@ -325,48 +326,22 @@ function t(key) {
   return MESSAGES[currentLang][key] || MESSAGES[DEFAULT_LANG][key] || key;
 }
 
-// Replace {key} placeholders with the active language
-function fillKeys(text) {
-  return text.replace(KEY_RE, (_, key) => t(key));
-}
-
 function applyTranslations(lang) {
-  if (!MESSAGES[lang]) return;
+  if (!Object.hasOwn(MESSAGES, lang)) return;
   currentLang = lang;
-  localStorage.setItem(STORAGE_KEY, lang);
+  try {
+    localStorage.setItem(STORAGE_KEY, lang);
+  } catch {}
   document.documentElement.lang = lang === "es_419" ? "es-419" : "en";
 
-  // Keep the original {key} template so the language can be switched
-  document.querySelectorAll("body, body *").forEach((el) => {
-    if (el.closest("script, style")) return;
-
-    el.childNodes.forEach((node) => {
-      if (node.nodeType !== Node.TEXT_NODE) return;
-      if (!node._i18nTpl && !/\{[a-z0-9.]+\}/i.test(node.nodeValue)) return;
-      if (!node._i18nTpl) node._i18nTpl = node.nodeValue;
-      node.nodeValue = fillKeys(node._i18nTpl);
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    el.textContent = t(el.getAttribute("data-i18n"));
+  });
+  ATTRS.forEach((attr) => {
+    document.querySelectorAll(`[data-i18n-${attr}]`).forEach((el) => {
+      el.setAttribute(attr, t(el.getAttribute(`data-i18n-${attr}`)));
     });
   });
-
-  // Translate attributes that may contain {key}
-  document.querySelectorAll("body *, head meta").forEach((el) => {
-    ATTRS.forEach((attr) => {
-      const current = el.getAttribute(attr);
-      if (!current) return;
-
-      const storeKey = `_i18n_${attr}`;
-      if (!el[storeKey] && !/\{[a-z0-9.]+\}/i.test(current)) return;
-      if (!el[storeKey]) el[storeKey] = current;
-      el.setAttribute(attr, fillKeys(el[storeKey]));
-    });
-  });
-
-  // Translate the document title
-  const titleEl = document.querySelector("title");
-  if (titleEl) {
-    if (!titleEl._i18nTpl) titleEl._i18nTpl = titleEl.textContent;
-    document.title = fillKeys(titleEl._i18nTpl);
-  }
 
   // Point the legal links to the PDF in the active language
   document.querySelectorAll("[data-legal]").forEach((link) => {
@@ -387,8 +362,11 @@ function applyTranslations(lang) {
 }
 
 function initI18n() {
-  const saved = localStorage.getItem(STORAGE_KEY);
-  const lang = MESSAGES[saved] ? saved : DEFAULT_LANG;
+  let saved = null;
+  try {
+    saved = localStorage.getItem(STORAGE_KEY);
+  } catch {}
+  const lang = Object.hasOwn(MESSAGES, saved) ? saved : DEFAULT_LANG;
   applyTranslations(lang);
 
   document.querySelectorAll(".lang__btn").forEach((btn) => {
@@ -405,7 +383,7 @@ function setMenuOpen(nav, menu, toggle, isOpen) {
   menu.classList.toggle("is-open", isOpen);
   nav.classList.toggle("is-open", isOpen);
   toggle.setAttribute("aria-expanded", String(isOpen));
-  toggle["_i18n_aria-label"] = isOpen ? "{nav.menuClose}" : "{nav.menuAria}";
+  toggle.setAttribute("data-i18n-aria-label", isOpen ? "nav.menuClose" : "nav.menuAria");
   toggle.setAttribute("aria-label", t(isOpen ? "nav.menuClose" : "nav.menuAria"));
 }
 
@@ -443,7 +421,7 @@ function initNavbar() {
   });
 }
 
-/* Contact form — same request riupa already uses with n8n */
+/* Contact form */
 const N8N_WEBHOOK_URL = "https://foyer-phonics-pyromania.ngrok-free.dev/webhook/733acc37-f55b-4749-b3b5-e9cd7ad7c334";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_PATTERN = /^\+?[\d\s().-]{7,20}$/;
@@ -452,7 +430,10 @@ function isValidField(input) {
   const value = input.value.trim();
   if (!value) return false;
   if (input.type === "email") return EMAIL_PATTERN.test(value);
-  if (input.type === "tel") return PHONE_PATTERN.test(value);
+  if (input.type === "tel") {
+    const digits = value.replace(/\D/g, "");
+    return PHONE_PATTERN.test(value) && digits.length >= 7 && digits.length <= 15;
+  }
   if (input.type === "text") return value.length >= 2;
   return true;
 }
@@ -469,11 +450,13 @@ function initContactForm() {
   const button = form?.querySelector('[type="submit"]');
   if (!form || !statusEl || !button) return;
 
-  const label = [...button.childNodes].find((node) => node.nodeType === Node.TEXT_NODE);
-
   form.querySelectorAll("input").forEach((input) => {
     input.addEventListener("input", () => {
-      if (isValidField(input)) input.closest("label")?.classList.remove("is-invalid");
+      if (isValidField(input)) {
+        input.closest("label")?.classList.remove("is-invalid");
+        input.removeAttribute("aria-invalid");
+        input.removeAttribute("aria-describedby");
+      }
     });
   });
 
@@ -481,19 +464,29 @@ function initContactForm() {
     event.preventDefault();
 
     const fields = [...form.querySelectorAll("input")];
-    const isValid = fields.every((input) => {
+    const fieldValidity = fields.map((input) => {
       const ok = isValidField(input);
       input.closest("label")?.classList.toggle("is-invalid", !ok);
+      if (ok) {
+        input.removeAttribute("aria-invalid");
+        input.removeAttribute("aria-describedby");
+      } else {
+        input.setAttribute("aria-invalid", "true");
+        input.setAttribute("aria-describedby", "contact-status");
+      }
       return ok;
     });
+    const isValid = fieldValidity.every(Boolean);
 
     if (!isValid) {
+      fields[fieldValidity.indexOf(false)].focus();
       showFormStatus(statusEl, "contact.error", "error");
       return;
     }
 
     button.disabled = true;
-    if (label) label.nodeValue = t("contact.sending");
+    button.setAttribute("data-i18n", "contact.sending");
+    button.textContent = t("contact.sending");
     statusEl.textContent = "";
     delete statusEl.dataset.statusKey;
 
@@ -521,7 +514,8 @@ function initContactForm() {
       console.error("Error:", error);
     } finally {
       button.disabled = false;
-      if (label) label.nodeValue = t("contact.submit");
+      button.setAttribute("data-i18n", "contact.submit");
+      button.textContent = t("contact.submit");
     }
   });
 }
@@ -536,11 +530,13 @@ function initTeamCarousel() {
   const dotsWrap = carousel.querySelector(".team-dots");
   const members  = [...track.querySelectorAll(".member")];
   const total    = members.length;
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let reduceMotion = motionPreference.matches;
 
   let current   = 0;
   let autoTimer = null;
-  let isPaused  = false;
+  let pointerInside = false;
+  let focusInside = false;
   let dots      = [];
 
   carousel.setAttribute("tabindex", "0");
@@ -574,6 +570,7 @@ function initTeamCarousel() {
       btn.type = "button";
       btn.className = "team-dot" + (i === current ? " is-active" : "");
       btn.setAttribute("aria-label", slideLabel(i, count));
+      btn.setAttribute("aria-pressed", String(i === current));
       btn.addEventListener("click", () => { stopAuto(); goTo(i); startAuto(); });
       dotsWrap.appendChild(btn);
       dots.push(btn);
@@ -585,6 +582,7 @@ function initTeamCarousel() {
     dots.forEach((d, i) => {
       d.classList.toggle("is-active", i === idx);
       d.setAttribute("aria-label", slideLabel(i, count));
+      d.setAttribute("aria-pressed", String(i === idx));
     });
   }
 
@@ -602,7 +600,7 @@ function initTeamCarousel() {
 
   /* ── auto-play ── */
   function startAuto() {
-    if (reduceMotion || isPaused || autoTimer) return;
+    if (reduceMotion || pointerInside || focusInside || autoTimer) return;
     autoTimer = setInterval(next, 3200);
   }
 
@@ -611,21 +609,22 @@ function initTeamCarousel() {
     autoTimer = null;
   }
 
-  function pause() {
-    isPaused = true;
+  carousel.addEventListener("mouseenter", () => {
+    pointerInside = true;
     stopAuto();
-  }
-
-  function resume() {
-    isPaused = false;
+  });
+  carousel.addEventListener("mouseleave", () => {
+    pointerInside = false;
     startAuto();
-  }
-
-  /* ── events ── */
-  carousel.addEventListener("mouseenter", pause);
-  carousel.addEventListener("mouseleave", resume);
-  carousel.addEventListener("focusin", pause);
-  carousel.addEventListener("focusout", resume);
+  });
+  carousel.addEventListener("focusin", () => {
+    focusInside = true;
+    stopAuto();
+  });
+  carousel.addEventListener("focusout", (event) => {
+    focusInside = carousel.contains(event.relatedTarget);
+    startAuto();
+  });
   carousel.addEventListener("keydown", (event) => {
     if (event.key === "ArrowRight") {
       event.preventDefault();
@@ -644,6 +643,12 @@ function initTeamCarousel() {
     const diff = touchStartX - e.changedTouches[0].clientX;
     if (Math.abs(diff) > 40) { stopAuto(); goTo(diff > 0 ? current + 1 : current - 1); startAuto(); }
   }, { passive: true });
+
+  motionPreference.addEventListener("change", (event) => {
+    reduceMotion = event.matches;
+    if (reduceMotion) stopAuto();
+    else startAuto();
+  });
 
   let resizeTimer;
   window.addEventListener("resize", () => {

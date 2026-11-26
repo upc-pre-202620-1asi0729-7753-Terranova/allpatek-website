@@ -19,7 +19,7 @@ You can also open `index.html` directly in the browser.
 ## Pages
 
 - `index.html` — marketing landing (hero, services, milestones, testimonials, plans, team carousel, contact form, footer)
-- `plataforma.html` — coming-soon page for the web platform
+- `plataforma.html` — access to the published web platform
 
 The navbar **Get Started** button opens the production web app at `https://terranova-allpatek.netlify.app/`.
 
