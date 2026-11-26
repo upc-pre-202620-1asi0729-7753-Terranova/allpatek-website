@@ -460,11 +460,12 @@ function initContactForm() {
     event.preventDefault();
 
     const fields = [...form.querySelectorAll("input")];
-    const isValid = fields.every((input) => {
+    const fieldValidity = fields.map((input) => {
       const ok = isValidField(input);
       input.closest("label")?.classList.toggle("is-invalid", !ok);
       return ok;
     });
+    const isValid = fieldValidity.every(Boolean);
 
     if (!isValid) {
       showFormStatus(statusEl, "contact.error", "error");
