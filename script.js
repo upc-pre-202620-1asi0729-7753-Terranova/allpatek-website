@@ -528,7 +528,8 @@ function initTeamCarousel() {
   const dotsWrap = carousel.querySelector(".team-dots");
   const members  = [...track.querySelectorAll(".member")];
   const total    = members.length;
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let reduceMotion = motionPreference.matches;
 
   let current   = 0;
   let autoTimer = null;
@@ -640,6 +641,12 @@ function initTeamCarousel() {
     const diff = touchStartX - e.changedTouches[0].clientX;
     if (Math.abs(diff) > 40) { stopAuto(); goTo(diff > 0 ? current + 1 : current - 1); startAuto(); }
   }, { passive: true });
+
+  motionPreference.addEventListener("change", (event) => {
+    reduceMotion = event.matches;
+    if (reduceMotion) stopAuto();
+    else startAuto();
+  });
 
   let resizeTimer;
   window.addEventListener("resize", () => {

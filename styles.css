@@ -1659,6 +1659,7 @@ ol {
   }
 
   .team-track,
+  .team-dot::before,
   .card,
   .plan,
   .member,
