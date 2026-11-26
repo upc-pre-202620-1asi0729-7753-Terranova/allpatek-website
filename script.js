@@ -314,7 +314,6 @@ const LEGAL_FILES = {
 };
 
 let currentLang = DEFAULT_LANG;
-const KEY_RE = /\{([a-z0-9.]+)\}/gi;
 const ATTRS = ["placeholder", "aria-label", "alt", "title", "content"];
 
 function $(selector, root = document) {
@@ -323,11 +322,6 @@ function $(selector, root = document) {
 
 function t(key) {
   return MESSAGES[currentLang][key] || MESSAGES[DEFAULT_LANG][key] || key;
-}
-
-// Replace {key} placeholders with the active language
-function fillKeys(text) {
-  return text.replace(KEY_RE, (_, key) => t(key));
 }
 
 function applyTranslations(lang) {
@@ -346,38 +340,6 @@ function applyTranslations(lang) {
       el.setAttribute(attr, t(el.getAttribute(`data-i18n-${attr}`)));
     });
   });
-
-  // Keep the original {key} template so the language can be switched
-  document.querySelectorAll("body, body *").forEach((el) => {
-    if (el.closest("script, style")) return;
-
-    el.childNodes.forEach((node) => {
-      if (node.nodeType !== Node.TEXT_NODE) return;
-      if (!node._i18nTpl && !/\{[a-z0-9.]+\}/i.test(node.nodeValue)) return;
-      if (!node._i18nTpl) node._i18nTpl = node.nodeValue;
-      node.nodeValue = fillKeys(node._i18nTpl);
-    });
-  });
-
-  // Translate attributes that may contain {key}
-  document.querySelectorAll("body *, head meta").forEach((el) => {
-    ATTRS.forEach((attr) => {
-      const current = el.getAttribute(attr);
-      if (!current) return;
-
-      const storeKey = `_i18n_${attr}`;
-      if (!el[storeKey] && !/\{[a-z0-9.]+\}/i.test(current)) return;
-      if (!el[storeKey]) el[storeKey] = current;
-      el.setAttribute(attr, fillKeys(el[storeKey]));
-    });
-  });
-
-  // Translate the document title
-  const titleEl = document.querySelector("title");
-  if (titleEl) {
-    if (!titleEl._i18nTpl) titleEl._i18nTpl = titleEl.textContent;
-    document.title = fillKeys(titleEl._i18nTpl);
-  }
 
   // Point the legal links to the PDF in the active language
   document.querySelectorAll("[data-legal]").forEach((link) => {
@@ -419,7 +381,7 @@ function setMenuOpen(nav, menu, toggle, isOpen) {
   menu.classList.toggle("is-open", isOpen);
   nav.classList.toggle("is-open", isOpen);
   toggle.setAttribute("aria-expanded", String(isOpen));
-  toggle["_i18n_aria-label"] = isOpen ? "{nav.menuClose}" : "{nav.menuAria}";
+  toggle.setAttribute("data-i18n-aria-label", isOpen ? "nav.menuClose" : "nav.menuAria");
   toggle.setAttribute("aria-label", t(isOpen ? "nav.menuClose" : "nav.menuAria"));
 }
 
