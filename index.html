@@ -21,12 +21,12 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#main">{a11y.skip}</a>
+    <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to main content</a>
 
     <!-- Header -->
     <header class="site-header">
-      <nav class="nav" aria-label="{nav.aria}">
-        <a class="logo" href="#inicio" aria-label="{nav.home}">
+      <nav class="nav" aria-label="Primary" data-i18n-aria-label="nav.aria">
+        <a class="logo" href="#inicio" aria-label="ALLPATEK home" data-i18n-aria-label="nav.home">
           <img class="logo__img" src="assets/logo.png" width="72" height="40" alt="" />
           <span class="logo__text" aria-hidden="true"><span>ALLPA</span><span>TEK</span></span>
         </a>
@@ -36,21 +36,21 @@
           type="button"
           aria-expanded="false"
           aria-controls="nav-menu"
-          aria-label="{nav.menuAria}"
-        >
-          {nav.menu}
+          aria-label="Open menu" data-i18n-aria-label="nav.menuAria"
+         data-i18n="nav.menu">
+          Menu
         </button>
 
         <ul class="nav__links" id="nav-menu" role="list">
-          <li><a href="#servicios">{nav.services}</a></li>
-          <li><a href="#hitos">{nav.how}</a></li>
-          <li><a href="#testimonios">{nav.reviews}</a></li>
-          <li><a href="#planes">{nav.plans}</a></li>
-          <li><a href="#equipo">{nav.team}</a></li>
-          <li><a href="#contacto">{nav.contact}</a></li>
+          <li><a href="#servicios" data-i18n="nav.services">Services</a></li>
+          <li><a href="#hitos" data-i18n="nav.how">How it works</a></li>
+          <li><a href="#testimonios" data-i18n="nav.reviews">Testimonials</a></li>
+          <li><a href="#planes" data-i18n="nav.plans">Plans</a></li>
+          <li><a href="#equipo" data-i18n="nav.team">Team</a></li>
+          <li><a href="#contacto" data-i18n="nav.contact">Contact</a></li>
         </ul>
 
-        <div class="lang" role="group" aria-label="{lang.aria}">
+        <div class="lang" role="group" aria-label="Language" data-i18n-aria-label="lang.aria">
           <button type="button" class="lang__btn is-active" data-lang="en_US" aria-pressed="true">
             EN
           </button>
@@ -59,7 +59,7 @@
           </button>
         </div>
 
-        <a class="btn btn--gold btn--sm nav__cta" href="https://terranova-allpatek.netlify.app/" target="_blank" rel="noopener noreferrer">{nav.cta}</a>
+        <a class="btn btn--gold btn--sm nav__cta" href="https://terranova-allpatek.netlify.app/" target="_blank" rel="noopener noreferrer" data-i18n="nav.cta">Get Started</a>
       </nav>
     </header>
 
@@ -68,25 +68,25 @@
       <section class="hero" id="inicio" aria-labelledby="hero-title">
         <img class="hero__bg" src="assets/hero.png" alt="" role="presentation" fetchpriority="high" decoding="async" />
         <div class="hero__content">
-          <h1 id="hero-title">{hero.title}</h1>
-          <p>{hero.lead}</p>
-          <a class="btn btn--gold btn--lg" href="#servicios">{hero.cta}</a>
-          <ul class="stats" role="list" aria-label="{hero.statsAria}">
+          <h1 id="hero-title" data-i18n="hero.title">Guaranteed agricultural production, from land to your business</h1>
+          <p data-i18n="hero.lead">We connect buyers with farmers through managed plots, milestone-protected payments, and real-time traceability.</p>
+          <a class="btn btn--gold btn--lg" href="#servicios" data-i18n="hero.cta">Quote a Plot</a>
+          <ul class="stats" role="list" aria-label="Key metrics" data-i18n-aria-label="hero.statsAria">
             <li>
               <strong>100%</strong>
-              <span>{hero.stat1}</span>
+              <span data-i18n="hero.stat1">Payments protected in escrow</span>
             </li>
             <li>
               <strong>0%</strong>
-              <span>{hero.stat2}</span>
+              <span data-i18n="hero.stat2">Risk of scam or financial fraud</span>
             </li>
             <li>
               <strong>15+</strong>
-              <span>{hero.stat3}</span>
+              <span data-i18n="hero.stat3">Hectares under traceable management</span>
             </li>
             <li>
               <strong>25%</strong>
-              <span>{hero.stat4}</span>
+              <span data-i18n="hero.stat4">Average unit cost savings</span>
             </li>
           </ul>
         </div>
@@ -95,35 +95,35 @@
       <!-- Services -->
       <section class="section" id="servicios" aria-labelledby="services-title">
         <div class="intro">
-          <h2 id="services-title">{services.title}</h2>
-          <p>{services.lead}</p>
+          <h2 id="services-title" data-i18n="services.title">Guaranteed agricultural production, from land to your business</h2>
+          <p data-i18n="services.lead">We connect buyers with farmers through managed plots, milestone-protected payments, and real-time traceability.</p>
         </div>
         <div class="features" role="list">
           <article class="card" role="listitem">
             <img class="icon icon--lg" src="assets/icon-parcelas.svg" width="50" height="50" alt="" aria-hidden="true" />
-            <h3>{services.card1.title}</h3>
-            <p>{services.card1.text}</p>
+            <h3 data-i18n="services.card1.title">Plot and Land Selection</h3>
+            <p data-i18n="services.card1.text">Explore verified plots, filter by soil type, geographic zone, and crop capacity to customize your production plan.</p>
           </article>
           <figure class="photo photo--tall">
-            <img src="assets/feature-fields.png" alt="{services.img1}" loading="lazy" decoding="async" />
+            <img src="assets/feature-fields.png" alt="Agricultural plots in production" data-i18n-alt="services.img1" loading="lazy" decoding="async" />
           </figure>
           <article class="card card--dark" role="listitem">
             <img class="icon icon--lg" src="assets/icon-trazabilidad.svg" width="50" height="50" alt="" aria-hidden="true" />
-            <h3>{services.card2.title}</h3>
-            <p>{services.card2.text}</p>
+            <h3 data-i18n="services.card2.title">Real-Time Traceability and Inspection</h3>
+            <p data-i18n="services.card2.text">Access photographic reports, input notes, and field progress validated by both parties.</p>
           </article>
           <figure class="photo">
-            <img src="assets/feature-sunset.png" alt="{services.img2}" loading="lazy" decoding="async" />
+            <img src="assets/feature-sunset.png" alt="Fields at sunset" data-i18n-alt="services.img2" loading="lazy" decoding="async" />
           </figure>
           <article class="card card--dark" role="listitem">
             <img class="icon icon--lg" src="assets/icon-fondos.svg" width="50" height="50" alt="" aria-hidden="true" />
-            <h3>{services.card3.title}</h3>
-            <p>{services.card3.text}</p>
+            <h3 data-i18n="services.card3.title">Funds Protected in Escrow</h3>
+            <p data-i18n="services.card3.text">Your capital stays secure in a financial vault and is released progressively only as milestones are met.</p>
           </article>
           <article class="card card--wide" role="listitem">
             <img class="icon icon--lg" src="assets/icon-trazabilidad.svg" width="50" height="50" alt="" aria-hidden="true" />
-            <h3>{services.card4.title}</h3>
-            <p>{services.card4.text}</p>
+            <h3 data-i18n="services.card4.title">Smart Assistance and Climate Monitoring</h3>
+            <p data-i18n="services.card4.text">Receive early alerts for frost, drought, and pests backed by real-time weather data and agricultural intelligence to protect investment and secure supply.</p>
           </article>
         </div>
       </section>
@@ -131,45 +131,45 @@
       <!-- How it works -->
       <section class="section section--alt" id="hitos" aria-labelledby="milestones-title">
         <div class="intro">
-          <h2 id="milestones-title">{milestones.title}</h2>
-          <p>{milestones.lead}</p>
+          <h2 id="milestones-title" data-i18n="milestones.title">Milestone Payment Guarantee</h2>
+          <p data-i18n="milestones.lead">Gradual release of escrow funds backed by direct field verification.</p>
         </div>
         <div class="milestones">
           <ol class="milestones__list">
             <li class="milestone milestone--on">
               <p class="milestone__label">
                 <img class="icon" src="assets/icon-tree.svg" width="30" height="30" alt="" aria-hidden="true" />
-                <span>{milestones.m1.label}</span>
+                <span data-i18n="milestones.m1.label">Milestone 1</span>
               </p>
-              <p>{milestones.m1.text}</p>
+              <p data-i18n="milestones.m1.text">Contract signing and lock of initial capital in secure escrow.</p>
             </li>
             <li class="milestone">
               <p class="milestone__label">
                 <img class="icon" src="assets/icon-tree.svg" width="30" height="30" alt="" aria-hidden="true" />
-                <span>{milestones.m2.label}</span>
+                <span data-i18n="milestones.m2.label">Milestone 2</span>
               </p>
-              <p>{milestones.m2.text}</p>
+              <p data-i18n="milestones.m2.text">Planting verification and release of funds for inputs.</p>
             </li>
             <li class="milestone milestone--on">
               <p class="milestone__label">
                 <img class="icon" src="assets/icon-tree.svg" width="30" height="30" alt="" aria-hidden="true" />
-                <span>{milestones.m3.label}</span>
+                <span data-i18n="milestones.m3.label">Milestone 3</span>
               </p>
-              <p>{milestones.m3.text}</p>
+              <p data-i18n="milestones.m3.text">Growth inspection and real-time climate monitoring.</p>
             </li>
             <li class="milestone">
               <p class="milestone__label">
                 <img class="icon" src="assets/icon-tree.svg" width="30" height="30" alt="" aria-hidden="true" />
-                <span>{milestones.m4.label}</span>
+                <span data-i18n="milestones.m4.label">Milestone 4</span>
               </p>
-              <p>{milestones.m4.text}</p>
+              <p data-i18n="milestones.m4.text">Harvest validation and production quality approval.</p>
             </li>
             <li class="milestone milestone--on">
               <p class="milestone__label">
                 <img class="icon" src="assets/icon-tree.svg" width="30" height="30" alt="" aria-hidden="true" />
-                <span>{milestones.m5.label}</span>
+                <span data-i18n="milestones.m5.label">Milestone 5</span>
               </p>
-              <p>{milestones.m5.text}</p>
+              <p data-i18n="milestones.m5.text">Final lot delivery and release of the remaining balance.</p>
             </li>
           </ol>
           <div class="mosaic" aria-hidden="true">
@@ -184,34 +184,34 @@
       <!-- Testimonials -->
       <section class="section" id="testimonios" aria-labelledby="reviews-title">
         <div class="intro">
-          <h2 id="reviews-title">{reviews.title}</h2>
-          <p>{reviews.lead}</p>
+          <h2 id="reviews-title" data-i18n="reviews.title">Trust Backed by Results</h2>
+          <p data-i18n="reviews.lead">Hear from buyers and producers who already secure their harvests, optimize costs, and guarantee payments with our traceability platform.</p>
         </div>
         <div class="reviews" role="list">
           <article class="review" role="listitem">
             <img class="review__photo" src="assets/review-1.png" alt="" aria-hidden="true" loading="lazy" decoding="async" />
             <div class="review__body">
-              <p class="review__kicker">{reviews.kicker}</p>
-              <p>{reviews.r1.text}</p>
-              <p class="stars" aria-label="{reviews.stars}">★★★★☆</p>
+              <p class="review__kicker" data-i18n="reviews.kicker">What people say about us</p>
+              <p data-i18n="reviews.r1.text">We cut acquisition times by 20% and secured supply without middlemen, optimizing operating costs and keeping full control over every production stage.</p>
+              <p class="stars" aria-label="4.5 out of 5 stars" data-i18n-aria-label="reviews.stars">★★★★☆</p>
             </div>
             <h3>Carlos Mendoza Ríos</h3>
           </article>
           <article class="review" role="listitem">
             <img class="review__photo" src="assets/review-2.png" alt="" aria-hidden="true" loading="lazy" decoding="async" />
             <div class="review__body">
-              <p class="review__kicker">{reviews.kicker}</p>
-              <p>{reviews.r2.text}</p>
-              <p class="stars" aria-label="{reviews.stars}">★★★★☆</p>
+              <p class="review__kicker" data-i18n="reviews.kicker">What people say about us</p>
+              <p data-i18n="reviews.r2.text">We cut acquisition times by 20% and secured supply without middlemen, ensuring a stable cash flow and peace of mind from getting paid on time at each milestone.</p>
+              <p class="stars" aria-label="4.5 out of 5 stars" data-i18n-aria-label="reviews.stars">★★★★☆</p>
             </div>
             <h3>Miguel Huamán</h3>
           </article>
           <article class="review" role="listitem">
             <img class="review__photo" src="assets/review-3.png" alt="" aria-hidden="true" loading="lazy" decoding="async" />
             <div class="review__body">
-              <p class="review__kicker">{reviews.kicker}</p>
-              <p>{reviews.r3.text}</p>
-              <p class="stars" aria-label="{reviews.stars}">★★★★☆</p>
+              <p class="review__kicker" data-i18n="reviews.kicker">What people say about us</p>
+              <p data-i18n="reviews.r3.text">We cut acquisition times by 20% and secured supply without middlemen, using live climate alerts to prevent losses and keep deliveries always on time.</p>
+              <p class="stars" aria-label="4.5 out of 5 stars" data-i18n-aria-label="reviews.stars">★★★★☆</p>
             </div>
             <h3>Valeria Benavides</h3>
           </article>
@@ -221,98 +221,98 @@
       <!-- Plans -->
       <section class="section section--alt" id="planes" aria-labelledby="plans-title">
         <div class="intro">
-          <h2 id="plans-title">{plans.title}</h2>
-          <p>{plans.lead}</p>
+          <h2 id="plans-title" data-i18n="plans.title">Production Plans</h2>
+          <p data-i18n="plans.lead">Choose the crop scale and traceability tools that fit your supply needs.</p>
         </div>
         <div class="plans" role="list">
           <article class="plan" role="listitem" aria-labelledby="plan-basic">
-            <h3 id="plan-basic">{plans.basic.name}</h3>
+            <h3 id="plan-basic" data-i18n="plans.basic.name">Basic</h3>
             <ul>
               <li>
                 <img class="icon" src="assets/price-1.svg" width="22" height="22" alt="" aria-hidden="true" />
-                <span>{plans.basic.f1}</span>
+                <span data-i18n="plans.basic.f1">1 active plot (up to 2 Ha)</span>
               </li>
               <li>
                 <img class="icon" src="assets/price-2.svg" width="22" height="22" alt="" aria-hidden="true" />
-                <span>{plans.basic.f2}</span>
+                <span data-i18n="plans.basic.f2">Escrow custody (4 milestones)</span>
               </li>
               <li>
                 <img class="icon" src="assets/price-3.svg" width="22" height="22" alt="" aria-hidden="true" />
-                <span>{plans.basic.f3}</span>
+                <span data-i18n="plans.basic.f3">Email support</span>
               </li>
               <li>
                 <img class="icon" src="assets/price-4.svg" width="22" height="22" alt="" aria-hidden="true" />
-                <span>{plans.basic.f4}</span>
+                <span data-i18n="plans.basic.f4">GPS-georeferenced photos</span>
               </li>
             </ul>
             <p class="plan__price">
-              <strong>$50</strong> <span>{plans.perMonth}</span>
+              <strong>$50</strong> <span data-i18n="plans.perMonth">/month</span>
             </p>
-            <a class="btn btn--gold" href="#contacto">{plans.basic.cta}</a>
+            <a class="btn btn--gold" href="#contacto" data-i18n="plans.basic.cta">Get Started</a>
           </article>
           <article class="plan plan--featured" role="listitem" aria-labelledby="plan-pro">
             <div class="plan__head">
-              <h3 id="plan-pro">{plans.pro.name}</h3>
-              <span class="plan__badge">{plans.pro.badge}</span>
+              <h3 id="plan-pro" data-i18n="plans.pro.name">Pro</h3>
+              <span class="plan__badge" data-i18n="plans.pro.badge">Save $40</span>
             </div>
             <ul>
               <li>
                 <img class="icon" src="assets/price-pro-1.svg" width="22" height="22" alt="" aria-hidden="true" />
-                <span>{plans.pro.f1}</span>
+                <span data-i18n="plans.pro.f1">Up to 10 active plots</span>
               </li>
               <li>
                 <img class="icon" src="assets/price-pro-2.svg" width="22" height="22" alt="" aria-hidden="true" />
-                <span>{plans.pro.f2}</span>
+                <span data-i18n="plans.pro.f2">GPS evidence + field validation</span>
               </li>
               <li>
                 <img class="icon" src="assets/price-pro-3.svg" width="22" height="22" alt="" aria-hidden="true" />
-                <span>{plans.pro.f3}</span>
+                <span data-i18n="plans.pro.f3">Legal PDF contracts</span>
               </li>
               <li>
                 <img class="icon" src="assets/price-pro-4.svg" width="22" height="22" alt="" aria-hidden="true" />
-                <span>{plans.pro.f4}</span>
+                <span data-i18n="plans.pro.f4">Live climate alerts</span>
               </li>
             </ul>
             <p class="plan__price">
-              <strong>$123</strong> <span>{plans.perMonth}</span>
+              <strong>$123</strong> <span data-i18n="plans.perMonth">/month</span>
             </p>
-            <a class="btn btn--gold" href="#contacto">{plans.pro.cta}</a>
+            <a class="btn btn--gold" href="#contacto" data-i18n="plans.pro.cta">Request Demo</a>
           </article>
           <article class="plan" role="listitem" aria-labelledby="plan-enterprise">
-            <h3 id="plan-enterprise">{plans.enterprise.name}</h3>
+            <h3 id="plan-enterprise" data-i18n="plans.enterprise.name">Enterprise</h3>
             <ul>
               <li>
                 <img class="icon" src="assets/price-1.svg" width="22" height="22" alt="" aria-hidden="true" />
-                <span>{plans.enterprise.f1}</span>
+                <span data-i18n="plans.enterprise.f1">Unlimited plots</span>
               </li>
               <li>
                 <img class="icon" src="assets/price-2.svg" width="22" height="22" alt="" aria-hidden="true" />
-                <span>{plans.enterprise.f2}</span>
+                <span data-i18n="plans.enterprise.f2">API integration</span>
               </li>
               <li>
                 <img class="icon" src="assets/price-3.svg" width="22" height="22" alt="" aria-hidden="true" />
-                <span>{plans.enterprise.f3}</span>
+                <span data-i18n="plans.enterprise.f3">Account manager</span>
               </li>
               <li>
                 <img class="icon" src="assets/price-4.svg" width="22" height="22" alt="" aria-hidden="true" />
-                <span>{plans.enterprise.f4}</span>
+                <span data-i18n="plans.enterprise.f4">Custom harvest reports</span>
               </li>
             </ul>
             <p class="plan__price">
-              <strong>$250</strong> <span>{plans.perMonth}</span>
+              <strong>$250</strong> <span data-i18n="plans.perMonth">/month</span>
             </p>
-            <a class="btn btn--gold" href="#contacto">{plans.enterprise.cta}</a>
+            <a class="btn btn--gold" href="#contacto" data-i18n="plans.enterprise.cta">Contact Sales</a>
           </article>
         </div>
         <div class="product-video">
           <div class="intro">
-            <h3 id="product-video-title">{productVideo.title}</h3>
-            <p>{productVideo.lead}</p>
+            <h3 id="product-video-title" data-i18n="productVideo.title">About the Product</h3>
+            <p data-i18n="productVideo.lead">Watch how ALLPATEK connects buyers with farmers through managed plots, milestone-protected payments, and real-time harvest traceability.</p>
           </div>
           <div class="product-video__frame">
             <iframe
               src="https://www.youtube.com/embed/se1KsUnUtmI"
-              title="{productVideo.iframeTitle}"
+              title="ALLPATEK — About the Product" data-i18n-title="productVideo.iframeTitle"
               loading="lazy"
               referrerpolicy="strict-origin-when-cross-origin"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -325,10 +325,10 @@
       <!-- Team -->
       <section class="section" id="equipo" aria-labelledby="team-title">
         <div class="intro">
-          <h2 id="team-title">{team.title}</h2>
-          <p>{team.lead}</p>
+          <h2 id="team-title" data-i18n="team.title">The Team Behind the Platform</h2>
+          <p data-i18n="team.lead">Engineers and specialists who make a secure, traceable, and scalable agricultural architecture possible.</p>
         </div>
-        <div class="team-carousel" role="region" aria-label="{team.title}">
+        <div class="team-carousel" role="region" aria-label="The Team Behind the Platform" data-i18n-aria-label="team.title">
           <div class="team-viewport">
             <ul class="team-track" role="list">
               <li class="member" role="listitem">
@@ -336,49 +336,49 @@
                   <img class="member__person" src="assets/foto-abigail.png" alt="Abigail Nadhim" loading="lazy" decoding="async" />
                 </div>
                 <h3>Abigail Nadhim</h3>
-                <p>{team.role}</p>
+                <p data-i18n="team.role">Software Engineering</p>
               </li>
               <li class="member" role="listitem">
                 <div class="member__media">
                   <img class="member__person" src="assets/foto-alexander.jpg" alt="Alexander Sebastián" loading="lazy" decoding="async" />
                 </div>
                 <h3>Alexander Sebastián</h3>
-                <p>{team.role}</p>
+                <p data-i18n="team.role">Software Engineering</p>
               </li>
               <li class="member" role="listitem">
                 <div class="member__media">
                   <img class="member__person" src="assets/foto-andree.jpg" alt="Mel Andree" loading="lazy" decoding="async" />
                 </div>
                 <h3>Mel Andree</h3>
-                <p>{team.role}</p>
+                <p data-i18n="team.role">Software Engineering</p>
               </li>
               <li class="member" role="listitem">
                 <div class="member__media">
                   <img class="member__person" src="assets/foto_nayely.jpg" alt="Nayely Macarena" loading="lazy" decoding="async" />
                 </div>
                 <h3>Nayely Macarena</h3>
-                <p>{team.role}</p>
+                <p data-i18n="team.role">Software Engineering</p>
               </li>
               <li class="member" role="listitem">
                 <div class="member__media">
                   <img class="member__person" src="assets/foto-miguel.jpg" alt="Miguel Angel" loading="lazy" decoding="async" />
                 </div>
                 <h3>Miguel Angel</h3>
-                <p>{team.role}</p>
+                <p data-i18n="team.role">Software Engineering</p>
               </li>
             </ul>
           </div>
-          <div class="team-dots" role="group" aria-label="{team.carouselNav}"></div>
+          <div class="team-dots" role="group" aria-label="Team carousel navigation" data-i18n-aria-label="team.carouselNav"></div>
         </div>
         <div class="product-video">
           <div class="intro">
-            <h3 id="team-video-title">{teamVideo.title}</h3>
-            <p>{teamVideo.lead}</p>
+            <h3 id="team-video-title" data-i18n="teamVideo.title">About the Team</h3>
+            <p data-i18n="teamVideo.lead">Meet the engineers and specialists who design ALLPATEK to connect buyers with farmers through a secure, traceable, and scalable platform.</p>
           </div>
           <div class="product-video__frame">
             <iframe
               src="https://www.youtube.com/embed/HGon8P2sQRE"
-              title="{teamVideo.iframeTitle}"
+              title="ALLPATEK — About the Team" data-i18n-title="teamVideo.iframeTitle"
               loading="lazy"
               referrerpolicy="strict-origin-when-cross-origin"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -393,15 +393,15 @@
         <img class="contact__bg" src="assets/contact-bg.png" alt="" role="presentation" loading="lazy" decoding="async" />
         <div class="contact__inner">
           <div>
-            <h2 id="contact-title">{contact.title}</h2>
-            <p>{contact.lead}</p>
+            <h2 id="contact-title" data-i18n="contact.title">Request Your Technical Proposal</h2>
+            <p data-i18n="contact.lead">Get the cost breakdown and escrow model in your inbox.</p>
           </div>
           <form class="form" id="contact-form" novalidate aria-labelledby="form-title">
             <div class="form__steps" aria-hidden="true"></div>
-            <h3 id="form-title">{contact.formTitle}</h3>
-            <p class="form__lead">{contact.formLead}</p>
+            <h3 id="form-title" data-i18n="contact.formTitle">Request Information</h3>
+            <p class="form__lead" data-i18n="contact.formLead">We will send you the cost breakdown and escrow model.</p>
             <label for="nombres">
-              <span>{contact.firstName}</span>
+              <span data-i18n="contact.firstName">First name</span>
               <input
                 id="nombres"
                 name="nombres"
@@ -409,11 +409,11 @@
                 autocomplete="given-name"
                 required
                 aria-required="true"
-                placeholder="{contact.firstNamePh}"
+                placeholder="Enter your first name" data-i18n-placeholder="contact.firstNamePh"
               />
             </label>
             <label for="apellidos">
-              <span>{contact.lastName}</span>
+              <span data-i18n="contact.lastName">Last name</span>
               <input
                 id="apellidos"
                 name="apellidos"
@@ -421,11 +421,11 @@
                 autocomplete="family-name"
                 required
                 aria-required="true"
-                placeholder="{contact.lastNamePh}"
+                placeholder="Enter your last name" data-i18n-placeholder="contact.lastNamePh"
               />
             </label>
             <label for="correo">
-              <span>{contact.email}</span>
+              <span data-i18n="contact.email">Email</span>
               <input
                 id="correo"
                 name="correo"
@@ -433,11 +433,11 @@
                 autocomplete="email"
                 required
                 aria-required="true"
-                placeholder="{contact.emailPh}"
+                placeholder="Enter your email" data-i18n-placeholder="contact.emailPh"
               />
             </label>
             <label for="telefono">
-              <span>{contact.phone}</span>
+              <span data-i18n="contact.phone">Phone</span>
               <input
                 id="telefono"
                 name="telefono"
@@ -446,10 +446,10 @@
                 autocomplete="tel"
                 required
                 aria-required="true"
-                placeholder="{contact.phonePh}"
+                placeholder="Enter your phone number" data-i18n-placeholder="contact.phonePh"
               />
             </label>
-            <button class="btn btn--green" type="submit">{contact.submit}</button>
+            <button class="btn btn--green" type="submit" data-i18n="contact.submit">Receive Information</button>
             <p class="form__status" role="status" aria-live="polite"></p>
           </form>
         </div>
@@ -460,44 +460,44 @@
     <footer class="footer" role="contentinfo">
       <div class="footer__grid">
         <div class="footer__brand">
-          <a class="logo" href="#inicio" aria-label="{nav.home}">
+          <a class="logo" href="#inicio" aria-label="ALLPATEK home" data-i18n-aria-label="nav.home">
             <img class="logo__img" src="assets/logo.png" width="72" height="40" alt="" />
             <span class="logo__text" aria-hidden="true"><span>ALLPA</span><span>TEK</span></span>
           </a>
-          <p>{hero.lead}</p>
+          <p data-i18n="hero.lead">We connect buyers with farmers through managed plots, milestone-protected payments, and real-time traceability.</p>
         </div>
-        <nav aria-label="{footer.navAria}">
-          <h3>{footer.nav}</h3>
+        <nav aria-label="Footer" data-i18n-aria-label="footer.navAria">
+          <h3 data-i18n="footer.nav">Navigation</h3>
           <ul>
-            <li><a href="#inicio">{footer.home}</a></li>
-            <li><a href="#servicios">{footer.solutions}</a></li>
-            <li><a href="#hitos">{nav.how}</a></li>
-            <li><a href="#planes">{nav.plans}</a></li>
-            <li><a href="#equipo">{nav.team}</a></li>
-            <li><a href="#testimonios">{nav.reviews}</a></li>
+            <li><a href="#inicio" data-i18n="footer.home">Home</a></li>
+            <li><a href="#servicios" data-i18n="footer.solutions">Solutions</a></li>
+            <li><a href="#hitos" data-i18n="nav.how">How it works</a></li>
+            <li><a href="#planes" data-i18n="nav.plans">Plans</a></li>
+            <li><a href="#equipo" data-i18n="nav.team">Team</a></li>
+            <li><a href="#testimonios" data-i18n="nav.reviews">Testimonials</a></li>
           </ul>
         </nav>
         <div>
-          <h3>{footer.services}</h3>
+          <h3 data-i18n="footer.services">Services</h3>
           <ul>
-            <li><a href="#servicios">{footer.s1}</a></li>
-            <li><a href="#servicios">{footer.s2}</a></li>
-            <li><a href="#hitos">{footer.s3}</a></li>
-            <li><a href="#servicios">{footer.s4}</a></li>
+            <li><a href="#servicios" data-i18n="footer.s1">Plot Selection</a></li>
+            <li><a href="#servicios" data-i18n="footer.s2">Protected Funds</a></li>
+            <li><a href="#hitos" data-i18n="footer.s3">Real-Time Traceability</a></li>
+            <li><a href="#servicios" data-i18n="footer.s4">Climate Monitoring</a></li>
           </ul>
         </div>
         <address>
-          <h3>{footer.contact}</h3>
+          <h3 data-i18n="footer.contact">Contact &amp; Hours</h3>
           <ul>
-            <li>{footer.address}</li>
+            <li data-i18n="footer.address">Av. Principal 123, Lima</li>
             <li><a href="tel:+5115550199">(01) 555-0199</a></li>
             <li><a href="mailto:contacto@allpatek.com">contacto@allpatek.com</a></li>
-            <li>{footer.hours}</li>
+            <li data-i18n="footer.hours">Monday to Friday, 8:00 AM - 6:00 PM</li>
           </ul>
         </address>
       </div>
       <div class="footer__social">
-        <h3>{footer.follow}</h3>
+        <h3 data-i18n="footer.follow">Follow us</h3>
         <ul class="social">
           <li>
             <a
@@ -505,7 +505,7 @@
               href="https://www.facebook.com/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="{footer.social.facebook}"
+              aria-label="ALLPATEK on Facebook" data-i18n-aria-label="footer.social.facebook"
             >
               <span class="social__icon social__icon--facebook"></span>
             </a>
@@ -516,7 +516,7 @@
               href="https://www.instagram.com/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="{footer.social.instagram}"
+              aria-label="ALLPATEK on Instagram" data-i18n-aria-label="footer.social.instagram"
             >
               <span class="social__icon social__icon--instagram"></span>
             </a>
@@ -527,7 +527,7 @@
               href="https://www.linkedin.com/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="{footer.social.linkedin}"
+              aria-label="ALLPATEK on LinkedIn" data-i18n-aria-label="footer.social.linkedin"
             >
               <span class="social__icon social__icon--linkedin"></span>
             </a>
@@ -538,7 +538,7 @@
               href="https://www.youtube.com/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="{footer.social.youtube}"
+              aria-label="ALLPATEK on YouTube" data-i18n-aria-label="footer.social.youtube"
             >
               <span class="social__icon social__icon--youtube"></span>
             </a>
@@ -546,14 +546,14 @@
         </ul>
       </div>
       <p class="footer__copy">
-        <span>{footer.rights}</span>
+        <span data-i18n="footer.rights">© 2026 ALLPATEK. All rights reserved.</span>
         <span class="footer__sep" aria-hidden="true">|</span>
         <a
           class="footer__legal"
           data-legal="terms"
           href="assets/legal/allpatek-terms-and-conditions-en.pdf"
           download
-          >{footer.terms}</a
+           data-i18n="footer.terms">Terms and Conditions</a
         >
         <span class="footer__sep" aria-hidden="true">|</span>
         <a
@@ -561,10 +561,10 @@
           data-legal="privacy"
           href="assets/legal/allpatek-privacy-policy-en.pdf"
           download
-          >{footer.privacy}</a
+           data-i18n="footer.privacy">Privacy Policy</a
         >
         <span class="footer__sep" aria-hidden="true">|</span>
-        <span>{footer.complaints}</span>
+        <span data-i18n="footer.complaints">Complaints Book</span>
       </p>
     </footer>
     <script src="script.js"></script>

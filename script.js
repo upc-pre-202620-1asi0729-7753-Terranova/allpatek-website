@@ -338,6 +338,15 @@ function applyTranslations(lang) {
   } catch {}
   document.documentElement.lang = lang === "es_419" ? "es-419" : "en";
 
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    el.textContent = t(el.getAttribute("data-i18n"));
+  });
+  ATTRS.forEach((attr) => {
+    document.querySelectorAll(`[data-i18n-${attr}]`).forEach((el) => {
+      el.setAttribute(attr, t(el.getAttribute(`data-i18n-${attr}`)));
+    });
+  });
+
   // Keep the original {key} template so the language can be switched
   document.querySelectorAll("body, body *").forEach((el) => {
     if (el.closest("script, style")) return;
