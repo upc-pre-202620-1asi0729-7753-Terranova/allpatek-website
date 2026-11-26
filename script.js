@@ -331,9 +331,11 @@ function fillKeys(text) {
 }
 
 function applyTranslations(lang) {
-  if (!MESSAGES[lang]) return;
+  if (!Object.hasOwn(MESSAGES, lang)) return;
   currentLang = lang;
-  localStorage.setItem(STORAGE_KEY, lang);
+  try {
+    localStorage.setItem(STORAGE_KEY, lang);
+  } catch {}
   document.documentElement.lang = lang === "es_419" ? "es-419" : "en";
 
   // Keep the original {key} template so the language can be switched
@@ -387,8 +389,11 @@ function applyTranslations(lang) {
 }
 
 function initI18n() {
-  const saved = localStorage.getItem(STORAGE_KEY);
-  const lang = MESSAGES[saved] ? saved : DEFAULT_LANG;
+  let saved = null;
+  try {
+    saved = localStorage.getItem(STORAGE_KEY);
+  } catch {}
+  const lang = Object.hasOwn(MESSAGES, saved) ? saved : DEFAULT_LANG;
   applyTranslations(lang);
 
   document.querySelectorAll(".lang__btn").forEach((btn) => {
