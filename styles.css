@@ -1518,12 +1518,20 @@ ol {
     display: inline-flex;
   }
 
-  .nav__cta {
+  .nav .nav__cta {
     display: none;
+    order: 4;
+    width: 100%;
+  }
+
+  .nav.is-open .nav__cta {
+    display: inline-flex;
   }
 
   .nav__links {
     display: none;
+    order: 3;
+    flex: 0 0 100%;
     width: 100%;
     flex-direction: column;
   }
