@@ -452,7 +452,11 @@ function initContactForm() {
 
   form.querySelectorAll("input").forEach((input) => {
     input.addEventListener("input", () => {
-      if (isValidField(input)) input.closest("label")?.classList.remove("is-invalid");
+      if (isValidField(input)) {
+        input.closest("label")?.classList.remove("is-invalid");
+        input.removeAttribute("aria-invalid");
+        input.removeAttribute("aria-describedby");
+      }
     });
   });
 
@@ -463,11 +467,19 @@ function initContactForm() {
     const fieldValidity = fields.map((input) => {
       const ok = isValidField(input);
       input.closest("label")?.classList.toggle("is-invalid", !ok);
+      if (ok) {
+        input.removeAttribute("aria-invalid");
+        input.removeAttribute("aria-describedby");
+      } else {
+        input.setAttribute("aria-invalid", "true");
+        input.setAttribute("aria-describedby", "contact-status");
+      }
       return ok;
     });
     const isValid = fieldValidity.every(Boolean);
 
     if (!isValid) {
+      fields[fieldValidity.indexOf(false)].focus();
       showFormStatus(statusEl, "contact.error", "error");
       return;
     }
