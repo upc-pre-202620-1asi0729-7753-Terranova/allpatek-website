@@ -567,6 +567,7 @@ function initTeamCarousel() {
       btn.type = "button";
       btn.className = "team-dot" + (i === current ? " is-active" : "");
       btn.setAttribute("aria-label", slideLabel(i, count));
+      btn.setAttribute("aria-pressed", String(i === current));
       btn.addEventListener("click", () => { stopAuto(); goTo(i); startAuto(); });
       dotsWrap.appendChild(btn);
       dots.push(btn);
@@ -578,6 +579,7 @@ function initTeamCarousel() {
     dots.forEach((d, i) => {
       d.classList.toggle("is-active", i === idx);
       d.setAttribute("aria-label", slideLabel(i, count));
+      d.setAttribute("aria-pressed", String(i === idx));
     });
   }
 
