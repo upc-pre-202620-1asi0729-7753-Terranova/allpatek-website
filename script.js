@@ -20,11 +20,12 @@ const MESSAGES = {
     "nav.contact": "Contact",
     "nav.cta": "Get Started",
     "lang.aria": "Language",
-    "coming.meta": "ALLPATEK — Coming soon",
+    "coming.meta": "ALLPATEK — Web platform",
     "coming.kicker": "Platform",
-    "coming.title": "The web platform will be here very soon",
-    "coming.lead": "Managed plots, milestone-protected payments, and live harvest traceability — launching shortly.",
+    "coming.title": "Access the ALLPATEK web platform",
+    "coming.lead": "Explore plots, contracts, climate alerts, and milestone tracking.",
     "coming.back": "Back to landing",
+    "coming.open": "Open web platform",
 
     "hero.title": "Guaranteed agricultural production, from land to your business",
     "hero.lead":
@@ -167,11 +168,12 @@ const MESSAGES = {
     "nav.contact": "Contacto",
     "nav.cta": "Empieza Ahora",
     "lang.aria": "Idioma",
-    "coming.meta": "ALLPATEK — Muy pronto",
+    "coming.meta": "ALLPATEK — Plataforma web",
     "coming.kicker": "Plataforma",
-    "coming.title": "Aquí estará la plataforma web muy pronto",
-    "coming.lead": "Parcelas gestionadas, pagos protegidos por hitos y trazabilidad de cosecha en vivo — muy pronto.",
+    "coming.title": "Accede a la plataforma web de ALLPATEK",
+    "coming.lead": "Consulta parcelas, contratos, alertas climáticas y el seguimiento de hitos.",
     "coming.back": "Volver al landing",
+    "coming.open": "Acceder a la plataforma",
 
     "hero.title": "Producción agrícola garantizada, de la tierra a tu negocio",
     "hero.lead":
