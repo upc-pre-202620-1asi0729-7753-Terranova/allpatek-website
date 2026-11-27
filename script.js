@@ -112,6 +112,8 @@ const MESSAGES = {
     "teamVideo.lead":
       "Meet the engineers and specialists who design ALLPATEK to connect buyers with farmers through a secure, traceable, and scalable platform.",
     "teamVideo.iframeTitle": "ALLPATEK — About the Team",
+    "teamVideo.youtubeLink": "Watch on YouTube",
+    "teamVideo.streamLink": "Watch on Microsoft Stream",
     "contact.title": "Request Your Technical Proposal",
     "contact.lead": "Get the cost breakdown and escrow model in your inbox.",
     "contact.formTitle": "Request Information",
@@ -262,6 +264,8 @@ const MESSAGES = {
     "teamVideo.lead":
       "Conoce a los ingenieros y especialistas que diseñan ALLPATEK para conectar compradores con agricultores a través de una plataforma segura, trazable y escalable.",
     "teamVideo.iframeTitle": "ALLPATEK — Sobre el Equipo",
+    "teamVideo.youtubeLink": "Ver en YouTube",
+    "teamVideo.streamLink": "Ver en Microsoft Stream",
     "contact.title": "Solicita tu Propuesta Técnica",
     "contact.lead": "Recibe el desglose de costos y el modelo de custodia en tu correo.",
     "contact.formTitle": "Solicitar Información",
