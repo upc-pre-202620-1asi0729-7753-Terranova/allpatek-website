@@ -994,6 +994,30 @@ ol {
   height: 100%;
   border: 0;
 }
+
+.team-video__frame {
+  min-height: 202px;
+}
+
+.team-video__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 24px;
+  margin: 20px auto 0;
+}
+
+.team-video__links a {
+  color: var(--green);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.team-video__links a:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 4px;
+}
 /* Team — step-based carousel (JS-driven, no duplicates) */
 
 .team-carousel {
